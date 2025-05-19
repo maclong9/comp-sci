@@ -45,7 +45,6 @@ Computers use binary (0s and 1s) to represent data. Key concepts:
 - `1001 = 9`
 - `1010 = 10`
 
-
 ```swift
 import Foundation
 
