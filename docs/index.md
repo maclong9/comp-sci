@@ -20,7 +20,6 @@
 ```swift
 ```
 
-# CS-00 Computer Science Introduction
 
 This [course](https://teachyourselfcs.com/#programming) is designed for self-taught engineers who may have missed certain aspects of computer science fundamentals.
 
@@ -36,7 +35,7 @@ Computers use binary (0s and 1s) to represent data. Key concepts:
 
 - A **bit** is a single binary digit (0 or 1)
 - A **byte** is 8 bits (can represent values from 0 to 255)
-- Binary counting: 
+- Binary counting:
 - `0000 = 0`
 - `0001 = 1`
 - `0010 = 2`
@@ -188,13 +187,13 @@ class Rectangle {
    var origin: Point
    var width: Int
    var height: Int
-   
+
    init(origin: Point, width: Int, height: Int) {
        self.origin = origin
        self.width = width
        self.height = height
    }
-   
+
    func area() -> Int {
        return width * height
    }
@@ -220,7 +219,7 @@ A linear data structure where elements are stored in nodes containing data and a
 class LinkedListNode<T> {
    var value: T
    var next: LinkedListNode<T>?
-   
+
    init(value: T) {
        self.value = value
    }
@@ -229,24 +228,24 @@ class LinkedListNode<T> {
 /// Singly linked list implementation
 class LinkedList<T> {
    var head: LinkedListNode<T>?
-   
+
    /// Adds a new value to the end of the list
    func append(_ value: T) {
        let newNode = LinkedListNode(value: value)
-       
+
        if head == nil {
            head = newNode
            return
        }
-       
+
        var current = head
        while current?.next != nil {
            current = current?.next
        }
-       
+
        current?.next = newNode
    }
-   
+
    /// Prints the entire linked list
    func printList() {
        var current = head
@@ -283,16 +282,16 @@ func naiveRecursiveFibonacci(_ n: Int) -> Int {
 // Memoized Fibonacci - improved with caching
 func memoizedFibonacci(_ n: Int) -> Int {
    var memo: [Int: Int] = [0: 0, 1: 1]
-   
+
    func fib(_ n: Int) -> Int {
        if let result = memo[n] {
            return result
        }
-       
+
        memo[n] = fib(n - 1) + fib(n - 2)
        return memo[n]!
    }
-   
+
    return fib(n)
 }
 ```
@@ -305,15 +304,15 @@ OOP is based on the concept of objects that contain data and code. Swift support
 /// Base shape class
 class Shape {
    var name: String
-   
+
    init(name: String) {
        self.name = name
    }
-   
+
    func area() -> Double {
        return 0.0
    }
-   
+
    func description() -> String {
        return "A shape named \(name)"
    }
@@ -322,16 +321,16 @@ class Shape {
 /// Circle inherits from Shape
 class Circle: Shape {
    var radius: Double
-   
+
    init(radius: Double) {
        self.radius = radius
        super.init(name: "Circle")
    }
-   
+
    override func area() -> Double {
        return Double.pi * radius * radius
    }
-   
+
    override func description() -> String {
        return "A circle with radius \(radius)"
    }
@@ -340,16 +339,16 @@ class Circle: Shape {
 /// Square inherits from Shape
 class Square: Shape {
    var side: Double
-   
+
    init(side: Double) {
        self.side = side
        super.init(name: "Square")
    }
-   
+
    override func area() -> Double {
        return side * side
    }
-   
+
    override func description() -> String {
        return "A square with side \(side)"
    }
@@ -461,7 +460,7 @@ func neuralNetworkSimulation(inputs: [Double], weights: [Double], bias: Double) 
    for i in 0..<min(inputs.count, weights.count) {
        weightedSum += inputs[i] * weights[i]
    }
-   
+
    // Apply sigmoid activation function
    return 1.0 / (1.0 + exp(-weightedSum))
 }
