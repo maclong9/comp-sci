@@ -15,11 +15,14 @@
 
  I have chosen to follow along this course using a Swift Playground Book, the reasons for this are listed below:
 
- - Swift is usable as in both compiled and interpreted modes meaning it covers all aspects in this course.
+ - Swift is works in both compiled and interpreted modes meaning it covers all aspects mentioned in this course.
  - It's a language that allows for working in multiple paradigms including functional and object oriented.
- - The eco-system is currently smaller than other languages so a lack of libraries are availible in comparison to other languages, this could inspire new projects I could build throughout the courses.
+ - The eco-system is currently smaller than other languages, this could inspire me to build new projects and libraies throughout the courses.
  - I enjoy working in the language.
  - Playground Books allow live code examples within my note taking, this is incredibly useful when studying.
+
+ There are a lot of other reasons to work with Swift, such as its strong community support, extensive documentation, and a wide range of libraries and frameworks available.
+ However the above reasons are the main ones for my choice in this course.
 
 - Note: These pages are converted to Markdown files to be used with GitHub Pages, the script that performs this transition can be [seen here](../../../process-playground-pages.sh).
 
@@ -40,6 +43,8 @@
  3. Make your edits and save them.
  4. Commit your changes and push them to your repository.
  5. View your changes on GitHub Pages.
+
+ Then you can start reading throught the contents of the courses while also testing the examples provided.
 
  - Attention: Ensure you have `Editor > Show Rendered Markup` enabled in Xcode to preview the rendered notes.
 
@@ -86,6 +91,8 @@
 
 Compiling is the action of taking your source code and converting it into machine code so the computer is able to run it.
 
+*/
+
 // Here's a simple Swift program
 let message = "Hello, World!"
 print(message)
@@ -93,9 +100,11 @@ print(message)
 // The compiler translates this human-readable code into machine code
 // that the computer can execute
 
+/*:
  ### Keywords
 
  Source code is full of keywords, these dictate to the compiler that a specific action should happen
+ */
 
 // Keywords in Swift
 let constantValue = 10      // 'let' is a keyword for declaring constants
@@ -111,6 +120,7 @@ func greet(name: String) {  // 'func' is a keyword for declaring functions
 }
 greet(name: "Swift")
 
+/*:
  ## The Binary System
 
  In computing, everything ultimately gets represented as binary. Let's explore how binary works and how Swift handles binary operations:
@@ -135,14 +145,14 @@ print("AND: \(bitwiseAND), OR: \(bitwiseOR), XOR: \(bitwiseXOR)")
 print("NOT a: \(bitwiseNOT), a << 1: \(leftShift), a >> 1: \(rightShift)")
 
 // Convert integer to binary string representation
-func toBinaryString(_ value: Int, padLength: Int = 8) -> String {
+func basicToBinaryString(_ value: Int, padLength: Int = 8) -> String {
     let binaryString = String(value, radix: 2)
     return String(repeating: "0", count: max(0, padLength - binaryString.count)) + binaryString
 }
 
-print("\nBinary representation of \(a): \(toBinaryString(a))")
-print("Binary representation of \(b): \(toBinaryString(b))")
-print("AND result: \(toBinaryString(bitwiseAND))")
+print("\nBinary representation of \(a): \(basicToBinaryString(a))")
+print("Binary representation of \(b): \(basicToBinaryString(b))")
+print("AND result: \(basicToBinaryString(bitwiseAND))")
 
 /*:
  ## Arrays
@@ -277,7 +287,7 @@ if let linearIndex = linearSearch(testArray, searchItem) {
     print("Linear search: \(searchItem) found at index \(linearIndex)")
 }
 if let binaryIndex = binarySearch(sorted, searchItem) {
-    printinaryIndex) in sorted array")
+    print("\(binaryIndex) in sorted array")
 }
 
 /*:
@@ -418,16 +428,12 @@ class LinkedList<T> {
     }
 }
 
-/*:
- Example usage of a linked list:
- ```swift
+ // Example usage of a linked list:
  let list = LinkedList<Int>()
  list.append(1)
  list.append(2)
  list.append(3)
  list.printList()  // Output: 1 -> 2 -> 3 -> nil
- ```
- */
 
 // Using the linked list
 let linkedList = LinkedList<Int>()
@@ -444,27 +450,27 @@ linkedList.printList()
  */
 
 // Factorial using recursion
-func factorial(_ n: Int) -> Int {
+func recursiveFactorial(_ n: Int) -> Int {
     if n <= 1 {
         return 1
     }
-    return n * factorial(n - 1)
+    return n * recursiveFactorial(n - 1)
 }
 
 // Fibonacci sequence using recursion
-func fibonacci(_ n: Int) -> Int {
+func naiveRecursiveFibonacci(_ n: Int) -> Int {
     if n <= 1 {
         return n
     }
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    return naiveRecursiveFibonacci(n - 1) + naiveRecursiveFibonacci(n - 2)
 }
 
 print("\nRecursion examples:")
-print("Factorial of 5: \(factorial(5))")
-print("Fibonacci number at position 7: \(fibonacci(7))")
+print("Factorial of 5: \(recursiveFactorial(5))")
+print("Fibonacci number at position 7: \(naiveRecursiveFibonacci(7))")
 
 // More efficient Fibonacci using memoization
-func efficientFibonacci(_ n: Int) -> Int {
+func memoizedFibonacci(_ n: Int) -> Int {
     var memo: [Int: Int] = [0: 0, 1: 1]
 
     func fib(_ n: Int) -> Int {
@@ -479,7 +485,7 @@ func efficientFibonacci(_ n: Int) -> Int {
     return fib(n)
 }
 
-print("Efficient Fibonacci number at position 20: \(efficientFibonacci(20))")
+print("Efficient Fibonacci number at position 20: \(memoizedFibonacci(20))")
 
 /*:
  ## Object-Oriented Programming
@@ -680,7 +686,7 @@ print("\nError handling examples:")
 ///   - value: The decimal integer to convert
 ///   - padLength: The minimum length of the result (will be padded with leading zeros)
 /// - Returns: A string representing the binary value
-func toBinaryString(_ value: Int, padLength: Int = 8) -> String {
+func enhancedToBinaryString(_ value: Int, padLength: Int = 8) -> String {
     return String(value, radix: 2).padLeft(toLength: padLength, withPad: "0")
 }
 
@@ -716,11 +722,11 @@ extension String {
 
 // Binary representation examples
 print("\nBinary representation examples:")
-print("5 in binary: \(toBinaryString(5))")
-print("10 in binary: \(toBinaryString(10))")
-print("255 in binary: \(toBinaryString(255))")
+print("5 in binary: \(enhancedToBinaryString(5))")
+print("10 in binary: \(enhancedToBinaryString(10))")
+print("255 in binary: \(enhancedToBinaryString(255))")
 print("'A' character code: \(Int(Character("A").asciiValue ?? 0))")
-print("'A' in binary: \(toBinaryString(Int(Character("A").asciiValue ?? 0)))")
+print("'A' in binary: \(enhancedToBinaryString(Int(Character("A").asciiValue ?? 0)))")
 
 /*:
  ## Algorithmic Efficiency
@@ -813,20 +819,20 @@ let sumOfSquaresOfEvenNumbers = numbers2
 /// - Parameter n: The number to calculate factorial for
 /// - Returns: The factorial of n (n!)
 /// - Complexity: O(n) time, O(n) space due to call stack
-func factorial(_ n: Int) -> Int {
+func iterativeFactorial(_ n: Int) -> Int {
     // Base case
     if n <= 1 {
         return 1
     }
     // Recursive case
-    return n * factorial(n - 1)
+    return n * iterativeFactorial(n - 1)
 }
 
 /// Calculates the nth Fibonacci number using recursion
 /// - Parameter n: The position in the Fibonacci sequence
 /// - Returns: The nth Fibonacci number
 /// - Complexity: O(2^n) time due to exponential growth of calls
-func fibonacci(_ n: Int) -> Int {
+func recursiveFibonacci(_ n: Int) -> Int {
     // Base cases
     if n <= 0 {
         return 0
@@ -835,14 +841,14 @@ func fibonacci(_ n: Int) -> Int {
         return 1
     }
     // Recursive case
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2)
 }
 
 /// Calculates the nth Fibonacci number using dynamic programming
 /// - Parameter n: The position in the Fibonacci sequence
 /// - Returns: The nth Fibonacci number
 /// - Complexity: O(n) time, O(1) space
-func efficientFibonacci(_ n: Int) -> Int {
+func iterativeFibonacci(_ n: Int) -> Int {
     // Helper function using memoization
     func fib(_ n: Int) -> Int {
         var memo = [0, 1]
@@ -859,9 +865,9 @@ func efficientFibonacci(_ n: Int) -> Int {
 }
 
 print("\nRecursion examples:")
-print("Factorial of 5: \(factorial(5))")
-print("Fibonacci (8): \(fibonacci(8))")
-print("Efficient Fibonacci (30): \(efficientFibonacci(30))")
+print("Factorial of 5: \(iterativeFactorial(5))")
+print("Fibonacci (8): \(recursiveFibonacci(8))")
+print("Efficient Fibonacci (30): \(iterativeFibonacci(30))")
 
 /*:
  Notice the difference in performance between regular recursive Fibonacci and the optimized version:
@@ -997,41 +1003,15 @@ print("Classify(hasFur: false, numberOfLegs: 8, canFly: false): \(classifyAnimal
  - Apple Developer Documentation: [https://developer.apple.com/documentation](https://developer.apple.com/documentation)
  */
 
- While implementing full AI systems is beyond this playground, we can demonstrate basic concepts used in AI.
- */
-
-// Simple decision tree for classification
-func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
-    if canFly {
-        if hasFur {
-            return "Bat"
-        } else {
-            return "Bird"
-        }
-    } else {
-        if hasFur {
-            if numberOfLegs == 4 {
-                return "Dog/Cat"
-            } else if numberOfLegs == 2 {
-                return "Human"
-            } else {
-                return "Unknown Mammal"
-            }
-        } else {
-            if numberOfLegs > 4 {
-                return "Insect/Arthropod"
-            } else if numberOfLegs == 4 {
-                return "Reptile/Amphibian"
-            } else if numberOfLegs == 0 {
-                return "Snake/Fish"
-            } else {
-                return "Unknown Animal"
-            }
-        }
-    }
-}
-
-print("\nSimple AI classification:")
+/*:
+ While implementing full AI systems is beyond this playground, we've demonstrated the basic concepts used in AI through the classifyAnimal function above.
+ 
+ ## Conclusion
+ 
+ This playground has introduced several fundamental computer science concepts using Swift. We've covered data types, control flow, algorithms, data structures, object-oriented programming, and more.
+ 
+ These concepts form the foundation for building more complex applications and understanding computer systems.
+*/
 print("Animal with fur, 4 legs, can't fly: \(classifyAnimal(hasFur: true, numberOfLegs: 4, canFly: false))")
 print("Animal without fur, 2 legs, can fly: \(classifyAnimal(hasFur: false, numberOfLegs: 2, canFly: true))")
 print("Animal with fur, 2 legs, can't fly: \(classifyAnimal(hasFur: true, numberOfLegs: 2, canFly: false))")

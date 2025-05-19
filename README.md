@@ -6,8 +6,8 @@ This repository contains my computer science notes organized as a custom Jekyll 
 
 The repository is structured as follows:
 
-- `/comp-sci/docs/` - Contains all the Markdown files that make up the content of the site
-- `.//docs/_layouts/` - Contains the layout templates for the site
+- `./docs/` - Contains all the Markdown files that make up the content of the site
+- `./docs/_layouts/` - Contains the layout templates for the site
 - `./docs/_includes/` - Contains reusable HTML components
 - `./docs/assets/` - Contains CSS, images, and other static assets
 
@@ -20,13 +20,12 @@ This site uses a custom Jekyll theme with the following features:
 - Optimized typography for readability
 - Code syntax highlighting
 
-## Local Development
+> [!NOTE]
+> You can use this project as a starting point for any scientific note-taking project by clicking the `Use this template` button on GitHub.
 
-To run this site locally:
+## Swift Playgrounds Book
 
-1. Install Jekyll and Bundler: `gem install jekyll bundler`
-2. Clone this repository
-3. Navigate to the docs directory: `cd comp-sci/docs`
-4. Install dependencies: `bundle install`
-5. Start the local server: `bundle exec jekyll serve`
-6. Visit `http://localhost:4000/comp-sci/` in your browser
+If you clone this repository locally and open `CompSci.playground` in Xcode, you can explore the Swift code examples and interact with them.
+
+> [!IMPORTANT]
+> Ensure that you check `Editor > Show Rendered Markup` before reading through the notes.

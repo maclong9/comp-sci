@@ -526,7 +526,8 @@ code:not(pre code) {
     transition:
         background-color 0.3s ease,
         color 0.3s ease;
-    border: 1px solid var(--border-color);
+    background-color: oklch(0.3 0 0);
+    padding: 0.25rem 0.4rem;
 }
 
 hr {
@@ -536,19 +537,31 @@ hr {
 }
 
 /* Code highlighting */
-:where(.highlighter-rouge) {
+.highlighter-rouge {
+    background: oklch(0.2 0 0);
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+    padding: 2.5rem 1rem 1rem;
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
     position: relative;
     width: 100%;
-    max-width: 95vw;
-    margin: 1lh auto;
-    overflow-x: auto;
-    background: oklch(0.2 0 0);
-    border-radius: 8px;
     box-sizing: border-box;
-    padding: 1rem;
-    transition:
-        background-color 0.3s ease,
-        border-color 0.3s ease;
+
+    @media (min-width: 768px) {
+        margin: 1rem 0;
+        width: 760px;
+        max-width: 760px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        padding: 2.5rem 1.5rem 1rem;
+    }
+
+    @media (min-width: 804px) {
+        width: 800px;
+        max-width: 800px;
+    }
 
     & .highlight {
         background: transparent;
@@ -587,6 +600,12 @@ hr {
             color: light-dark(oklch(85% 0 0), oklch(98.5% 0 0));
             word-break: normal;
             word-wrap: normal;
+            text-shadow: none;
+            font-family: ui-monospace;
+            font-weight: normal;
+            display: block;
+            white-space: pre;
+            background: transparent;
         }
     }
 
@@ -686,26 +705,6 @@ hr {
         line-height: 1.25rem;
         margin-right: 1rem;
         border-right: 1px solid var(--border-color);
-    }
-}
-
-@media (min-width: 768px) {
-    .highlighter-rouge:not(code:not(pre code)) {
-        width: 760px;
-        max-width: 760px;
-        margin-left: 50%;
-        transform: translateX(-50%);
-
-        & table pre {
-            padding: 2.5rem 1.5rem 1rem;
-        }
-    }
-}
-
-@media (min-width: 804px) {
-    .highlighter-rouge:not(code:not(pre code)) {
-        width: 760px;
-        max-width: 760px;
     }
 }
 

@@ -158,14 +158,14 @@ print("NOT a: \(bitwiseNOT), a << 1: \(leftShift), a >> 1: \(rightShift)")
 Convert integer to binary string representation
 
 ```swift
-func toBinaryString(_ value: Int, padLength: Int = 8) -> String {
+func basicToBinaryString(_ value: Int, padLength: Int = 8) -> String {
    let binaryString = String(value, radix: 2)
    return String(repeating: "0", count: max(0, padLength - binaryString.count)) + binaryString
 }
 
-print("\nBinary representation of \(a): \(toBinaryString(a))")
-print("Binary representation of \(b): \(toBinaryString(b))")
-print("AND result: \(toBinaryString(bitwiseAND))")
+print("\nBinary representation of \(a): \(basicToBinaryString(a))")
+print("Binary representation of \(b): \(basicToBinaryString(b))")
+print("AND result: \(basicToBinaryString(bitwiseAND))")
 ```
 
 ## Arrays
@@ -515,33 +515,33 @@ Recursion is a technique where a function calls itself. It's useful for solving 
 Factorial using recursion
 
 ```swift
-func factorial(_ n: Int) -> Int {
+func recursiveFactorial(_ n: Int) -> Int {
    if n <= 1 {
        return 1
    }
-   return n * factorial(n - 1)
+   return n * recursiveFactorial(n - 1)
 }
 ```
 
 Fibonacci sequence using recursion
 
 ```swift
-func fibonacci(_ n: Int) -> Int {
+func naiveRecursiveFibonacci(_ n: Int) -> Int {
    if n <= 1 {
        return n
    }
-   return fibonacci(n - 1) + fibonacci(n - 2)
+   return naiveRecursiveFibonacci(n - 1) + naiveRecursiveFibonacci(n - 2)
 }
 
 print("\nRecursion examples:")
-print("Factorial of 5: \(factorial(5))")
-print("Fibonacci number at position 7: \(fibonacci(7))")
+print("Factorial of 5: \(recursiveFactorial(5))")
+print("Fibonacci number at position 7: \(naiveRecursiveFibonacci(7))")
 ```
 
 More efficient Fibonacci using memoization
 
 ```swift
-func efficientFibonacci(_ n: Int) -> Int {
+func memoizedFibonacci(_ n: Int) -> Int {
    var memo: [Int: Int] = [0: 0, 1: 1]
 
    func fib(_ n: Int) -> Int {
@@ -556,7 +556,7 @@ func efficientFibonacci(_ n: Int) -> Int {
    return fib(n)
 }
 
-print("Efficient Fibonacci number at position 20: \(efficientFibonacci(20))")
+print("Efficient Fibonacci number at position 20: \(memoizedFibonacci(20))")
 ```
 
 ## Object-Oriented Programming
@@ -773,7 +773,7 @@ Converting between decimal and binary is a fundamental computing operation.
 / - Returns: A string representing the binary value
 
 ```swift
-func toBinaryString(_ value: Int, padLength: Int = 8) -> String {
+func enhancedToBinaryString(_ value: Int, padLength: Int = 8) -> String {
    return String(value, radix: 2).padLeft(toLength: padLength, withPad: "0")
 }
 ```
@@ -794,9 +794,9 @@ extension String {
 
 Example binary conversions:
 ```swift
-print(toBinaryString(5))     // Output: 00000101
-print(toBinaryString(10))    // Output: 00001010
-print(toBinaryString(255))   // Output: 11111111
+print(enhancedToBinaryString(5))     // Output: 00000101
+print(enhancedToBinaryString(10))    // Output: 00001010
+print(enhancedToBinaryString(255))   // Output: 11111111
 ```
 
 ### Characters in Binary
@@ -813,11 +813,11 @@ Binary representation examples
 
 ```swift
 print("\nBinary representation examples:")
-print("5 in binary: \(toBinaryString(5))")
-print("10 in binary: \(toBinaryString(10))")
-print("255 in binary: \(toBinaryString(255))")
+print("5 in binary: \(enhancedToBinaryString(5))")
+print("10 in binary: \(enhancedToBinaryString(10))")
+print("255 in binary: \(enhancedToBinaryString(255))")
 print("'A' character code: \(Int(Character("A").asciiValue ?? 0))")
-print("'A' in binary: \(toBinaryString(Int(Character("A").asciiValue ?? 0)))")
+print("'A' in binary: \(enhancedToBinaryString(Int(Character("A").asciiValue ?? 0)))")
 ```
 
 ## Algorithmic Efficiency
@@ -925,13 +925,13 @@ Recursion is often elegant for problems that can be broken down into smaller, si
 / - Complexity: O(n) time, O(n) space due to call stack
 
 ```swift
-func factorial(_ n: Int) -> Int {
+func iterativeFactorial(_ n: Int) -> Int {
    // Base case
    if n <= 1 {
        return 1
    }
    // Recursive case
-   return n * factorial(n - 1)
+   return n * iterativeFactorial(n - 1)
 }
 ```
 
@@ -941,7 +941,7 @@ func factorial(_ n: Int) -> Int {
 / - Complexity: O(2^n) time due to exponential growth of calls
 
 ```swift
-func fibonacci(_ n: Int) -> Int {
+func recursiveFibonacci(_ n: Int) -> Int {
    // Base cases
    if n <= 0 {
        return 0
@@ -950,7 +950,7 @@ func fibonacci(_ n: Int) -> Int {
        return 1
    }
    // Recursive case
-   return fibonacci(n - 1) + fibonacci(n - 2)
+   return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2)
 }
 ```
 
@@ -960,7 +960,7 @@ func fibonacci(_ n: Int) -> Int {
 / - Complexity: O(n) time, O(1) space
 
 ```swift
-func efficientFibonacci(_ n: Int) -> Int {
+func iterativeFibonacci(_ n: Int) -> Int {
    // Helper function using memoization
    func fib(_ n: Int) -> Int {
        var memo = [0, 1]
@@ -977,9 +977,9 @@ func efficientFibonacci(_ n: Int) -> Int {
 }
 
 print("\nRecursion examples:")
-print("Factorial of 5: \(factorial(5))")
-print("Fibonacci (8): \(fibonacci(8))")
-print("Efficient Fibonacci (30): \(efficientFibonacci(30))")
+print("Factorial of 5: \(iterativeFactorial(5))")
+print("Fibonacci (8): \(recursiveFibonacci(8))")
+print("Efficient Fibonacci (30): \(iterativeFibonacci(30))")
 ```
 
 Notice the difference in performance between regular recursive Fibonacci and the optimized version:
