@@ -6,43 +6,32 @@
 
  ## What is Computer Science?
 
- Computer Science is the study of information, focused on solving problems using computational thinking. Computer Science helps us understand how to represent, process, and transform information in systematic ways.
-
- At its core, any computer program can be simplified as:
+ Computer Science is the study of information, focused on solving problems using computational thinking. A program can be simplified as:
 
  **Input** → **Compute** → **Output**
 
- This model applies whether you're developing a simple calculator or complex artificial intelligence systems. The essence of computer science is understanding how to effectively move from input to output through efficient computation.
-
  ## The Binary System
 
- Computers use binary (0s and 1s) to represent data at the most fundamental level. This system forms the foundation of all computing.
+ Computers use binary (0s and 1s) to represent data. Key concepts:
 
- ### Key Binary Concepts:
-
- - A **bit** is a single binary digit (0 or 1) - the smallest unit of information
+ - A **bit** is a single binary digit (0 or 1)
  - A **byte** is 8 bits (can represent values from 0 to 255)
- - In physical terms, 0s and 1s represent the states of electronic components (on/off)
- - Each position in a binary number represents a power of 2 (from right to left: 2⁰, 2¹, 2², etc.)
-
- ### Binary Counting:
-   - `0000 = 0`  (0×2³ + 0×2² + 0×2¹ + 0×2⁰)
-   - `0001 = 1`  (0×2³ + 0×2² + 0×2¹ + 1×2⁰)
-   - `0010 = 2`  (0×2³ + 0×2² + 1×2¹ + 0×2⁰)
-   - `0011 = 3`  (0×2³ + 0×2² + 1×2¹ + 1×2⁰)
-   - `0100 = 4`  (0×2³ + 1×2² + 0×2¹ + 0×2⁰)
-   - `0101 = 5`  (0×2³ + 1×2² + 0×2¹ + 1×2⁰)
-   - `0110 = 6`  (0×2³ + 1×2² + 1×2¹ + 0×2⁰)
-   - `0111 = 7`  (0×2³ + 1×2² + 1×2¹ + 1×2⁰)
-   - `1000 = 8`  (1×2³ + 0×2² + 0×2¹ + 0×2⁰)
-   - `1001 = 9`  (1×2³ + 0×2² + 0×2¹ + 1×2⁰)
-   - `1010 = 10` (1×2³ + 0×2² + 1×2¹ + 0×2⁰)
-
- ### Character Representation:
- - Text characters are represented by numeric codes (e.g., ASCII represents 'A' as 65 or 01000001 in binary)
- - Unicode expands this to represent characters from all world languages using 1-4 bytes per character
+ - Binary counting:
+   - `0000 = 0`
+   - `0001 = 1`
+   - `0010 = 2`
+   - `0011 = 3`
+   - `0100 = 4`
+   - `0101 = 5`
+   - `0110 = 6`
+   - `0111 = 7`
+   - `1000 = 8`
+   - `1001 = 9`
+   - `1010 = 10`
 
  */
+
+import Foundation
 
 // Binary representation
 let binaryLiteral = 0b1010  // Binary literal for decimal 10
@@ -61,23 +50,18 @@ let rightShift = a >> 1  // Right shift
 // Convert integer to binary string
 func basicToBinaryString(_ value: Int, padLength: Int = 8) -> String {
   let binaryString = String(value, radix: 2)
-  return String(repeating: "0", count: max(0, padLength - binaryString.count)) + binaryString
+  return String(repeating: "0", count: max(0, padLength - binaryString.count))
+    + binaryString
 }
 
 /*:
  ## Programming Languages
 
- Programming languages provide human-readable code that ultimately translates to machine code (binary instructions).
-
- ### Language Levels
-
- - **Low-level languages** (like Assembly) provide minimal abstraction from machine code
- - **High-level languages** (like Swift, Python, C) offer greater abstraction and productivity
- - The **compilation process** typically involves preprocessing, compiling, assembling, and linking
+ Programming languages provide human-readable code that compiles to machine code.
 
  ### Keywords
 
- Keywords are special reserved words that have specific meanings in a programming language. They form the core vocabulary that structures the language:
+ Keywords are special reserved words that have specific meanings in a programming language:
  */
 
 // Swift keywords example
@@ -96,13 +80,7 @@ func greet(name: String) {  // 'func' for functions
 /*:
  ## Arrays
 
- Arrays store ordered collections of values of the same type. They provide a way to group related data under a single variable name with indexed access.
-
- ### Key Characteristics:
- - Elements are stored in contiguous memory locations
- - Access to any element is O(1) (constant time) using its index
- - In many languages, arrays have fixed size once created
- - Index-based access typically starts at 0 (zero-indexed)
+ Arrays store ordered collections of values of the same type.
  */
 
 // Array operations
@@ -114,21 +92,10 @@ print(numbers.count)  // Array length
 /*:
  ## Algorithms
 
- Algorithms are step-by-step procedures for solving problems - the logical recipes that power computation. 
-
- ### Key Characteristics:
+ Algorithms are step-by-step procedures for solving problems. Key characteristics:
 
  1. **Correctness**: Solve the problem correctly for all valid inputs
- 2. **Efficiency**: Use computational resources (time and space) efficiently
- 3. **Finiteness**: Must terminate after a finite number of steps
- 4. **Determinism**: Given the same input, should always produce the same output
- 5. **Generality**: Should work for a class of problems, not just a specific instance
-
- ### Algorithm Design Techniques:
- - **Divide and Conquer**: Break problem into smaller sub-problems (binary search, merge sort)
- - **Greedy Algorithms**: Make locally optimal choices at each step
- - **Dynamic Programming**: Break down problems into overlapping subproblems
- - **Recursion**: Solve problems by solving smaller instances of the same problem
+ 2. **Efficiency**: Use computational resources efficiently
 
  ### Searching Algorithms
  */
@@ -165,8 +132,6 @@ func binarySearch<T: Comparable>(_ array: [T], _ item: T) -> Int? {
 
 /*:
  ### Sorting Algorithms
-
- Sorting algorithms arrange elements in a specific order (usually ascending or descending). Different algorithms offer different trade-offs in terms of efficiency, memory usage, and stability.
  */
 
 /// Bubble sort - repeatedly steps through the list, compares and swaps adjacent elements
@@ -187,19 +152,12 @@ func bubbleSort<T: Comparable>(_ array: [T]) -> [T] {
 /*:
  ## Memory Management
 
- Memory management involves allocating, using, and freeing computer memory resources.
-
- ### Memory Management Approaches:
-
- - **Manual Memory Management**: Programmers explicitly allocate and free memory (e.g., C's malloc/free)
- - **Automatic Reference Counting (ARC)**: Used by Swift, counts references to objects and deallocates when count reaches zero
- - **Garbage Collection**: Used by languages like Java, periodically identifies and frees unreferenced memory
+ Swift uses Automatic Reference Counting (ARC) to manage memory.
 
  ### Value Types vs Reference Types
 
- - **Value Types** (structs, enums): Each instance keeps a unique copy of its data; copied when assigned to a new variable
- - **Reference Types** (classes): Instances share a single copy of data; references to the same instance are copied, not the data itself
- - **Memory Stack vs Heap**: Value types typically live on the stack (faster, automatically managed); reference types live on the heap (more flexible, requires management)
+ - **Value Types** (structs, enums): Each instance keeps a unique copy of its data
+ - **Reference Types** (classes): Instances share a single copy of data
  */
 
 // Value type example
@@ -228,27 +186,17 @@ class Rectangle {
 /*:
  ## Data Structures
 
- Data structures organize and store data efficiently to facilitate various operations. The choice of data structure significantly impacts program performance.
+ Data structures organize and store data efficiently.
 
  ### Built-in Data Structures
 
- - **Arrays**: Ordered collections with O(1) access by index, O(n) for insertions/deletions
- - **Dictionaries/Hash Tables**: Key-value pairs with O(1) average access, insertion, and deletion
- - **Sets**: Unordered collections of unique elements with efficient membership testing
- - **Stacks**: LIFO (Last In, First Out) collections suitable for tracking state
- - **Queues**: FIFO (First In, First Out) collections ideal for processing tasks in order
+ - **Arrays**: Ordered collections
+ - **Dictionaries**: Key-value pairs
+ - **Sets**: Unordered collections of unique elements
 
  ### Linked Lists
 
  A linear data structure where elements are stored in nodes containing data and a reference to the next node.
- 
- #### Advantages:
- - Dynamic size (no need to pre-allocate memory)
- - Efficient insertions and deletions (O(1) if position is known)
- 
- #### Disadvantages:
- - No random access (O(n) time to find arbitrary elements)
- - Extra memory for pointer storage
  */
 
 /// Node in a linked list
@@ -296,19 +244,7 @@ class LinkedList<T> {
 /*:
  ## Recursion
 
- Recursion is a technique where a function calls itself to solve smaller instances of the same problem. It provides an elegant solution for problems that can be broken down into similar sub-problems.
-
- ### Key Components of Recursive Solutions:
- 
- 1. **Base Case**: Condition where the function returns a value without making further recursive calls
- 2. **Recursive Case**: Condition where the function calls itself with a simpler version of the problem
- 
- ### Recursion vs. Iteration:
- 
- - Recursion can lead to cleaner, more intuitive code for certain problems
- - Recursion may be less efficient due to function call overhead
- - Deep recursion can cause stack overflow errors
- - Any recursive solution can be rewritten iteratively (and vice versa)
+ Recursion is a technique where a function calls itself to solve smaller instances of the same problem.
  */
 
 // Factorial using recursion
@@ -346,16 +282,7 @@ func memoizedFibonacci(_ n: Int) -> Int {
 /*:
  ## Object-Oriented Programming
 
- Object-Oriented Programming (OOP) is a paradigm based on the concept of "objects" that contain data (attributes) and code (methods). It models real-world entities and their relationships.
-
- ### Core Principles of OOP:
-
- 1. **Encapsulation**: Bundling data and methods that operate on that data into single units (objects)
- 2. **Inheritance**: Creating new classes that inherit attributes and methods from existing classes
- 3. **Polymorphism**: The ability to present the same interface for different underlying forms or data types
- 4. **Abstraction**: Hiding complex implementation details and showing only the necessary features
-
- Swift supports these OOP principles through classes, protocols, inheritance, and extensions, while also embracing functional programming concepts.
+ OOP is based on the concept of objects that contain data and code. Swift supports OOP principles with classes, inheritance, and polymorphism.
  */
 
 /// Base shape class
@@ -414,18 +341,7 @@ class Square: Shape {
 /*:
  ## Error Handling
 
- Error handling provides mechanisms to detect, communicate, and recover from abnormal conditions in program execution.
-
- ### Common Error Handling Approaches:
-
- 1. **Return Codes**: Functions return values indicating success/failure
- 2. **Exceptions/Try-Catch**: Structured approach to separate normal code from error handling
- 3. **Optionals**: Used in Swift to handle the absence of a value
- 
- Swift provides first-class support for throwing, catching, and manipulating recoverable errors through:
- - `throws` keyword to mark functions that can throw errors
- - `do-catch` blocks to handle errors
- - `try`, `try?`, and `try!` expressions to handle potentially throwing code
+ Swift provides first-class support for throwing, catching, and manipulating recoverable errors.
  */
 
 /// Custom error types
@@ -475,34 +391,14 @@ extension String {
 
  ### Big O Notation
 
- Big O notation describes the upper bound of an algorithm's time or space requirements as input size grows. It helps us compare algorithms independent of hardware or implementation details.
-
- #### Common Time Complexities (from fastest to slowest):
+ Describes the performance of an algorithm:
 
  - **O(1)** - Constant time: Performance is independent of input size
-   - Examples: Array access by index, hash table insertions/lookups (average case)
- 
- - **O(log n)** - Logarithmic time: Performance increases logarithmically
-   - Examples: Binary search, balanced tree operations
-   - Highly efficient for large datasets - doubling input size adds just one more step
- 
- - **O(n)** - Linear time: Performance increases linearly with input size
-   - Examples: Linear search, traversing an array once
- 
- - **O(n log n)** - Linearithmic time: Combination of linear and logarithmic behaviors
-   - Examples: Efficient sorting algorithms (merge sort, quick sort, heap sort)
-   - Practically the best possible complexity for comparison-based sorting
- 
- - **O(n²)** - Quadratic time: Performance increases quadratically
-   - Examples: Bubble sort, insertion sort, nested loops iterating over the same collection
- 
- - **O(2^n)** - Exponential time: Performance doubles with each addition to input
-   - Examples: Naive recursive Fibonacci, trying all subsets, brute-force solutions
-   - Generally impractical for inputs larger than ~20-30 elements
-
- ### Other Asymptotic Notations:
- - **Ω (Omega)**: Lower bound - best case scenario
- - **Θ (Theta)**: Tight bound - when upper and lower bounds match
+ - **O(log n)** - Logarithmic time: Performance increases logarithmically (binary search)
+ - **O(n)** - Linear time: Performance increases linearly (linear search)
+ - **O(n log n)** - Linearithmic time: Common in efficient sorting algorithms (merge sort, quick sort)
+ - **O(n²)** - Quadratic time: Performance increases quadratically (bubble sort)
+ - **O(2^n)** - Exponential time: Performance doubles with each addition to input (naive Fibonacci)
  */
 
 // Iterative factorial implementation
@@ -534,32 +430,17 @@ func iterativeFibonacci(_ n: Int) -> Int {
 /*:
  ## Artificial Intelligence
 
- AI systems perform tasks that typically require human intelligence. It's a broad field encompassing many approaches and techniques.
+ AI systems perform tasks that typically require human intelligence. Key concepts:
 
- ### Key AI Concepts:
-
- - **Machine Learning**: Systems that learn patterns from data rather than being explicitly programmed
-   - **Supervised Learning**: Training on labeled data (classification, regression)
-   - **Unsupervised Learning**: Finding patterns in unlabeled data (clustering, dimensionality reduction)
-   - **Reinforcement Learning**: Learning through trial and error with rewards/penalties
-
+ - **Machine Learning**: Systems that learn from data rather than being explicitly programmed
  - **Neural Networks**: Computing systems inspired by biological neural networks
-   - Building blocks of deep learning
-   - Composed of layers of interconnected nodes (neurons)
-   - Can learn complex patterns from large amounts of data
-
- - **Natural Language Processing**: Enabling computers to understand and generate human language
-   - Applications: translation, sentiment analysis, chatbots, text summarization
-
- - **Computer Vision**: Systems that can interpret and analyze visual information
-   - Image classification, object detection, facial recognition
-
- - **Prompt Engineering**: Designing effective inputs to guide AI models toward desired outputs
-   - Especially important for large language models
+ - **Natural Language Processing**: Enabling computers to understand human language
  */
 
 /// Simulates a single neuron in a neural network
-func neuralNetworkSimulation(inputs: [Double], weights: [Double], bias: Double) -> Double {
+func neuralNetworkSimulation(inputs: [Double], weights: [Double], bias: Double)
+  -> Double
+{
   // Calculate weighted sum
   var weightedSum = bias
   for i in 0..<min(inputs.count, weights.count) {
@@ -609,24 +490,15 @@ func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
  ## Key Concepts Summary
 
  1. **Binary System**: The foundation of computing, representing data as 0s and 1s
- 2. **Data Structures**: Ways to organize and store data (arrays, linked lists, dictionaries, trees, graphs)
- 3. **Algorithms**: Procedures for solving problems (searching, sorting, graph algorithms)
- 4. **Algorithmic Efficiency**: Measuring performance using Big O notation and understanding trade-offs
- 5. **Memory Management**: Allocating and freeing resources efficiently (stack vs heap, reference counting)
- 6. **Object-Oriented Programming**: Organizing code around objects with data and behavior
- 7. **Error Handling**: Managing exceptional conditions through various mechanisms
- 8. **Functional Programming**: Using functions as first-class citizens, avoiding state and mutable data
- 9. **Recursion**: Functions that call themselves to solve problems by breaking them down
- 10. **Artificial Intelligence**: Systems that mimic human intelligence through various approaches
+ 2. **Data Structures**: Ways to organize and store data (arrays, linked lists, dictionaries, sets)
+ 3. **Algorithms**: Procedures for solving problems (searching, sorting)
+ 4. **Algorithmic Efficiency**: Measuring performance using Big O notation
+ 5. **Object-Oriented Programming**: Organizing code around objects with data and behavior
+ 6. **Error Handling**: Managing exceptional conditions
+ 7. **Functional Programming**: Using functions as first-class citizens
+ 8. **Recursion**: Functions that call themselves to solve problems
+ 9. **Artificial Intelligence**: Systems that mimic human intelligence
 
- ### Additional Important Concepts:
- 
- - **Compiling & Interpreting**: Translating human-readable code to machine instructions
- - **Concurrency & Parallelism**: Handling multiple tasks simultaneously
- - **Database Systems**: Storing and retrieving data efficiently
- - **Networking**: Communication between computer systems
- - **Security**: Protecting data and systems from unauthorized access
-
- Understanding these concepts provides a foundation for solving complex problems efficiently and building robust software systems.
+ Understanding these concepts provides a foundation for solving complex problems efficiently.
  */
 //: [Next](@next)
