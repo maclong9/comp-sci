@@ -24,7 +24,7 @@
  There are a lot of other reasons to work with Swift, such as its strong community support, extensive documentation, and a wide range of libraries and frameworks available.
  However the above reasons are the main ones for my choice in this course.
 
-- Note: These pages are converted to Markdown files to be used with GitHub Pages, the script that performs this transition can be [seen here](../../../process-playground-pages.sh).
+- Note: These pages are converted to Markdown files to be used with GitHub Pages, the script that performs this transition can be [seen here](https://github.com/maclong9/comp-sci/blob/main/process-playground-pages.sh).
 
  As a brief overview that covers most of the topics in a small amount of detail we will cover [Harvad's CS50-Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science) this course is designed to cover the basics of each computer science but not delve too deep into these topics, it is highly recommended if you have zero or little experience within this field. That is what the rest of this document contains.
 
