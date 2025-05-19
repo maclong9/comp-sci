@@ -31,11 +31,14 @@ The guide answers these questions:
 
 I have chosen to follow along this course using a Swift Playground Book, the reasons for this are listed below:
 
-- Swift is usable as in both compiled and interpreted modes meaning it covers all aspects in this course.
+- Swift is works in both compiled and interpreted modes meaning it covers all aspects mentioned in this course.
 - It's a language that allows for working in multiple paradigms including functional and object oriented.
-- The eco-system is currently smaller than other languages so a lack of libraries are availible in comparison to other languages, this could inspire new projects I could build throughout the courses.
+- The eco-system is currently smaller than other languages, this could inspire me to build new projects and libraies throughout the courses.
 - I enjoy working in the language.
 - Playground Books allow live code examples within my note taking, this is incredibly useful when studying.
+
+There are a lot of other reasons to work with Swift, such as its strong community support, extensive documentation, and a wide range of libraries and frameworks available.
+However the above reasons are the main ones for my choice in this course.
 
 - Note: These pages are converted to Markdown files to be used with GitHub Pages, the script that performs this transition can be [seen here](../../../process-playground-pages.sh).
 
@@ -56,6 +59,8 @@ If you are viewing this in the browser and would like to see the code in realtim
 3. Make your edits and save them.
 4. Commit your changes and push them to your repository.
 5. View your changes on GitHub Pages.
+
+Then you can start reading throught the contents of the courses while also testing the examples provided.
 
 - Attention: Ensure you have `Editor > Show Rendered Markup` enabled in Xcode to preview the rendered notes.
 
@@ -102,30 +107,37 @@ Source code is what the human writes, it is compiled down to machine code. This 
 
 Compiling is the action of taking your source code and converting it into machine code so the computer is able to run it.
 
-// Here's a simple Swift program
+
+Here's a simple Swift program
+
+```swift
 let message = "Hello, World!"
 print(message)
+```
 
-// The compiler translates this human-readable code into machine code
-// that the computer can execute
+The compiler translates this human-readable code into machine code
+that the computer can execute
 
 ### Keywords
 
 Source code is full of keywords, these dictate to the compiler that a specific action should happen
 
-// Keywords in Swift
+Keywords in Swift
+
+```swift
 let constantValue = 10      // 'let' is a keyword for declaring constants
 var variableValue = 20      // 'var' is a keyword for declaring variables
 if constantValue < variableValue {  // 'if' is a conditional keyword
-print("Variable is larger")
+   print("Variable is larger")
 }
 for i in 0..<5 {            // 'for' and 'in' are keywords for loops
-print("Count: \(i)")
+   print("Count: \(i)")
 }
 func greet(name: String) {  // 'func' is a keyword for declaring functions
-print("Hello, \(name)!")
+   print("Hello, \(name)!")
 }
 greet(name: "Swift")
+```
 
 ## The Binary System
 
@@ -325,7 +337,7 @@ if let linearIndex = linearSearch(testArray, searchItem) {
    print("Linear search: \(searchItem) found at index \(linearIndex)")
 }
 if let binaryIndex = binarySearch(sorted, searchItem) {
-   printinaryIndex) in sorted array")
+   print("\(binaryIndex) in sorted array")
 }
 ```
 
@@ -486,10 +498,8 @@ class LinkedList<T> {
        print("nil")
    }
 }
-```
 
-Example usage of a linked list:
-```swift
+// Example usage of a linked list:
 let list = LinkedList<Int>()
 list.append(1)
 list.append(2)
@@ -794,9 +804,9 @@ extension String {
 
 Example binary conversions:
 ```swift
-print(enhancedToBinaryString(5))     // Output: 00000101
-print(enhancedToBinaryString(10))    // Output: 00001010
-print(enhancedToBinaryString(255))   // Output: 11111111
+print(toBinaryString(5))     // Output: 00000101
+print(toBinaryString(10))    // Output: 00001010
+print(toBinaryString(255))   // Output: 11111111
 ```
 
 ### Characters in Binary
@@ -1120,45 +1130,15 @@ These concepts form the foundation of computer science and software development.
 - Swift Programming Language: [https://swift.org](https://swift.org)
 - Apple Developer Documentation: [https://developer.apple.com/documentation](https://developer.apple.com/documentation)
 
+While implementing full AI systems is beyond this playground, we've demonstrated the basic concepts used in AI through the classifyAnimal function above.
+
+## Conclusion
+
+This playground has introduced several fundamental computer science concepts using Swift. We've covered data types, control flow, algorithms, data structures, object-oriented programming, and more.
+
+These concepts form the foundation for building more complex applications and understanding computer systems.
 
 ```swift
-While implementing full AI systems is beyond this playground, we can demonstrate basic concepts used in AI.
-```
-
-Simple decision tree for classification
-
-```swift
-func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
-   if canFly {
-       if hasFur {
-           return "Bat"
-       } else {
-           return "Bird"
-       }
-   } else {
-       if hasFur {
-           if numberOfLegs == 4 {
-               return "Dog/Cat"
-           } else if numberOfLegs == 2 {
-               return "Human"
-           } else {
-               return "Unknown Mammal"
-           }
-       } else {
-           if numberOfLegs > 4 {
-               return "Insect/Arthropod"
-           } else if numberOfLegs == 4 {
-               return "Reptile/Amphibian"
-           } else if numberOfLegs == 0 {
-               return "Snake/Fish"
-           } else {
-               return "Unknown Animal"
-           }
-       }
-   }
-}
-
-print("\nSimple AI classification:")
 print("Animal with fur, 4 legs, can't fly: \(classifyAnimal(hasFur: true, numberOfLegs: 4, canFly: false))")
 print("Animal without fur, 2 legs, can fly: \(classifyAnimal(hasFur: false, numberOfLegs: 2, canFly: true))")
 print("Animal with fur, 2 legs, can't fly: \(classifyAnimal(hasFur: true, numberOfLegs: 2, canFly: false))")
