@@ -450,7 +450,7 @@ main {
 
     & ul,
     & ol {
-        margin-left: 2rem;
+        margin-left: 0;
         margin-block-end: 1.25lh;
         margin-block-start: 0;
         list-style-position: outside;
