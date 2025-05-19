@@ -256,12 +256,12 @@ Algorithms are step-by-step procedures for solving problems. Two essential chara
 
 ### Searching Algorithms
 
-/ Performs a linear search through an array
-/ - Parameters:
-/   - array: The array to search through
-/   - item: The item to find
-/ - Returns: The index of the item if found, nil otherwise
-/ - Complexity: O(n) - linear time complexity
+Performs a linear search through an array
+- Parameters:
+- array: The array to search through
+- item: The item to find
+- Returns: The index of the item if found, nil otherwise
+- Complexity: O(n) - linear time complexity
 
 ```swift
 func linearSearch<T: Equatable>(_ array: [T], _ item: T) -> Int? {
@@ -274,12 +274,12 @@ func linearSearch<T: Equatable>(_ array: [T], _ item: T) -> Int? {
 }
 ```
 
-/ Performs a binary search through a sorted array
-/ - Parameters:
-/   - array: The sorted array to search through
-/   - item: The item to find
-/ - Returns: The index of the item if found, nil otherwise
-/ - Complexity: O(log n) - logarithmic time complexity
+Performs a binary search through a sorted array
+- Parameters:
+- array: The sorted array to search through
+- item: The item to find
+- Returns: The index of the item if found, nil otherwise
+- Complexity: O(log n) - logarithmic time complexity
 
 ```swift
 func binarySearch<T: Comparable>(_ array: [T], _ item: T) -> Int? {
@@ -304,10 +304,10 @@ func binarySearch<T: Comparable>(_ array: [T], _ item: T) -> Int? {
 
 Sorting is a fundamental operation in computer science. Below is an implementation of the bubble sort algorithm.
 
-/ Sorts an array using the bubble sort algorithm
-/ - Parameter array: The array to sort
-/ - Returns: A sorted copy of the array
-/ - Complexity: O(n²) - quadratic time complexity
+Sorts an array using the bubble sort algorithm
+- Parameter array: The array to sort
+- Returns: A sorted copy of the array
+- Complexity: O(n²) - quadratic time complexity
 
 ```swift
 func bubbleSort<T: Comparable>(_ array: [T]) -> [T] {
@@ -451,7 +451,7 @@ Data structures are specific ways to organize and store data. They offer differe
 
 A linked list is a linear data structure where elements are stored in nodes. Each node contains data and a reference to the next node.
 
-/ A node in a linked list
+A node in a linked list
 
 ```swift
 class LinkedListNode<T> {
@@ -464,7 +464,7 @@ class LinkedListNode<T> {
 }
 ```
 
-/ A singly linked list implementation
+A singly linked list implementation
 
 ```swift
 class LinkedList<T> {
@@ -582,7 +582,7 @@ Object-Oriented Programming (OOP) is a programming paradigm based on the concept
 
 Swift supports classes with single inheritance, where subclasses inherit properties and methods from their parent class.
 
-/ A base shape class
+A base shape class
 
 ```swift
 class Shape {
@@ -606,7 +606,7 @@ class Shape {
 }
 ```
 
-/ A circle shape class that inherits from Shape
+A circle shape class that inherits from Shape
 
 ```swift
 class Circle: Shape {
@@ -627,7 +627,7 @@ class Circle: Shape {
 }
 ```
 
-/ A square shape class that inherits from Shape
+A square shape class that inherits from Shape
 
 ```swift
 class Square: Shape {
@@ -688,7 +688,7 @@ Define custom error type
 
 Swift provides first-class support for throwing, catching, propagating, and manipulating recoverable errors at runtime.
 
-/ Custom errors for mathematical operations
+Custom errors for mathematical operations
 
 ```swift
 enum MathError: Error {
@@ -697,10 +697,10 @@ enum MathError: Error {
 }
 ```
 
-/ Calculates the square root of a number
-/ - Parameter number: The number to find the square root of
-/ - Returns: The square root as a Double
-/ - Throws: MathError.negativeNumber if the input is negative
+Calculates the square root of a number
+- Parameter number: The number to find the square root of
+- Returns: The square root as a Double
+- Throws: MathError.negativeNumber if the input is negative
 
 ```swift
 func squareRoot(of number: Int) throws -> Double {
@@ -711,12 +711,12 @@ func squareRoot(of number: Int) throws -> Double {
 }
 ```
 
-/ Divides two integers
-/ - Parameters:
-/   - a: The numerator
-/   - b: The denominator
-/ - Returns: The result of the division
-/ - Throws: MathError.divisionByZero if the denominator is zero
+Divides two integers
+- Parameters:
+- a: The numerator
+- b: The denominator
+- Returns: The result of the division
+- Throws: MathError.divisionByZero if the denominator is zero
 
 ```swift
 func divide(_ a: Int, by b: Int) throws -> Int {
@@ -776,11 +776,11 @@ Computers store all data in binary (0s and 1s). This is the foundation of comput
 
 Converting between decimal and binary is a fundamental computing operation.
 
-/ Converts a decimal integer to its binary string representation
-/ - Parameters:
-/   - value: The decimal integer to convert
-/   - padLength: The minimum length of the result (will be padded with leading zeros)
-/ - Returns: A string representing the binary value
+Converts a decimal integer to its binary string representation
+- Parameters:
+- value: The decimal integer to convert
+- padLength: The minimum length of the result (will be padded with leading zeros)
+- Returns: A string representing the binary value
 
 ```swift
 func enhancedToBinaryString(_ value: Int, padLength: Int = 8) -> String {
@@ -929,10 +929,10 @@ Recursion is when a function calls itself to solve a problem. It requires:
 
 Recursion is often elegant for problems that can be broken down into smaller, similar subproblems.
 
-/ Calculates the factorial of a number using recursion
-/ - Parameter n: The number to calculate factorial for
-/ - Returns: The factorial of n (n!)
-/ - Complexity: O(n) time, O(n) space due to call stack
+Calculates the factorial of a number using recursion
+- Parameter n: The number to calculate factorial for
+- Returns: The factorial of n (n!)
+- Complexity: O(n) time, O(n) space due to call stack
 
 ```swift
 func iterativeFactorial(_ n: Int) -> Int {
@@ -945,10 +945,10 @@ func iterativeFactorial(_ n: Int) -> Int {
 }
 ```
 
-/ Calculates the nth Fibonacci number using recursion
-/ - Parameter n: The position in the Fibonacci sequence
-/ - Returns: The nth Fibonacci number
-/ - Complexity: O(2^n) time due to exponential growth of calls
+Calculates the nth Fibonacci number using recursion
+- Parameter n: The position in the Fibonacci sequence
+- Returns: The nth Fibonacci number
+- Complexity: O(2^n) time due to exponential growth of calls
 
 ```swift
 func recursiveFibonacci(_ n: Int) -> Int {
@@ -964,10 +964,10 @@ func recursiveFibonacci(_ n: Int) -> Int {
 }
 ```
 
-/ Calculates the nth Fibonacci number using dynamic programming
-/ - Parameter n: The position in the Fibonacci sequence
-/ - Returns: The nth Fibonacci number
-/ - Complexity: O(n) time, O(1) space
+Calculates the nth Fibonacci number using dynamic programming
+- Parameter n: The position in the Fibonacci sequence
+- Returns: The nth Fibonacci number
+- Complexity: O(n) time, O(1) space
 
 ```swift
 func iterativeFibonacci(_ n: Int) -> Int {
@@ -1014,12 +1014,12 @@ Artificial Intelligence (AI) involves creating systems that can perform tasks no
 
 Below is a simple implementation of a single neuron in a neural network:
 
-/ Simulates a single neuron in a neural network
-/ - Parameters:
-/   - inputs: Array of input values
-/   - weights: Array of weights for each input
-/   - bias: The bias value for the neuron
-/ - Returns: The output of the neuron after activation
+Simulates a single neuron in a neural network
+- Parameters:
+- inputs: Array of input values
+- weights: Array of weights for each input
+- bias: The bias value for the neuron
+- Returns: The output of the neuron after activation
 
 ```swift
 func neuralNetworkSimulation(inputs: [Double], weights: [Double], bias: Double) -> Double {
@@ -1056,12 +1056,12 @@ consist of many such neurons arranged in layers, forming deep neural networks ca
 
 Another aspect of AI is rule-based systems for decision making:
 
-/ Classifies an animal based on its characteristics
-/ - Parameters:
-/   - hasFur: Whether the animal has fur
-/   - numberOfLegs: How many legs the animal has
-/   - canFly: Whether the animal can fly
-/ - Returns: A string describing the animal classification
+Classifies an animal based on its characteristics
+- Parameters:
+- hasFur: Whether the animal has fur
+- numberOfLegs: How many legs the animal has
+- canFly: Whether the animal can fly
+- Returns: A string describing the animal classification
 
 ```swift
 func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
