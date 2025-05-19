@@ -1,0 +1,30 @@
+Year,Model,Processor,Notable Features
+1984,Macintosh 128K,Motorola 68000,First Macintosh computer, graphical user interface
+1985,Macintosh 512K,Motorola 68000,Increased RAM to 512 KB
+1986,Macintosh Plus,Motorola 68000,SCSI port, 1 MB RAM expandable to 4 MB
+1987,Macintosh II,Motorola 68020,First color Mac, expandable
+1989,Macintosh Portable,Motorola 68000,First battery-powered Mac
+1991,PowerBook 100,Motorola 68000,First modern laptop design
+1993,Macintosh TV,Motorola 68030,First Mac with TV functionality
+1994,Power Macintosh 6100,PowerPC 601,First PowerPC-based Mac
+1998,iMac G3,PowerPC G3,Colorful all-in-one design, no floppy drive
+2001,PowerBook G4,PowerPC G4,Titanium casing, widescreen display
+2001,iBook G3,PowerPC G3,Consumer laptop, white polycarbonate design
+2002,iMac G4,PowerPC G4,Flat-panel display with adjustable arm
+2005,Mac Mini,PowerPC G4,First small form factor desktop Mac
+2006,MacBook Pro,Intel Core Duo,First Intel-based Mac laptop
+2006,iMac (Intel),Intel Core Duo,Transition to Intel processors
+2008,MacBook Air,Intel Core 2 Duo,Ultra-thin design
+2010,iPad,Apple A4,First iPad (not strictly a Mac, but significant)
+2012,MacBook Pro with Retina Display,Intel Core i5/i7,High-resolution Retina display
+2013,Mac Pro (cylindrical),Intel Xeon E5,Compact cylindrical design
+2015,MacBook (12-inch),Intel Core M,Ultra-thin and light design
+2016,MacBook Pro with Touch Bar,Intel Core i5/i7,Touch Bar interface
+2017,iMac Pro,Intel Xeon W,Workstation-class all-in-one
+2019,Mac Pro (modular),Intel Xeon W,Return to modular tower design
+2020,MacBook Air (M1),Apple M1,First Mac with Apple Silicon
+2021,iMac (M1),Apple M1,Redesigned thin all-in-one with M1 chip
+2021,MacBook Pro 14 and 16,Apple M1 Pro/Max,Powerful Apple Silicon, return of ports
+2022,Mac Studio,Apple M1 Max/Ultra,High-performance compact desktop
+2023,Mac Pro (Apple Silicon),Apple M2 Ultra,Most powerful Mac with Apple Silicon
+
