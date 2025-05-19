@@ -1,7 +1,6 @@
 //: [Previous](@previous)
 
-/*:
- # CS-00 Computer Science Introduction
+/*: # CS-00 Computer Science Introduction
 
  This [course](https://teachyourselfcs.com/#programming) is designed for self-taught engineers who may have missed certain aspects of computer science fundamentals.
 
@@ -17,7 +16,7 @@
 
  - A **bit** is a single binary digit (0 or 1)
  - A **byte** is 8 bits (can represent values from 0 to 255)
- - Binary counting: 
+ - Binary counting:
    - `0000 = 0`
    - `0001 = 1`
    - `0010 = 2`
@@ -91,7 +90,7 @@ print(numbers.count)        // Array length
  ## Algorithms
 
  Algorithms are step-by-step procedures for solving problems. Key characteristics:
- 
+
  1. **Correctness**: Solve the problem correctly for all valid inputs
  2. **Efficiency**: Use computational resources efficiently
 
@@ -153,7 +152,7 @@ func bubbleSort<T: Comparable>(_ array: [T]) -> [T] {
  Swift uses Automatic Reference Counting (ARC) to manage memory.
 
  ### Value Types vs Reference Types
- 
+
  - **Value Types** (structs, enums): Each instance keeps a unique copy of its data
  - **Reference Types** (classes): Instances share a single copy of data
  */
@@ -169,13 +168,13 @@ class Rectangle {
     var origin: Point
     var width: Int
     var height: Int
-    
+
     init(origin: Point, width: Int, height: Int) {
         self.origin = origin
         self.width = width
         self.height = height
     }
-    
+
     func area() -> Int {
         return width * height
     }
@@ -187,7 +186,7 @@ class Rectangle {
  Data structures organize and store data efficiently.
 
  ### Built-in Data Structures
- 
+
  - **Arrays**: Ordered collections
  - **Dictionaries**: Key-value pairs
  - **Sets**: Unordered collections of unique elements
@@ -201,7 +200,7 @@ class Rectangle {
 class LinkedListNode<T> {
     var value: T
     var next: LinkedListNode<T>?
-    
+
     init(value: T) {
         self.value = value
     }
@@ -210,24 +209,24 @@ class LinkedListNode<T> {
 /// Singly linked list implementation
 class LinkedList<T> {
     var head: LinkedListNode<T>?
-    
+
     /// Adds a new value to the end of the list
     func append(_ value: T) {
         let newNode = LinkedListNode(value: value)
-        
+
         if head == nil {
             head = newNode
             return
         }
-        
+
         var current = head
         while current?.next != nil {
             current = current?.next
         }
-        
+
         current?.next = newNode
     }
-    
+
     /// Prints the entire linked list
     func printList() {
         var current = head
@@ -264,16 +263,16 @@ func naiveRecursiveFibonacci(_ n: Int) -> Int {
 // Memoized Fibonacci - improved with caching
 func memoizedFibonacci(_ n: Int) -> Int {
     var memo: [Int: Int] = [0: 0, 1: 1]
-    
+
     func fib(_ n: Int) -> Int {
         if let result = memo[n] {
             return result
         }
-        
+
         memo[n] = fib(n - 1) + fib(n - 2)
         return memo[n]!
     }
-    
+
     return fib(n)
 }
 
@@ -286,15 +285,15 @@ func memoizedFibonacci(_ n: Int) -> Int {
 /// Base shape class
 class Shape {
     var name: String
-    
+
     init(name: String) {
         self.name = name
     }
-    
+
     func area() -> Double {
         return 0.0
     }
-    
+
     func description() -> String {
         return "A shape named \(name)"
     }
@@ -303,16 +302,16 @@ class Shape {
 /// Circle inherits from Shape
 class Circle: Shape {
     var radius: Double
-    
+
     init(radius: Double) {
         self.radius = radius
         super.init(name: "Circle")
     }
-    
+
     override func area() -> Double {
         return Double.pi * radius * radius
     }
-    
+
     override func description() -> String {
         return "A circle with radius \(radius)"
     }
@@ -321,16 +320,16 @@ class Circle: Shape {
 /// Square inherits from Shape
 class Square: Shape {
     var side: Double
-    
+
     init(side: Double) {
         self.side = side
         super.init(name: "Square")
     }
-    
+
     override func area() -> Double {
         return side * side
     }
-    
+
     override func description() -> String {
         return "A square with side \(side)"
     }
@@ -388,9 +387,9 @@ extension String {
  ## Algorithmic Efficiency
 
  ### Big O Notation
- 
+
  Describes the performance of an algorithm:
- 
+
  - **O(1)** - Constant time: Performance is independent of input size
  - **O(log n)** - Logarithmic time: Performance increases logarithmically (binary search)
  - **O(n)** - Linear time: Performance increases linearly (linear search)
@@ -429,7 +428,7 @@ func iterativeFibonacci(_ n: Int) -> Int {
  ## Artificial Intelligence
 
  AI systems perform tasks that typically require human intelligence. Key concepts:
- 
+
  - **Machine Learning**: Systems that learn from data rather than being explicitly programmed
  - **Neural Networks**: Computing systems inspired by biological neural networks
  - **Natural Language Processing**: Enabling computers to understand human language
@@ -442,7 +441,7 @@ func neuralNetworkSimulation(inputs: [Double], weights: [Double], bias: Double) 
     for i in 0..<min(inputs.count, weights.count) {
         weightedSum += inputs[i] * weights[i]
     }
-    
+
     // Apply sigmoid activation function
     return 1.0 / (1.0 + exp(-weightedSum))
 }
@@ -484,7 +483,7 @@ func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
 
 /*:
  ## Key Concepts Summary
- 
+
  1. **Binary System**: The foundation of computing, representing data as 0s and 1s
  2. **Data Structures**: Ways to organize and store data (arrays, linked lists, dictionaries, sets)
  3. **Algorithms**: Procedures for solving problems (searching, sorting)
@@ -494,7 +493,7 @@ func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
  7. **Functional Programming**: Using functions as first-class citizens
  8. **Recursion**: Functions that call themselves to solve problems
  9. **Artificial Intelligence**: Systems that mimic human intelligence
- 
+
  Understanding these concepts provides a foundation for solving complex problems efficiently.
  */
 
