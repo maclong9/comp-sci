@@ -1,6 +1,6 @@
 //: [Previous](@previous)
-
-/*: # CS-00 Computer Science Introduction
+/*:
+# CS-00 Computer Science Introduction
 
  This [course](https://teachyourselfcs.com/#programming) is designed for self-taught engineers who may have missed certain aspects of computer science fundamentals.
 
