@@ -545,8 +545,12 @@ div.highlighter-rouge {
     border-radius: 8px;
     border: 2px solid oklch(0.5 0 0);
 
-    & :not(pre, code) {
+    & :not(pre, code, span) {
         border: 1px solid var(--border-color);
+    }
+    
+    & span {
+        border: none !important;
     }
 
     & :is(pre, code) {
@@ -559,8 +563,19 @@ div.highlighter-rouge {
         border: none;
         border-radius: 0;
     }
+    
+    & .highlight span {
+        border: none !important;
+        background-color: transparent;
+    }
 
     & :where(code, code span) {
+        background-color: transparent;
+        border: none !important;
+    }
+    
+    & code span, & pre span {
+        border: none !important;
         background-color: transparent;
     }
 
