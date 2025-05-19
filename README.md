@@ -7,9 +7,9 @@ This repository contains my computer science notes organized as a custom Jekyll 
 The repository is structured as follows:
 
 - `/comp-sci/docs/` - Contains all the Markdown files that make up the content of the site
-- `/comp-sci/docs/_layouts/` - Contains the layout templates for the site
-- `/comp-sci/docs/_includes/` - Contains reusable HTML components
-- `/comp-sci/docs/assets/` - Contains CSS, images, and other static assets
+- `.//docs/_layouts/` - Contains the layout templates for the site
+- `./docs/_includes/` - Contains reusable HTML components
+- `./docs/assets/` - Contains CSS, images, and other static assets
 
 ## Custom Theme
 
