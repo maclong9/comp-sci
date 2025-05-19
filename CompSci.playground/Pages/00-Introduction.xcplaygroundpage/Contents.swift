@@ -496,5 +496,4 @@ func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
 
  Understanding these concepts provides a foundation for solving complex problems efficiently.
  */
-
 //: [Next](@next)

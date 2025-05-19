@@ -523,7 +523,7 @@ code {
     font-size: 0.9em;
 }
 
-code:not(pre code, .highlighter-rouge code, div.highlighter-rouge code) {
+code:not(pre code):not(.highlighter-rouge code):not(div.highlighter-rouge code) {
     background-color: oklch(0.3 0 0);
     color: var(--code-text);
     padding: 0.25rem 0.4rem;
