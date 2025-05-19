@@ -519,15 +519,13 @@ code {
 }
 
 code:not(pre code) {
-    background-color: var(--code-bg);
+    background-color: oklch(0.3 0 0);
     color: var(--code-text);
     padding: 0.25rem 0.4rem;
     border-radius: 3px;
     transition:
         background-color 0.3s ease,
         color 0.3s ease;
-    background-color: oklch(0.3 0 0);
-    padding: 0.25rem 0.4rem;
 }
 
 hr {
@@ -537,16 +535,22 @@ hr {
 }
 
 /* Code highlighting */
-.highlighter-rouge {
+
+div.highlighter-rouge {
     background: oklch(0.2 0 0);
     font-size: 0.8rem;
     line-height: 1.25rem;
     padding: 1rem;
     overflow-x: auto;
     border-radius: 8px;
+    border: 2px solid oklch(0.5 0 0);
 
-    & :not(pre):not(code) {
+    & :not(pre, code) {
         border: 1px solid var(--border-color);
+    }
+
+    & :is(pre, code) {
+        background: oklch(0.3 0 0);
     }
 
     & .highlight {
@@ -597,6 +601,13 @@ hr {
 
     & :where(pre, code) {
         background-color: transparent;
+    }
+
+    & pre.highlighter-rouge,
+    & code.highlighter-rouge {
+        background: oklch(0.3 0 0);
+        padding: 0.25rem 0.4rem;
+        border-radius: 3px;
     }
 
     /* Syntax highlighting */
