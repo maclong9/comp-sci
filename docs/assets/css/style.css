@@ -523,7 +523,7 @@ code {
     font-size: 0.9em;
 }
 
-code:not(pre code) {
+code:not(pre code, .highlighter-rouge code, div.highlighter-rouge code) {
     background-color: oklch(0.3 0 0);
     color: var(--code-text);
     padding: 0.25rem 0.4rem;
@@ -541,7 +541,7 @@ hr {
 
 /* Code highlighting */
 
-div.highlighter-rouge {
+.highlighter-rouge {
     background: oklch(0.2 0 0);
     font-size: 0.8rem;
     line-height: 1.25rem;
@@ -558,7 +558,7 @@ div.highlighter-rouge {
         border: none !important;
     }
 
-    & :is(pre, code) {
+    & :is(pre) {
         background: oklch(0.3 0 0);
     }
 
