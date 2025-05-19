@@ -456,6 +456,11 @@ main {
         list-style-position: outside;
         max-width: 65ch;
 
+        & ul,
+        & ol {
+            margin-left: 1.5rem;
+        }
+
         & li {
             margin-bottom: 0.75rem;
             padding-left: 0.5rem;
@@ -548,7 +553,7 @@ div.highlighter-rouge {
     & :not(pre, code, span) {
         border: 1px solid var(--border-color);
     }
-    
+
     & span {
         border: none !important;
     }
@@ -563,7 +568,7 @@ div.highlighter-rouge {
         border: none;
         border-radius: 0;
     }
-    
+
     & .highlight span {
         border: none !important;
         background-color: transparent;
@@ -573,8 +578,9 @@ div.highlighter-rouge {
         background-color: transparent;
         border: none !important;
     }
-    
-    & code span, & pre span {
+
+    & code span,
+    & pre span {
         border: none !important;
         background-color: transparent;
     }
