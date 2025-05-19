@@ -15,7 +15,7 @@
 
  I have chosen to follow along this course using a Swift Playground Book, the reasons for this are listed below:
 
- - Swift is works in both compiled and interpreted modes meaning it covers all aspects mentioned in this course.
+ - Swift works in both compiled and interpreted modes meaning it covers all aspects mentioned in this course.
  - It's a language that allows for working in multiple paradigms including functional and object oriented.
  - The eco-system is currently smaller than other languages, this could inspire me to build new projects and libraies throughout the courses.
  - I enjoy working in the language.
@@ -1005,11 +1005,11 @@ print("Classify(hasFur: false, numberOfLegs: 8, canFly: false): \(classifyAnimal
 
 /*:
  While implementing full AI systems is beyond this playground, we've demonstrated the basic concepts used in AI through the classifyAnimal function above.
- 
+
  ## Conclusion
- 
+
  This playground has introduced several fundamental computer science concepts using Swift. We've covered data types, control flow, algorithms, data structures, object-oriented programming, and more.
- 
+
  These concepts form the foundation for building more complex applications and understanding computer systems.
 */
 print("Animal with fur, 4 legs, can't fly: \(classifyAnimal(hasFur: true, numberOfLegs: 4, canFly: false))")
