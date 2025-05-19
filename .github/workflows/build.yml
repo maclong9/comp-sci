@@ -1,0 +1,41 @@
+name: Build and Deploy Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Process playground pages
+        run: |
+          find docs -type f -name "*.md" ! -name "index.md" -delete && rm -rf .build
+          chmod +x ./process-playground-pages.sh
+          ./process-playground-pages.sh
+          echo "Build output created in docs/ directory"
+
+      - name: Commit and push changes
+        run: |
+          git add -A
+
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy documentation from ${GITHUB_SHA}"
+            git push origin main
+          fi

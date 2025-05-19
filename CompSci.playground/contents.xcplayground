@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='7.0' target-platform='macos' swift-version='6' display-mode='raw' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='00-Introduction'/>
+        <page name='01-Programming'/>
+        <page name='02-Computer Architecture'/>
+        <page name='03-Algorithms and Data Structures'/>
+        <page name='04-Math for CS'/>
+        <page name='05-Operating Systems'/>
+        <page name='06-Computer Networking'/>
+        <page name='07-Databases'/>
+        <page name='08-Languages and Compilers'/>
+        <page name='09-Distributed Systems'/>
+    </pages>
+</playground>

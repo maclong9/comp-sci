@@ -1,0 +1,31 @@
+# Jekyll Configuration for CS Notes
+
+# Theme settings
+theme: null
+plugins:
+  - jekyll-seo-tag
+
+# Site settings
+title: Computer Science Notes
+description: Notebook for learning computer science.
+baseurl: "/comp-sci"
+favicon: /assets/img/favicon.ico
+
+# Build settings
+highlighter: rouge
+markdown: kramdown
+
+# Layout settings
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Custom settings
+show_downloads: false
