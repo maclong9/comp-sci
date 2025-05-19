@@ -90,8 +90,8 @@ while IFS= read -r page; do
         next;
       }
 
-      # Handle single-line comments
-      /^\/\/[^:]/ {
+      # Handle single-line comments (// and ///)
+      /^\/\/\/?[^:]/ {
         if (in_code) {
           # If we were in a code block, finish it
           if (buffer != "") {
@@ -102,7 +102,9 @@ while IFS= read -r page; do
           print "```\n";
           in_code = 0;
         }
-        sub(/^\/\/[ \t]*/, "");
+        # Remove comment markers (// or ///)
+        sub(/^\/\/\/[ \t]*/, "", $0);
+        sub(/^\/\/[ \t]*/, "", $0);
         # Trim leading spaces from markdown lines
         gsub(/^[ \t]+/, "");
         print;
