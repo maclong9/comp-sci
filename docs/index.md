@@ -47,6 +47,11 @@ Computers use binary (0s and 1s) to represent data. Key concepts:
 - `1010 = 10`
 
 ```swift
+/// Importing libraries is a simple way to add previously written code
+/// to your program, this allows you to either write your own libraries
+/// that you can then use in other locations or utilise libraries
+/// written by other pogrammers to save you time working on a 
+/// full reimplimentation of this process.
 import Foundation
 
 // Binary representation
