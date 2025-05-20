@@ -32,7 +32,7 @@ If you clone this repository locally and open `CompSci.playground` in Xcode, you
 
 ## The Wiki
 
-The [wiki]() of this repositryo contains other notes from arbitrary courses that aren't included in the http://teachyourselfcs.com curriculum 
+The [wiki]() of this repository contains other notes from arbitrary courses that aren't included in the http://teachyourselfcs.com curriculum 
 that I still thought would be worth keeping the notesfrom, it also contains my original notes from **Harvard CS50** and if you clone the wiki locally you will see the original code examples stored there as well.
 
 > [!TIP]
