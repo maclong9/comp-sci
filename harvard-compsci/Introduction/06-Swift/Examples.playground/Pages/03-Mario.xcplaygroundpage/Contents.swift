@@ -1,6 +1,6 @@
 /*:
  # Mario Example
- 
+
  Using Swift's `String` class you can print multiple of the same character or string without the need for `for` or `while` loops, this saves a lost of time in comparison to the similar code written in c.
  */
 

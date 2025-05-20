@@ -2,7 +2,7 @@ import GameplayKit
 
 /*:
   # Random AI
- 
+
  This defines a simple machine learning model that plays the game randomly.
 */
 public class RandomAI: TicTacToeAI {

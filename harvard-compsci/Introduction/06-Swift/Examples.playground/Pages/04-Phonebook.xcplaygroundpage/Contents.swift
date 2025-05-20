@@ -1,7 +1,7 @@
 var people = [
   ["name": "Carter", "number": "1234"],
   ["name": "David", "number": "5678"],
-  ["name": "Harvard", "number": "9012"]
+  ["name": "Harvard", "number": "9012"],
 ]
 
 let nameToFind = "Mac"
