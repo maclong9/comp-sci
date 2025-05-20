@@ -174,6 +174,43 @@ Swift uses Automatic Reference Counting (ARC) to manage memory.
 - **Value Types** (structs, enums): Each instance keeps a unique copy of its data
 - **Reference Types** (classes): Instances share a single copy of data
 
+### Computer Memory Systems
+
+Computer memory is organized in a hierarchical structure:
+
+- **RAM (Random Access Memory)**: Temporary, fast storage while programs run
+- **ROM (Read-Only Memory)**: Permanent, non-volatile storage for essential instructions
+- **Cache**: Ultra-fast memory that stores frequently accessed data
+- **Registers**: Extremely fast memory inside the CPU
+
+#### Memory Addressing
+
+- Every byte in memory has a unique **address** (often written in hexadecimal)
+- A **pointer** is a variable that stores a memory address
+- Memory is typically addressed sequentially (e.g., address 0x123 is followed by 0x124)
+
+#### Memory Allocation
+
+Memory is divided into different regions:
+
+- **Stack**: Fast, automatically managed memory for local variables and function calls
+- **Heap**: Dynamically allocated memory managed by the programmer (in languages without garbage collection)
+- **Static/Global**: Memory for global variables and static data
+
+#### Common Memory Issues
+
+- **Memory Leak**: Memory that's allocated but never freed
+- **Buffer Overflow**: Writing beyond the allocated memory bounds
+- **Segmentation Fault**: Attempting to access memory the program doesn't have permission to use
+- **Dangling Pointer**: Pointer that references memory that has been freed
+
+#### Color Representation in Memory
+
+- Colors on screens are represented using pixels
+- Common color models include:
+- **RGB**: Values from 0-255 for Red, Green, and Blue components
+- **Hexadecimal**: Values like #FF0000 (red) where each pair represents R, G, B
+
 ```swift
 // Value type example
 struct Point {
