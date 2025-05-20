@@ -36,16 +36,6 @@ import Foundation
 let binaryLiteral = 0b1010  // Binary literal for decimal 10
 print("Binary 0b1010 = \(binaryLiteral) in decimal")
 
-// Binary operations
-let a = 0b1100  // 12 in decimal
-let b = 0b1010  // 10 in decimal
-let bitwiseAND = a & b  // Bitwise AND
-let bitwiseOR = a | b  // Bitwise OR
-let bitwiseXOR = a ^ b  // Bitwise XOR
-let bitwiseNOT = ~a  // Bitwise NOT
-let leftShift = a << 1  // Left shift
-let rightShift = a >> 1  // Right shift
-
 // Convert integer to binary string
 func basicToBinaryString(_ value: Int, padLength: Int = 8) -> String {
   let binaryString = String(value, radix: 2)
@@ -158,42 +148,6 @@ func bubbleSort<T: Comparable>(_ array: [T]) -> [T] {
  - **Value Types** (structs, enums): Each instance keeps a unique copy of its data
  - **Reference Types** (classes): Instances share a single copy of data
 
- ### Computer Memory Systems
- 
- Computer memory is organized in a hierarchical structure:
- 
- - **RAM (Random Access Memory)**: Temporary, fast storage while programs run
- - **ROM (Read-Only Memory)**: Permanent, non-volatile storage for essential instructions
- - **Cache**: Ultra-fast memory that stores frequently accessed data
- - **Registers**: Extremely fast memory inside the CPU
- 
- #### Memory Addressing
- 
- - Every byte in memory has a unique **address** (often written in hexadecimal)
- - A **pointer** is a variable that stores a memory address
- - Memory is typically addressed sequentially (e.g., address 0x123 is followed by 0x124)
- 
- #### Memory Allocation
- 
- Memory is divided into different regions:
- 
- - **Stack**: Fast, automatically managed memory for local variables and function calls
- - **Heap**: Dynamically allocated memory managed by the programmer (in languages without garbage collection)
- - **Static/Global**: Memory for global variables and static data
- 
- #### Common Memory Issues
- 
- - **Memory Leak**: Memory that's allocated but never freed
- - **Buffer Overflow**: Writing beyond the allocated memory bounds
- - **Segmentation Fault**: Attempting to access memory the program doesn't have permission to use
- - **Dangling Pointer**: Pointer that references memory that has been freed
- 
- #### Color Representation in Memory
- 
- - Colors on screens are represented using pixels
- - Common color models include:
-   - **RGB**: Values from 0-255 for Red, Green, and Blue components
-   - **Hexadecimal**: Values like #FF0000 (red) where each pair represents R, G, B
  */
 
 // Value type example
@@ -220,6 +174,132 @@ class Rectangle {
 }
 
 /*:
+
+ ### Computer Memory Systems
+
+ Computer memory is organized in a hierarchical structure:
+
+ - **RAM (Random Access Memory)**: Temporary, fast storage while programs run
+ - **ROM (Read-Only Memory)**: Permanent, non-volatile storage for essential instructions
+ - **Cache**: Ultra-fast memory that stores frequently accessed data
+ - **Registers**: Extremely fast memory inside the CPU
+
+ #### Memory Addressing
+
+ - Every byte in memory has a unique **address** (often written in hexadecimal)
+ - A **pointer** is a variable that stores a memory address
+ - Memory is typically addressed sequentially (e.g., address 0x123 is followed by 0x124)
+
+ #### Memory Allocation
+
+ Memory is divided into different regions:
+
+ - **Stack**: Fast, automatically managed memory for local variables and function calls
+ - **Heap**: Dynamically allocated memory managed by the programmer (in languages without garbage collection)
+ - **Static/Global**: Memory for global variables and static data
+
+ #### Common Memory Issues
+
+ - **Memory Leak**: Memory that's allocated but never freed
+ - **Buffer Overflow**: Writing beyond the allocated memory bounds
+ - **Segmentation Fault**: Attempting to access memory the program doesn't have permission to use
+ - **Dangling Pointer**: Pointer that references memory that has been freed
+
+ #### Color Representation in Memory
+
+ - Colors on screens are represented using pixels
+ - Common color models include:
+ - **RGB**: Values from 0-255 for Red, Green, and Blue components
+ - **Hexadecimal**: Values like #FF0000 (red) where each pair represents R, G, B
+
+ ## Low-Level Memory in Swift
+
+ Swift lets us work close to the metal with `UnsafePointer` types and bitwise operations.
+ */
+
+/// Binary operations
+///
+/// Binary is represented with `0b****` in Swift.
+/// You can use the bitwise AND, OR, XOR, and NOT operations
+/// to manipulate individual bits of binary numbers. These are
+/// used for low-level control and performance optimization.
+///
+/// Common applications include:
+///   - Bit manipulation
+///   - Flags and permissions
+///   - Cryptography
+///   - Graphics & networking
+let a = 0b1100  // 12 in decimal
+let b = 0b1010  // 10 in decimal
+
+/// These operations step through each individual bit of a binary digit
+/// So in a bitwise & if both a[1] and b[1] are not both `1` then the result is `c[1] = 0`
+///
+/// `&` performs a bitwise AND (1 if both bits are 1)
+let bitwiseAND = a & b
+
+/// `|` performs a bitwise OR (1 if either bit is 1)
+let bitwiseOR = a | b
+
+/// `^` performs a bitwise XOR (1 if bits are different)
+let bitwiseXOR = a ^ b
+
+/// `~` inverts each bit (bitwise NOT)
+let bitwiseNOT = ~a
+
+/// `<<` shifts bits to the left (multiplies by 2 per shift)
+let leftShift = a << 1
+
+/// `>>` shifts bits to the right (divides by 2 per shift)
+let rightShift = a >> 1
+
+/// Unsafe Pointer Example
+///
+/// Unsafe pointers allow direct access to memory locations.
+/// This bypasses Swift's memory safety system and ARC.
+/// Useful for interop with C or for performance-critical code.
+
+// Allocate memory for one integer
+let pointer = UnsafeMutablePointer<Int>.allocate(capacity: 1)
+
+// Write a value to the allocated memory
+pointer.pointee = 42
+
+// Read the value from memory
+print("Value at pointer: \(pointer.pointee)")
+
+// Print the memory address (pointer itself)
+print("Pointer address: \(pointer)")
+
+// Free the allocated memory (you must do this manually)
+pointer.deallocate()
+
+/// Mixing Bitwise and Unsafe Operations
+///
+/// This demonstrates how to allocate a buffer in memory,
+/// fill it using bitwise shifts, and then read it out.
+/// It combines low-level memory and binary manipulation.
+
+// Allocate a buffer for 4 bytes
+let size = 4
+let buffer = UnsafeMutableBufferPointer<UInt8>.allocate(capacity: size)
+
+// Fill the buffer with values using a bitwise left shift
+// i << 2 means: multiply i by 4 (2^2)
+for i in 0..<size {
+  buffer[i] = UInt8(i << 2)
+}
+
+// Read and print each byte in binary form
+print("Buffer contents:")
+for byte in buffer {
+  print(String(byte, radix: 2))  // Print as binary string
+}
+
+/// Deallocate the memory buffer
+buffer.deallocate()
+
+/*:
  ## Data Structures
 
  Data structures organize and store data efficiently.
@@ -228,8 +308,14 @@ class Rectangle {
 
  - **Arrays**: Ordered collections
  - **Dictionaries**: Key-value pairs
- - **Sets**: Unordered collections of unique elements
+ - **Sets**: Unordered collections of unique element, faster than arrays
+*/
 
+let array = [0, 1, 2, 3]
+let dict: [String: Any] = ["Name": "Mac", "Age": 29]
+let set: Set<Int> = [0, 1, 2, 3]
+
+/*:
  ### Linked Lists
 
  A linear data structure where elements are stored in nodes containing data and a reference to the next node.
@@ -291,7 +377,9 @@ func recursiveFactorial(_ n: Int) -> Int {
   return n * recursiveFactorial(n - 1)
 }
 
-// Basic Fibonacci - inefficient recursive approach
+/// Basic Fibonacci - inefficient recursive approach
+///
+/// - Complexity: O(2^n)
 func naiveRecursiveFibonacci(_ n: Int) -> Int {
   if n <= 1 {
     return n
@@ -299,21 +387,30 @@ func naiveRecursiveFibonacci(_ n: Int) -> Int {
   return naiveRecursiveFibonacci(n - 1) + naiveRecursiveFibonacci(n - 2)
 }
 
-// Memoized Fibonacci - improved with caching
+/// Memoized Fibonacci - improved with caching
+///
+/// **Memoization** is a technique used to speed up recursive functions
+/// it works by caching previously computed results.
+/// Instead of recalculating a value each time it's needed.
+///
+/// - Complexity: O(n)
 func memoizedFibonacci(_ n: Int) -> Int {
   var memo: [Int: Int] = [0: 0, 1: 1]
 
   func fib(_ n: Int) -> Int {
-    if let result = memo[n] {
+    if let result = memo[n] {  // If already calculated return
       return result
     }
 
+    // Otherwise calculate and store
     memo[n] = fib(n - 1) + fib(n - 2)
     return memo[n]!
   }
 
-  return fib(n)
+  return fib(n)  // Recurse
 }
+
+memoizedFibonacci(16)
 
 /*:
  ## Object-Oriented Programming
@@ -381,9 +478,18 @@ class Square: Shape {
  */
 
 /// Custom error types
-enum MathError: Error {
+enum MathError: LocalizedError {
   case divisionByZero
   case negativeNumber(value: Int)
+
+  var errorDescription: String? {
+    switch self {
+    case .divisionByZero:
+      return "Cannot divide by zero"
+    case .negativeNumber(let value):
+      return "Cannot take the square root of a negative number: \(value)"
+    }
+  }
 }
 
 /// Square root function that throws an error for negative inputs
@@ -394,12 +500,29 @@ func squareRoot(of number: Int) throws -> Double {
   return sqrt(Double(number))
 }
 
+// Succsessful
+try squareRoot(of: 16)
+
+// Negative Number Error
+do {
+  try squareRoot(of: -4)
+} catch {
+  print(error.localizedDescription)
+}
+
 /// Division function that throws an error for zero denominator
 func divide(_ a: Int, by b: Int) throws -> Int {
   if b == 0 {
     throw MathError.divisionByZero
   }
   return a / b
+}
+
+// Divide by Zero Error
+do {
+  try divide(5, by: 0)
+} catch {
+  print(error.localizedDescription)
 }
 
 /*:
@@ -502,7 +625,7 @@ func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
       if numberOfLegs == 2 {
         return "Bird"
       } else {
-        return "Flying insect or bat"
+        return "Flying insect"
       }
     } else {
       if numberOfLegs == 0 {
@@ -522,6 +645,7 @@ func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
   }
 }
 
+classifyAnimal(hasFur: true, numberOfLegs: 2, canFly: false)
 /*:
  ## Key Concepts Summary
 
