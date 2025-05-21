@@ -23,9 +23,9 @@ while IFS= read -r page; do
 
   # For table of contents links, use the original filename except for the index
   if [ "$base_name" = "00-Introduction" ]; then
-    TOC="${TOC}<li><a href=\"./index.md\">${display_name}</a></li>\n"
+    TOC="${TOC}<li><a href=\"/comp-sci/\">${display_name}</a></li>\n"
   else
-    TOC="${TOC}<li><a href=\"./${base_name}.md\">${display_name}</a></li>\n"
+    TOC="${TOC}<li><a href=\"./comp-sci/${base_name}\">${display_name}</a></li>\n"
   fi
 done < /tmp/pages.txt
 TOC="${TOC}\n</ol></details>\n\n---\n"
