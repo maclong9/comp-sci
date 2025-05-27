@@ -29,11 +29,3 @@ If you clone this repository locally and open `CompSci.playground` in Xcode, you
 
 > [!IMPORTANT]
 > Ensure that you check `Editor > Show Rendered Markup` before reading through the notes.
-
-## The Wiki
-
-The [wiki](https://github.com/maclong9/comp-sci/wiki) of this repository contains other notes from arbitrary courses that aren't included in the https://teachyourselfcs.com curriculum 
-that I still thought would be worth keeping the notesfrom, it also contains my original notes from **Harvard CS50** and if you clone the wiki locally you will see the original code examples stored there as well.
-
-> [!TIP]
-> To clone this repostiory's wiki run `git clone https://github.com/maclong9/comp-sci.wiki.git`
