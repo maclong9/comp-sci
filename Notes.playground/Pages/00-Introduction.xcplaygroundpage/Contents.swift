@@ -44,9 +44,9 @@ print("Binary 0b1010 = \(binaryLiteral) in decimal")
 
 // Convert integer to binary string
 func basicToBinaryString(_ value: Int, padLength: Int = 8) -> String {
-    let binaryString = String(value, radix: 2)
-    return String(repeating: "0", count: max(0, padLength - binaryString.count))
-        + binaryString
+  let binaryString = String(value, radix: 2)
+  return String(repeating: "0", count: max(0, padLength - binaryString.count))
+    + binaryString
 }
 
 /*:
@@ -63,13 +63,13 @@ func basicToBinaryString(_ value: Int, padLength: Int = 8) -> String {
 let constantValue = 10  // 'let' for constants
 var variableValue = 20  // 'var' for variables
 if constantValue < variableValue {  // 'if' for conditions
-    print("Variable is larger")
+  print("Variable is larger")
 }
 for i in 0..<5 {  // 'for' and 'in' for loops
-    print("Count: \(i)")
+  print("Count: \(i)")
 }
 func greet(name: String) {  // 'func' for functions
-    print("Hello, \(name)!")
+  print("Hello, \(name)!")
 }
 
 /*:
@@ -98,31 +98,31 @@ print(numbers.count)  // Array length
 /// Linear search - examines each element sequentially
 /// - Complexity: O(n) - linear time
 func linearSearch<T: Equatable>(_ array: [T], _ item: T) -> Int? {
-    for (index, element) in array.enumerated() {
-        if element == item {
-            return index
-        }
+  for (index, element) in array.enumerated() {
+    if element == item {
+      return index
     }
-    return nil
+  }
+  return nil
 }
 
 /// Binary search - for sorted arrays, divides search space in half each time
 /// - Complexity: O(log n) - logarithmic time
 func binarySearch<T: Comparable>(_ array: [T], _ item: T) -> Int? {
-    var low = 0
-    var high = array.count - 1
+  var low = 0
+  var high = array.count - 1
 
-    while low <= high {
-        let mid = (low + high) / 2
-        if array[mid] == item {
-            return mid
-        } else if array[mid] < item {
-            low = mid + 1
-        } else {
-            high = mid - 1
-        }
+  while low <= high {
+    let mid = (low + high) / 2
+    if array[mid] == item {
+      return mid
+    } else if array[mid] < item {
+      low = mid + 1
+    } else {
+      high = mid - 1
     }
-    return nil
+  }
+  return nil
 }
 
 /*:
@@ -132,16 +132,16 @@ func binarySearch<T: Comparable>(_ array: [T], _ item: T) -> Int? {
 /// Bubble sort - repeatedly steps through the list, compares and swaps adjacent elements
 /// - Complexity: O(n²) - quadratic time
 func bubbleSort<T: Comparable>(_ array: [T]) -> [T] {
-    var result = array
-    let n = result.count
-    for i in 0..<n {
-        for j in 0..<n - i - 1 {
-            if result[j] > result[j + 1] {
-                result.swapAt(j, j + 1)
-            }
-        }
+  var result = array
+  let n = result.count
+  for i in 0..<n {
+    for j in 0..<n - i - 1 {
+      if result[j] > result[j + 1] {
+        result.swapAt(j, j + 1)
+      }
     }
-    return result
+  }
+  return result
 }
 
 /*:
@@ -158,25 +158,25 @@ func bubbleSort<T: Comparable>(_ array: [T]) -> [T] {
 
 // Value type example
 struct Point {
-    var x: Int
-    var y: Int
+  var x: Int
+  var y: Int
 }
 
 // Reference type example
 class Rectangle {
-    var origin: Point
-    var width: Int
-    var height: Int
+  var origin: Point
+  var width: Int
+  var height: Int
 
-    init(origin: Point, width: Int, height: Int) {
-        self.origin = origin
-        self.width = width
-        self.height = height
-    }
+  init(origin: Point, width: Int, height: Int) {
+    self.origin = origin
+    self.width = width
+    self.height = height
+  }
 
-    func area() -> Int {
-        width * height
-    }
+  func area() -> Int {
+    width * height
+  }
 }
 
 /*:
@@ -293,13 +293,13 @@ let buffer = UnsafeMutableBufferPointer<UInt8>.allocate(capacity: size)
 // Fill the buffer with values using a bitwise left shift
 // i << 2 means: multiply i by 4 (2^2)
 for i in 0..<size {
-    buffer[i] = UInt8(i << 2)
+  buffer[i] = UInt8(i << 2)
 }
 
 // Read and print each byte in binary form
 print("Buffer contents:")
 for byte in buffer {
-    print(String(byte, radix: 2))  // Print as binary string
+  print(String(byte, radix: 2))  // Print as binary string
 }
 
 /// Deallocate the memory buffer
@@ -329,44 +329,44 @@ let set: Set<Int> = [0, 1, 2, 3]
 
 /// Node in a linked list
 class LinkedListNode<T> {
-    var value: T
-    var next: LinkedListNode<T>?
+  var value: T
+  var next: LinkedListNode<T>?
 
-    init(value: T) {
-        self.value = value
-    }
+  init(value: T) {
+    self.value = value
+  }
 }
 
 /// Singly linked list implementation
 class LinkedList<T> {
-    var head: LinkedListNode<T>?
+  var head: LinkedListNode<T>?
 
-    /// Adds a new value to the end of the list
-    func append(_ value: T) {
-        let newNode = LinkedListNode(value: value)
+  /// Adds a new value to the end of the list
+  func append(_ value: T) {
+    let newNode = LinkedListNode(value: value)
 
-        if head == nil {
-            head = newNode
-            return
-        }
-
-        var current = head
-        while current?.next != nil {
-            current = current?.next
-        }
-
-        current?.next = newNode
+    if head == nil {
+      head = newNode
+      return
     }
 
-    /// Prints the entire linked list
-    func printList() {
-        var current = head
-        while current != nil {
-            print(current?.value ?? "nil", terminator: " -> ")
-            current = current?.next
-        }
-        print("nil")
+    var current = head
+    while current?.next != nil {
+      current = current?.next
     }
+
+    current?.next = newNode
+  }
+
+  /// Prints the entire linked list
+  func printList() {
+    var current = head
+    while current != nil {
+      print(current?.value ?? "nil", terminator: " -> ")
+      current = current?.next
+    }
+    print("nil")
+  }
 }
 
 /*:
@@ -377,20 +377,20 @@ class LinkedList<T> {
 
 // Factorial using recursion
 func recursiveFactorial(_ n: Int) -> Int {
-    if n <= 1 {
-        return 1
-    }
-    return n * recursiveFactorial(n - 1)
+  if n <= 1 {
+    return 1
+  }
+  return n * recursiveFactorial(n - 1)
 }
 
 /// Basic Fibonacci - inefficient recursive approach
 ///
 /// - Complexity: O(2^n)
 func naiveRecursiveFibonacci(_ n: Int) -> Int {
-    if n <= 1 {
-        return n
-    }
-    return naiveRecursiveFibonacci(n - 1) + naiveRecursiveFibonacci(n - 2)
+  if n <= 1 {
+    return n
+  }
+  return naiveRecursiveFibonacci(n - 1) + naiveRecursiveFibonacci(n - 2)
 }
 
 /// Memoized Fibonacci - improved with caching
@@ -401,19 +401,19 @@ func naiveRecursiveFibonacci(_ n: Int) -> Int {
 ///
 /// - Complexity: O(n)
 func memoizedFibonacci(_ n: Int) -> Int {
-    var memo: [Int: Int] = [0: 0, 1: 1]
+  var memo: [Int: Int] = [0: 0, 1: 1]
 
-    func fib(_ n: Int) -> Int {
-        if let result = memo[n] {  // If already calculated return
-            return result
-        }
-
-        // Otherwise calculate and store
-        memo[n] = fib(n - 1) + fib(n - 2)
-        return memo[n]!
+  func fib(_ n: Int) -> Int {
+    if let result = memo[n] {  // If already calculated return
+      return result
     }
 
-    return fib(n)  // Recurse
+    // Otherwise calculate and store
+    memo[n] = fib(n - 1) + fib(n - 2)
+    return memo[n]!
+  }
+
+  return fib(n)  // Recurse
 }
 
 let _ = memoizedFibonacci(16)
@@ -426,55 +426,55 @@ let _ = memoizedFibonacci(16)
 
 /// Base shape class
 class Shape {
-    var name: String
+  var name: String
 
-    init(name: String) {
-        self.name = name
-    }
+  init(name: String) {
+    self.name = name
+  }
 
-    func area() -> Double {
-        0.0
-    }
+  func area() -> Double {
+    0.0
+  }
 
-    func description() -> String {
-        "A shape named \(name)"
-    }
+  func description() -> String {
+    "A shape named \(name)"
+  }
 }
 
 /// Circle inherits from Shape
 class Circle: Shape {
-    var radius: Double
+  var radius: Double
 
-    init(radius: Double) {
-        self.radius = radius
-        super.init(name: "Circle")
-    }
+  init(radius: Double) {
+    self.radius = radius
+    super.init(name: "Circle")
+  }
 
-    override func area() -> Double {
-        Double.pi * radius * radius
-    }
+  override func area() -> Double {
+    Double.pi * radius * radius
+  }
 
-    override func description() -> String {
-        "A circle with radius \(radius)"
-    }
+  override func description() -> String {
+    "A circle with radius \(radius)"
+  }
 }
 
 /// Square inherits from Shape
 class Square: Shape {
-    var side: Double
+  var side: Double
 
-    init(side: Double) {
-        self.side = side
-        super.init(name: "Square")
-    }
+  init(side: Double) {
+    self.side = side
+    super.init(name: "Square")
+  }
 
-    override func area() -> Double {
-        side * side
-    }
+  override func area() -> Double {
+    side * side
+  }
 
-    override func description() -> String {
-        "A square with side \(side)"
-    }
+  override func description() -> String {
+    "A square with side \(side)"
+  }
 }
 
 /*:
@@ -485,25 +485,25 @@ class Square: Shape {
 
 /// Custom error types
 enum MathError: LocalizedError {
-    case divisionByZero
-    case negativeNumber(value: Int)
+  case divisionByZero
+  case negativeNumber(value: Int)
 
-    var errorDescription: String? {
-        switch self {
-        case .divisionByZero:
-            return "Cannot divide by zero"
-        case .negativeNumber(let value):
-            return "Cannot take the square root of a negative number: \(value)"
-        }
+  var errorDescription: String? {
+    switch self {
+    case .divisionByZero:
+      return "Cannot divide by zero"
+    case .negativeNumber(let value):
+      return "Cannot take the square root of a negative number: \(value)"
     }
+  }
 }
 
 /// Square root function that throws an error for negative inputs
 func squareRoot(of number: Int) throws -> Double {
-    if number < 0 {
-        throw MathError.negativeNumber(value: number)
-    }
-    return sqrt(Double(number))
+  if number < 0 {
+    throw MathError.negativeNumber(value: number)
+  }
+  return sqrt(Double(number))
 }
 
 // Succsessful
@@ -511,24 +511,24 @@ let _ = try squareRoot(of: 16)
 
 // Negative Number Error
 do {
-    let _ = try squareRoot(of: -4)
+  let _ = try squareRoot(of: -4)
 } catch {
-    print(error.localizedDescription)
+  print(error.localizedDescription)
 }
 
 /// Division function that throws an error for zero denominator
 func divide(_ a: Int, by b: Int) throws -> Int {
-    if b == 0 {
-        throw MathError.divisionByZero
-    }
-    return a / b
+  if b == 0 {
+    throw MathError.divisionByZero
+  }
+  return a / b
 }
 
 // Divide by Zero Error
 do {
-    let _ = try divide(5, by: 0)
+  let _ = try divide(5, by: 0)
 } catch {
-    print(error.localizedDescription)
+  print(error.localizedDescription)
 }
 
 /*:
@@ -537,18 +537,18 @@ do {
 
 /// Enhanced binary string conversion with padding
 func enhancedToBinaryString(_ value: Int, padLength: Int = 8) -> String {
-    String(value, radix: 2).padLeft(toLength: padLength, withPad: "0")
+  String(value, radix: 2).padLeft(toLength: padLength, withPad: "0")
 }
 
 // String extension for padding
 extension String {
-    func padLeft(toLength length: Int, withPad character: Character) -> String {
-        let paddingLength = length - self.count
-        if paddingLength <= 0 {
-            return self
-        }
-        return String(repeating: character, count: paddingLength) + self
+  func padLeft(toLength length: Int, withPad character: Character) -> String {
+    let paddingLength = length - self.count
+    if paddingLength <= 0 {
+      return self
     }
+    return String(repeating: character, count: paddingLength) + self
+  }
 }
 
 /*:
@@ -568,28 +568,28 @@ extension String {
 
 // Iterative factorial implementation
 func iterativeFactorial(_ n: Int) -> Int {
-    if n <= 1 { return 1 }
-    return n * iterativeFactorial(n - 1)
+  if n <= 1 { return 1 }
+  return n * iterativeFactorial(n - 1)
 }
 
 // Improved recursive Fibonacci implementation
 func recursiveFibonacci(_ n: Int) -> Int {
-    if n <= 0 { return 0 }
-    if n == 1 { return 1 }
-    return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2)
+  if n <= 0 { return 0 }
+  if n == 1 { return 1 }
+  return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2)
 }
 
 // Iterative Fibonacci using dynamic programming
 func iterativeFibonacci(_ n: Int) -> Int {
-    func fib(_ n: Int) -> Int {
-        var memo = [0, 1]
-        if n <= 1 { return n }
-        for i in 2...n {
-            memo.append(memo[i - 1] + memo[i - 2])
-        }
-        return memo[n]
+  func fib(_ n: Int) -> Int {
+    var memo = [0, 1]
+    if n <= 1 { return n }
+    for i in 2...n {
+      memo.append(memo[i - 1] + memo[i - 2])
     }
-    return fib(n)
+    return memo[n]
+  }
+  return fib(n)
 }
 
 /*:
@@ -604,55 +604,55 @@ func iterativeFibonacci(_ n: Int) -> Int {
 
 /// Simulates a single neuron in a neural network
 func neuralNetworkSimulation(
-    inputs: [Double],
-    weights: [Double],
-    bias: Double
+  inputs: [Double],
+  weights: [Double],
+  bias: Double
 )
-    -> Double
+  -> Double
 {
-    // Calculate weighted sum
-    var weightedSum = bias
-    for i in 0..<min(inputs.count, weights.count) {
-        weightedSum += inputs[i] * weights[i]
-    }
+  // Calculate weighted sum
+  var weightedSum = bias
+  for i in 0..<min(inputs.count, weights.count) {
+    weightedSum += inputs[i] * weights[i]
+  }
 
-    // Apply sigmoid activation function
-    return 1.0 / (1.0 + exp(-weightedSum))
+  // Apply sigmoid activation function
+  return 1.0 / (1.0 + exp(-weightedSum))
 }
 
 /// Rule-based classification system
 func classifyAnimal(hasFur: Bool, numberOfLegs: Int, canFly: Bool) -> String {
-    if hasFur {
-        if numberOfLegs == 4 {
-            return "Mammal (likely a cat, dog, or similar quadruped)"
-        } else if numberOfLegs == 2 {
-            return "Possibly a primate"
-        } else {
-            return "Unusual mammal"
-        }
+  if hasFur {
+    if numberOfLegs == 4 {
+      return "Mammal (likely a cat, dog, or similar quadruped)"
+    } else if numberOfLegs == 2 {
+      return "Possibly a primate"
     } else {
-        if canFly {
-            if numberOfLegs == 2 {
-                return "Bird"
-            } else {
-                return "Flying insect"
-            }
-        } else {
-            if numberOfLegs == 0 {
-                return "Fish or reptile"
-            } else if numberOfLegs == 2 {
-                return "Possibly a reptile"
-            } else if numberOfLegs == 4 {
-                return "Reptile or amphibian"
-            } else if numberOfLegs == 6 {
-                return "Insect"
-            } else if numberOfLegs == 8 {
-                return "Arachnid"
-            } else {
-                return "Unknown classification"
-            }
-        }
+      return "Unusual mammal"
     }
+  } else {
+    if canFly {
+      if numberOfLegs == 2 {
+        return "Bird"
+      } else {
+        return "Flying insect"
+      }
+    } else {
+      if numberOfLegs == 0 {
+        return "Fish or reptile"
+      } else if numberOfLegs == 2 {
+        return "Possibly a reptile"
+      } else if numberOfLegs == 4 {
+        return "Reptile or amphibian"
+      } else if numberOfLegs == 6 {
+        return "Insect"
+      } else if numberOfLegs == 8 {
+        return "Arachnid"
+      } else {
+        return "Unknown classification"
+      }
+    }
+  }
 }
 
 let _ = classifyAnimal(hasFur: true, numberOfLegs: 2, canFly: false)

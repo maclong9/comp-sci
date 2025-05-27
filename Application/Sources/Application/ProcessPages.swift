@@ -12,7 +12,12 @@ func getBaseDirectory() -> URL {
 /// - Returns: An array of URLs to playground pages.
 func listPlaygroundPages(in directory: URL) -> [URL] {
     let fm = FileManager.default
-    guard let enumerator = fm.enumerator(at: directory, includingPropertiesForKeys: nil) else { return [] }
+    guard
+        let enumerator = fm.enumerator(
+            at: directory,
+            includingPropertiesForKeys: nil
+        )
+    else { return [] }
     var pages: [URL] = []
     for case let fileURL as URL in enumerator {
         if fileURL.pathExtension == "xcplaygroundpage" {
@@ -25,7 +30,11 @@ func listPlaygroundPages(in directory: URL) -> [URL] {
 /// Creates the output directory if it does not exist.
 /// - Parameter url: The directory URL.
 func makeOutputDirectory(_ url: URL) {
-    try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+    try? FileManager.default.createDirectory(
+        at: url,
+        withIntermediateDirectories: true,
+        attributes: nil
+    )
 }
 
 /// Reads all lines from a file.
@@ -33,7 +42,8 @@ func makeOutputDirectory(_ url: URL) {
 /// - Returns: An array of lines as strings.
 func readLines(from url: URL) -> [String] {
     guard let data = try? Data(contentsOf: url),
-          let content = String(data: data, encoding: .utf8) else { return [] }
+        let content = String(data: data, encoding: .utf8)
+    else { return [] }
     return content.components(separatedBy: .newlines)
 }
 
@@ -57,7 +67,8 @@ func processContentsSwift(at url: URL) -> String {
 
     func flushCodeBlock() {
         if !buffer.isEmpty {
-            output += buffer.trimmingCharacters(in: .whitespacesAndNewlines) + "\n"
+            output +=
+                buffer.trimmingCharacters(in: .whitespacesAndNewlines) + "\n"
             buffer = ""
         }
         if inCode {
@@ -84,7 +95,8 @@ func processContentsSwift(at url: URL) -> String {
         }
         if line.hasPrefix("///:") {
             flushCodeBlock()
-            let markdown = line.replacingOccurrences(of: "///:", with: "").trimmingCharacters(in: .whitespaces)
+            let markdown = line.replacingOccurrences(of: "///:", with: "")
+                .trimmingCharacters(in: .whitespaces)
             output += markdown + "\n"
             continue
         }
@@ -117,20 +129,25 @@ func processContentsSwift(at url: URL) -> String {
 /// - Parameters:
 ///   - playgroundPagesDir: The directory containing playground pages.
 ///   - outputDir: The directory to write markdown articles to.
-func processPlaygroundPagesToArticles(from playgroundPagesDir: URL, to outputDir: URL) {
+func processPlaygroundPagesToArticles(
+    from playgroundPagesDir: URL,
+    to outputDir: URL
+) {
     makeOutputDirectory(outputDir)
     let pages = listPlaygroundPages(in: playgroundPagesDir)
 
     var toc = """
-    <details id="contents">
-    <summary><strong>Table of Contents</strong></summary><ol>
+        <details id="contents">
+        <summary><strong>Table of Contents</strong></summary><ol>
 
-    """
+        """
 
     for page in pages {
         let baseName = page.deletingPathExtension().lastPathComponent
         let strippedName: String
-        if baseName.count > 3, baseName[baseName.index(baseName.startIndex, offsetBy: 2)] == "-" {
+        if baseName.count > 3,
+            baseName[baseName.index(baseName.startIndex, offsetBy: 2)] == "-"
+        {
             strippedName = String(baseName.dropFirst(3))
         } else {
             strippedName = baseName
@@ -138,7 +155,8 @@ func processPlaygroundPagesToArticles(from playgroundPagesDir: URL, to outputDir
         if baseName == "00-Introduction" {
             toc += "<li><a href=\"/comp-sci/\">\(strippedName)</a></li>\n"
         } else {
-            toc += "<li><a href=\"./comp-sci/\(strippedName)\">\(strippedName)</a></li>\n"
+            toc +=
+                "<li><a href=\"./comp-sci/\(strippedName)\">\(strippedName)</a></li>\n"
         }
     }
     toc += "\n</ol></details>\n\n---\n"
@@ -146,7 +164,9 @@ func processPlaygroundPagesToArticles(from playgroundPagesDir: URL, to outputDir
     for page in pages {
         let baseName = page.deletingPathExtension().lastPathComponent
         let strippedName: String
-        if baseName.count > 3, baseName[baseName.index(baseName.startIndex, offsetBy: 2)] == "-" {
+        if baseName.count > 3,
+            baseName[baseName.index(baseName.startIndex, offsetBy: 2)] == "-"
+        {
             strippedName = String(baseName.dropFirst(3))
         } else {
             strippedName = baseName

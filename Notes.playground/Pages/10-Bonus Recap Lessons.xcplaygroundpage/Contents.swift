@@ -11,16 +11,16 @@ import PlaygroundSupport
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("Equation:")
-                .font(.headline)
-            Text("2x + 3y = 8")
-                .font(.system(size: 24, weight: .bold, design: .monospaced))
-            Text("3x + 4y = 11")
-                .font(.system(size: 24, weight: .bold, design: .monospaced))
-        }
+  var body: some View {
+    VStack(spacing: 20) {
+      Text("Equation:")
+        .font(.headline)
+      Text("2x + 3y = 8")
+        .font(.system(size: 24, weight: .bold, design: .monospaced))
+      Text("3x + 4y = 11")
+        .font(.system(size: 24, weight: .bold, design: .monospaced))
     }
+  }
 }
 
 PlaygroundPage.current.setLiveView(ContentView())
