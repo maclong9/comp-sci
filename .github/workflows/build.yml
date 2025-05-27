@@ -12,6 +12,9 @@ permissions:
 
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: ./Application
     runs-on: macos-15
     steps:
       # Check out the repository code
