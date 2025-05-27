@@ -2,7 +2,7 @@
 /*:
 # CS-00 Computer Science Introduction
 
- This [course](https://teachyourselfcs.com/#programming) is designed for self-taught engineers who may have missed certain aspects of computer science fundamentals.
+ This [course](https://teachyourselfcs.com/#programming) is designed for self-taught engineers who may have missed certain aspects of computer science fundamentals. The below are some simple shorthand notes taken from [Harvard CS50 - Introduction to Computer Science](https://pll.harvard.edu/course/cs50-introduction-computer-science)
 
  ## What is Computer Science?
 

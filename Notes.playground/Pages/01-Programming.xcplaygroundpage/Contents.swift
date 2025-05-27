@@ -172,6 +172,10 @@ let circumfrence = 2 * pi * radius
 print(circumfrence)
 
 /*:
- 
+ Defining variables is the languages most simple means of _abstraction_, it allows us to use simple names to refer to the results of compound operations, such as the computed value of _circumfrence_ above.
+
+ In general computational objects may have very complex structures, it would be extemely invonvenient to have to rememebr and repeat their details each time we want to use them.
+
+ Complex programs are constructed by building step by step, computational objects
  */
 //: [Next](@next)
