@@ -1,5 +1,5 @@
 {
-  "originHash" : "d61a1a917f251fb2a4938565693ce0ec497415f89fd8aa08e10c74fcefc3e7d4",
+  "originHash" : "426d09005a9b2142a58b42a1c3f00c63885ec985e8fbcb8951fabed44786c38b",
   "pins" : [
     {
       "identity" : "portfolio",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/maclong9/portfolio.git",
       "state" : {
         "branch" : "main",
-        "revision" : "fb4d08c9ac25bab39e97c970415c0f54fdc62547"
+        "revision" : "86ea2440ef5377b2bf093d22ca9ddeba633795c1"
       }
     },
     {
@@ -26,15 +26,6 @@
       "state" : {
         "revision" : "ea79e83c8744d2b50b0dc2d5bbd1e857e1253bf9",
         "version" : "0.6.0"
-      }
-    },
-    {
-      "identity" : "swift-numerics",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-numerics.git",
-      "state" : {
-        "revision" : "e0ec0f5f3af6f3e4d5e7a19d2af26b481acb6ba8",
-        "version" : "1.0.3"
       }
     },
     {
