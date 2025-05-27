@@ -102,7 +102,7 @@ Every powerful language has three mechanisms for accomplishing this:
     - **Means of Combination, by which compound elements are built from simpler ones.
     - **Means of Abstraction**, by which compound elements can be named and manipulated as units.
 
-In programming we deal wiht _procedures_ and _data_. Informally _data_ is "stuff" that we want to manipulate, and _procedures_ are descriptions of rules for maniuplating the _data_.
+In programming we deal with _procedures_ and _data_. Informally _data_ is "stuff" that we want to manipulate, and _procedures_ are descriptions of rules for manipulating the _data_.
 
 > A powerful programming language should be able to describe primitive _data_ and should have methods for combining and abstracting _procedures_ and _data_.
 
@@ -118,7 +118,7 @@ In programming we deal wiht _procedures_ and _data_. Informally _data_ is "stuff
 print(486)
 
 /*:
-Given the snippet of code above the interperter will respond by printing the number `486` to the console.
+Given the snippet of code above the interpreter will respond by printing the number `486` to the console.
 
  Expressions representing numbers may be combined with simple arithmetic operations.
  */
@@ -133,7 +133,7 @@ print([56, 645, 23].reduce(1.0, /))
 print([56, 645, 23].reduce(0, -))
 
 /*:
- Above is a simple example of combining primitives, the numrical valus and mathematical operators, to create a more complex expression. There is also a slightly more complex example using the `reduce` method to apply the same operators to an array of numbers.
+ Above is a simple example of combining primitives, the numerical values and mathematical operators, to create a more complex expression. There is also a slightly more complex example using the `reduce` method to apply the same operators to an array of numbers.
 
  Even with complex expressions the interpreter operates in the same basic cycle:
     1. Reads the expression.
@@ -167,15 +167,22 @@ let radius = 10.0
 
 print(pi * (radius * radius))
 
-let circumfrence = 2 * pi * radius
+let circumference = 2 * pi * radius
 
-print(circumfrence)
+print(circumference)
 
 /*:
- Defining variables is the languages most simple means of _abstraction_, it allows us to use simple names to refer to the results of compound operations, such as the computed value of _circumfrence_ above.
+ Defining variables is the languages most simple means of _abstraction_, it allows us to use simple names to refer to the results of compound operations, such as the computed value of _circumference_ above.
 
- In general computational objects may have very complex structures, it would be extemely invonvenient to have to rememebr and repeat their details each time we want to use them.
+ In general computational objects may have very complex structures, it would be extremely inconvenient to have to remember and repeat their details each time we want to use them.
 
- Complex programs are constructed by building step by step, computational objects
+ Complex programs are constructed by building step by step, this encourages incremental development and testing of programs such as ensuring the value of `pi` is correct and then defining `radius` and ensuring that you can utilise both to create new results and finally defining `circumference` using both variables.
+
+ The above examples show that the interpreter is storing values in memory, this memory is called the _environment_, more precisely the _global environment_ as we will see later that computation may involve a number of environments.
+
+ ### 1.1.3 Evaluating Combinations
+
+
  */
+
 //: [Next](@next)
