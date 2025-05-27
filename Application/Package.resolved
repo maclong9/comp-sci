@@ -1,0 +1,51 @@
+{
+  "originHash" : "d61a1a917f251fb2a4938565693ce0ec497415f89fd8aa08e10c74fcefc3e7d4",
+  "pins" : [
+    {
+      "identity" : "portfolio",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maclong9/portfolio.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fb4d08c9ac25bab39e97c970415c0f54fdc62547"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-cmark.git",
+      "state" : {
+        "revision" : "b022b08312decdc46585e0b3440d97f6f22ef703",
+        "version" : "0.6.0"
+      }
+    },
+    {
+      "identity" : "swift-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-markdown",
+      "state" : {
+        "revision" : "ea79e83c8744d2b50b0dc2d5bbd1e857e1253bf9",
+        "version" : "0.6.0"
+      }
+    },
+    {
+      "identity" : "swift-numerics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-numerics.git",
+      "state" : {
+        "revision" : "e0ec0f5f3af6f3e4d5e7a19d2af26b481acb6ba8",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "web-ui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maclong9/web-ui.git",
+      "state" : {
+        "revision" : "6ce0087ed7187eacdf62245ca70be29bf4a85905",
+        "version" : "1.0.3"
+      }
+    }
+  ],
+  "version" : 3
+}
