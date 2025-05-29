@@ -20,3 +20,6 @@ You can take notes in the `Notes.playground` directory, this is a collection of 
 ### Static Site Generation
 
 The `Application` directory contains all you need for editing the end result that is generated for web pages based on the files within `Notes.playground`. For reference a lot of the components and metadata are fetched from my [Portfolio Shared Library](https://github.com/maclong9/portfolio/tree/main/Sources/Shared).
+
+> [!NOTE]
+> If you would like to use plain markdown instead of an Xcode playground, for note taking projects where it doesn't make sense to have runnable code, you can create an `Articles` directory in the root directory and remove the `Notes.playground` directory, make sure you edit the `Application/Sources/ProcessPages.swift` to reflect this change and you remove `Articles` from `.gitignore`.
