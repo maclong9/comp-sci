@@ -1,31 +1,22 @@
 # Computer Science Notes
 
-This repository contains my computer science notes organized as a custom Jekyll site.
-
-## Structure
-
-The repository is structured as follows:
-
-- `./docs/` - Contains all the Markdown files that make up the content of the site
-- `./docs/_layouts/` - Contains the layout templates for the site
-- `./docs/_includes/` - Contains reusable HTML components
-- `./docs/assets/` - Contains CSS, images, and other static assets
-
-## Custom Theme
-
-This site uses a custom Jekyll theme with the following features:
-
-- Clean, responsive design
-- Dark mode support
-- Optimized typography for readability
-- Code syntax highlighting
+This repository contains my computer science notes organized via an Xcode Playground and rendered to a custom [WebUI](https://github.com/maclong9/web-ui) site.
 
 > [!NOTE]
 > You can use this project as a starting point for any scientific note-taking project by clicking the `Use this template` button on GitHub.
 
-## Swift Playgrounds Book
+## Development
 
-If you clone this repository locally and open `CompSci.playground` in Xcode, you can explore the Swift code examples and interact with them.
+1. Clone the repository.
+2. Open the `xcworkspace` file in Xcode
+
+### Note Taking
+
+You can take notes in the `Notes.playground` directory, this is a collection of mixed _Markdown_ and _Swift_ files which can be used to write notes with runnable code within them. 
 
 > [!IMPORTANT]
 > Ensure that you check `Editor > Show Rendered Markup` before reading through the notes.
+
+### Static Site Generation
+
+The `Application` directory contains all you need for editing the end result that is generated for web pages based on the files within `Notes.playground`. For reference a lot of the components and metadata are fetched from my [Portfolio Shared Library](https://github.com/maclong9/portfolio/tree/main/Sources/Shared).
