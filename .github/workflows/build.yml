@@ -14,5 +14,5 @@ jobs:
     uses: maclong9/web-ui/.github/workflows/build.yml@main
     with:
       working-directory: 'Application'
-      output-directory: 'Application.output'
+      output-directory: 'Application/.output'
       generate-command: 'swift run Application'
