@@ -31,7 +31,7 @@ struct Application: Website {
             fileURLWithPath: FileManager.default.currentDirectoryPath
         )
         let playgroundPagesDir = baseDir.appendingPathComponent(
-            "Notes.playground/"
+            "../Notes.playground/"
         )
         let outputDir = baseDir.appendingPathComponent("Articles")
         processPlaygroundPagesToArticles(
