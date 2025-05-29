@@ -19,7 +19,8 @@ let package = Package(
                 .product(name: "WebUI", package: "web-ui"),
                 .product(name: "WebUIMarkdown", package: "web-ui"),
                 .product(name: "Shared", package: "Portfolio"),
-            ]
+            ],
+            path: "Sources"
         )
     ]
 )
