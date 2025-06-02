@@ -410,4 +410,6 @@ func aPlusAbsB(_ a: Int, _ b: Int) -> Int {
     return operation(a, b)
 }
 
+print("Hello, automation")
+
 //: [Next](@next)

@@ -1,5 +1,5 @@
 {
-  "originHash" : "426d09005a9b2142a58b42a1c3f00c63885ec985e8fbcb8951fabed44786c38b",
+  "originHash" : "86d57ef0996eb3182f7c9bfc491f64977890e4827137c12342c34f10d036af21",
   "pins" : [
     {
       "identity" : "portfolio",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/maclong9/portfolio.git",
       "state" : {
         "branch" : "main",
-        "revision" : "86ea2440ef5377b2bf093d22ca9ddeba633795c1"
+        "revision" : "866200164fa0eb85cf2dc8fd5d53878f02c1e723"
       }
     },
     {
@@ -31,10 +31,10 @@
     {
       "identity" : "web-ui",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/maclong9/web-ui.git",
+      "location" : "https://github.com/maclong9/web-ui",
       "state" : {
-        "revision" : "6ce0087ed7187eacdf62245ca70be29bf4a85905",
-        "version" : "1.0.3"
+        "revision" : "217527049d9cd58c0176b4a7d786c73ea27872b2",
+        "version" : "1.1.6"
       }
     }
   ],
