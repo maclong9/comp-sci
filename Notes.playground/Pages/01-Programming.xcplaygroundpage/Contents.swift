@@ -63,6 +63,11 @@
  When you type an expression, Swift evaluates and prints the result:
  */
 
+import PlaygroundSupport
+import SwiftMath
+import SwiftUI
+import UIKit
+
 print(486)
 
 /*:
@@ -115,11 +120,11 @@ print(circumference)
  */
 
 func multiply(_ x: Int, _ y: Int) -> Int {
-    return x * y
+    x * y
 }
 
 func add(_ x: Int, _ y: Int) -> Int {
-    return x + y
+    x + y
 }
 
 let result = multiply(
@@ -136,20 +141,20 @@ print("Result of nested combination: \(result)")  // 26 * 15 = 390
  */
 
 func square(_ x: Int) -> Int {
-    return x * x
+    x * x
 }
 
 print("square(21) =", square(21))
 print("square(square(3)) =", square(square(3)))
 
 func sumOfSquares(_ x: Int, _ y: Int) -> Int {
-    return square(x) + square(y)
+    square(x) + square(y)
 }
 
 print("sumOfSquares(3, 4) =", sumOfSquares(3, 4))
 
 func f(_ a: Int) -> Int {
-    return sumOfSquares(a + 1, a * 2)
+    sumOfSquares(a + 1, a * 2)
 }
 
 print("f(5) =", f(5))  // → 136
@@ -228,22 +233,181 @@ Swift, like most modern languages, uses **applicative-order evaluation**. There 
 Still, **normal-order evaluation** is powerful. It underlies **lazy evaluation** in functional languages like Haskell, and is key to understanding deferred computation, short-circuit logic, and macros.
 
 We'll explore some of its deeper consequences in Chapter 3 and Chapter 4.16.
-*/
 
-/*:
-> 🧠 **Summary**:
->
-> - **Applicative order**: Evaluate arguments first, then apply the function. (Used by Swift, Lisp, most languages.)
-> - **Normal order**: Expand first, evaluate only when needed.
->
-> For substitution-based procedures, both yield the same result—**if** evaluation terminates and produces a value.
-> But in cases involving infinite loops or side effects, their behavior may diverge. See Exercise 1.5 for an example.
-*/
-
-/*:
  #### 1.1.6 Conditional Expressions and Predicates
- 
- 
- */
+
+With the current tools we have at our disposal there are some more complex tests we cannot perform, such as checking if a numerical value is positive, negative or zero.
+
+ ```
+       ⎧ x   if x > 0
+ |x| = ⎨ 0   if x = 0
+       ⎩ −x  if x < 0
+```
+
+This construct is called case analysis, and in most programming languages — Swift included, there is a specific syntax for notating case analysis.
+*/
+
+let value = 0
+
+switch true {
+    case value > 0: value
+    case value < 0: -value
+    default: value
+}
+
+/*:
+Within a case analysis we start by initialising the `switch` case and passing an expression whose value is interpreted, in the above example the switch case is evaluating the result of the stored variable `value`.
+
+Each `case` marks a possible result, in the example above we are checking to see if the numerical value stored in `value` is positive, negative or zero. It will step through each case and if the result is true it will end the switch case and return the value within the case section.
+
+In most programming languages, the order of switch case statements does not affect performance because the compiler often optimises them internally, using techniques like jump tables or binary search trees.
+
+An operation whose result is always either `true` or `false` is called a `predicate` also known as a boolean. The term "predicate" is borrowed from logic, where it refers to a statement that expresses a property or relation about one or more variables, e.g. _"x is an even number"_.
+
+There is another, slightly simpler way, to write predicates which is
+*/
+
+if value < 0 {
+    -value
+} else {
+    value
+}
+
+/*:
+
+The above will check if the result of value is below zero and if it is append a negative sign, else it will return the value as is.
+
+- Note: Swift has a feature called implicit returns, which allows the omission of the `return` keyword if that's the only statement in a block as you can see above it just says `value` instead of `return value`
+
+The above example could be expressed in English as _"If `x` is less than zero return `-x`; otherwise return `x`."_. Else is a special symbol that can be used in place of the final predicate clause.
+
+
+The final way to write predicate expressions, this version requires there be only two possible outcomes, is known as a _ternary_ statement and looks as follows
+*/
+
+value < 0 ? -value : value
+
+/*:
+As you can see this is a very concise way of writing predicate statements and is useful for inline contexts, be careful as excessive nesting of ternary statements can become quite hard to read.
+
+In addition to primitive predicates such as `<`, `==`, and `>`, there are logical composition operations, these allow us to construct compound predicates The three most frequently used are `&&`, `||`, and `!` which can be read as `and`, `or` and `not`.
+
+- `and - &&`: The interpreter evaluates the expressions one at a time, left to right order and if any of the expressions are evaluated to false then the rest are not evaluated and the predicate is considered false.
+- `or - ||`: The interpreter evaluates the expressions in left to right order and if any of the expressions are true, the entire predicate is considered true.
+- `not - !`: The value of a not expression is considered true when the value of the attached predicate evaluates to false.
+*/
+
+/// Let's create some values and loop through them
+let values = [0, 4, 8, -1, 3, -16, 9]
+for value in values {
+    /// And - &&
+    /// This statement checks if a number is positive and even
+    if value > 0 && value % 2 == 0 { "value is positive and even" }  // 4, 8
+
+    /// Or - ||
+    /// This statement checks if either the number is above zero or even
+    if value > 0 || value % 2 == 0 { "value is either positive or even" }  // 4, 8, -16
+
+    /// Not - !
+    /// This statement checks if the value is below zero
+    if !(value > 0) { "value is under zero" }
+}
+
+/// **Exercise 1.1*
+/// Write the evaluations of the below expressions
+
+// Direct expressions
+print(10)  // 10
+print(5 + 3 + 4)  // 12
+print(9 - 1)  // 8
+print(6 / 2)  // 3
+print((2 * 4) + (4 - 6))  // 6 - is adding a negative number
+
+// Variable definitions
+let a = 3
+let b = a + 1
+
+// More complex expressions
+print(a + b * (a * b))  // 16
+print(a == b)  // false
+
+// Conditional expression (if-then-else)
+let result1 = (b > a && b < (a * b)) ? b : a
+print(result1)  // 3
+
+// Conditional expression (cond equivalent using switch or if-else)
+let result2: Int
+switch true {
+    case a == 4:
+        result2 = 6
+    case b == 4:
+        result2 = 6 + 7 + a
+    default:
+        result2 = 25
+}
+print(result2)  // 16
+
+// Another conditional expression
+print(2 + (b > a ? b : a))  // 6
+
+/*:
+**Exercise 1.2*
+
+Translate the following expression to Swift
+![Exercise 1.2](../Resources/exc-12.svg)
+*/
+
+let exprOne = 5 + 4 + (2 - (3 - (6 + 4 / 5)))
+let exprTwo = 3 * (6 - 2) * (2 - 7)
+let exprResult = exprOne / exprTwo
+
+/*:
+**Exercise 1.2**
+Define a procedure that takes three numbers as arguments and returns the sum of the squares of the two largest numbers
+
+*/
+
+func sumOfLargestSquaresOriginal(x: Int, y: Int, z: Int) -> Int {
+    if x > y && y > z {
+        (x * x) + (y * y)
+    }
+    if x > y && y < z {
+        (x * x) + (z * z)
+    }
+    return (y * y) + (z * z)
+}
+
+sumOfLargestSquaresOriginal(x: 8, y: 4, z: 6)
+
+func sumOfLargestSquares(x: Int, y: Int, z: Int) -> Int {
+    if x <= y && x <= z {
+        return (y * y) + (z * z)  // x is smallest
+    } else if y <= x && y <= z {
+        return (x * x) + (z * z)  // y is smallest
+    } else {
+        return (x * x) + (y * y)  // z is smallest
+    }
+}
+
+sumOfLargestSquares(x: 4, y: 8, z: 4)
+
+func sumOfLargestSquaresStreamlined(x: Int, y: Int, z: Int) -> Int {
+    if x > y && y > z {
+        (x * x) + (y * y)
+    }
+    if x > y && y < z {
+        (x * x) + (z * z)
+    }
+    return (y * y) + (z * z)
+}
+
+sumOfLargestSquaresStreamlined(x: 4, y: 8, z: 6)
+
+/// **Exercise 1.4**
+/// Observe that our model of evaluation allows for combinations whose operators are compound expressions. Use this observation to describe the behavior of the following procedure:
+func aPlusAbsB(_ a: Int, _ b: Int) -> Int {
+    let operation: (Int, Int) -> Int = b > 0 ? (+) : (-)
+    return operation(a, b)
+}
 
 //: [Next](@next)

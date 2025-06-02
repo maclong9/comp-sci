@@ -1,5 +1,5 @@
 {
-  "originHash" : "426d09005a9b2142a58b42a1c3f00c63885ec985e8fbcb8951fabed44786c38b",
+  "originHash" : "6c04640c83a19459b85a632a8f622ce6b05e874cdd4c3035275bfed4fd4fb186",
   "pins" : [
     {
       "identity" : "portfolio",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/maclong9/portfolio.git",
       "state" : {
         "branch" : "main",
-        "revision" : "242617b3f165c85c35a3fc3253c1d705f0c9078f"
+        "revision" : "866200164fa0eb85cf2dc8fd5d53878f02c1e723"
       }
     },
     {
@@ -29,12 +29,21 @@
       }
     },
     {
+      "identity" : "swiftmath",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mgriebling/SwiftMath",
+      "state" : {
+        "revision" : "606f9be66db6afe0c41c3b064723a57061723db7",
+        "version" : "1.7.1"
+      }
+    },
+    {
       "identity" : "web-ui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/maclong9/web-ui.git",
       "state" : {
-        "revision" : "6ce0087ed7187eacdf62245ca70be29bf4a85905",
-        "version" : "1.0.3"
+        "revision" : "17e5e8f53d8e115497981225d1a60f4e5f21e071",
+        "version" : "1.1.5"
       }
     }
   ],

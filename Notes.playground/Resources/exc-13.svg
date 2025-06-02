@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120">
+  <defs>
+    <style>
+      .math-text { font-family: 'Times New Roman', serif; font-size: 20px; }
+      .large-text { font-size: 24px; }
+      .fraction-line { stroke: black; stroke-width: 1.5; }
+    </style>
+  </defs>
+  
+  <!-- Fraction line -->
+  <line x1="50" y1="60" x2="350" y2="60" class="fraction-line"/>
+  
+  <!-- Numerator: 5 + 4 + (2 - (3 - (6 + 4/5))) -->
+  <g class="math-text">
+    <!-- 5 + 4 + -->
+    <text x="60" y="45" class="large-text">5 + 4 + </text>
+    
+    <!-- Opening parenthesis -->
+    <text x="140" y="45" class="large-text">(</text>
+    
+    <!-- 2 - -->
+    <text x="155" y="45" class="large-text">2 − </text>
+    
+    <!-- Opening parenthesis -->
+    <text x="185" y="45" class="large-text">(</text>
+    
+    <!-- 3 - -->
+    <text x="200" y="45" class="large-text">3 − </text>
+    
+    <!-- Opening parenthesis -->
+    <text x="230" y="45" class="large-text">(</text>
+    
+    <!-- 6 + -->
+    <text x="245" y="45" class="large-text">6 + </text>
+    
+    <!-- Fraction 4/5 -->
+    <text x="280" y="35" font-size="16">4</text>
+    <line x1="275" y1="40" x2="290" y2="40" stroke="black" stroke-width="1"/>
+    <text x="280" y="55" font-size="16">5</text>
+    
+    <!-- Closing parentheses -->
+    <text x="295" y="45" class="large-text">)</text>
+    <text x="310" y="45" class="large-text">)</text>
+    <text x="325" y="45" class="large-text">)</text>
+  </g>
+  
+  <!-- Denominator: 3(6 - 2)(2 - 7) -->
+  <g class="math-text">
+    <!-- 3 -->
+    <text x="60" y="85" class="large-text">3</text>
+    
+    <!-- (6 - 2) -->
+    <text x="80" y="85" class="large-text">(6 − 2)</text>
+    
+    <!-- (2 - 7) -->
+    <text x="170" y="85" class="large-text">(2 − 7)</text>
+  </g>
+</svg>
