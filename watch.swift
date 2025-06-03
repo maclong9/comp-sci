@@ -236,13 +236,21 @@ func runSwiftBuild() {
     do {
         try process.run()
         process.waitUntilExit()
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: .utf8) ?? ""
+        
         if process.terminationStatus == 0 {
             printColored("✅ Page reload complete", color: .green, bold: true)
         } else {
             printColored("❌ Build failed", color: .red, bold: true)
+            if !output.isEmpty {
+                printColored("Build errors:", color: .red)
+                print(output)
+            }
         }
     } catch {
-        printColored("❌ Build failed", color: .red, bold: true)
+        printColored("❌ Build failed: \(error)", color: .red, bold: true)
     }
 }
 
