@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+    <loc>https://notes.maclong.uk/comp-sci/bonus-recap-lessons.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/languages-and-compilers.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/math-for-cs.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/algorithms-and-data-structures.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/index.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/distributed-systems.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/databases.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/operating-systems.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/computer-networking.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/computer-architecture.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://notes.maclong.uk/comp-sci/programming.html</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+</urlset>

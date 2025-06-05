@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://notes.maclong.uk/comp-sci/sitemap.xml
