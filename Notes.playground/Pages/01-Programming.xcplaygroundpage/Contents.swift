@@ -63,11 +63,6 @@
  When you type an expression, Swift evaluates and prints the result:
  */
 
-import PlaygroundSupport
-import SwiftMath
-import SwiftUI
-import UIKit
-
 print(486)
 
 /*:
@@ -249,7 +244,7 @@ This construct is called case analysis, and in most programming languages — Sw
 
 let value = 0
 
-switch true {
+_ = switch true {
     case value > 0: value
     case value < 0: -value
     default: value
@@ -267,7 +262,7 @@ An operation whose result is always either `true` or `false` is called a `predic
 There is another, slightly simpler way, to write predicates which is
 */
 
-if value < 0 {
+_ = if value < 0 {
     -value
 } else {
     value
@@ -285,7 +280,7 @@ The above example could be expressed in English as _"If `x` is less than zero re
 The final way to write predicate expressions, this version requires there be only two possible outcomes, is known as a _ternary_ statement and looks as follows
 */
 
-value < 0 ? -value : value
+_ = value < 0 ? -value : value
 
 /*:
 As you can see this is a very concise way of writing predicate statements and is useful for inline contexts, be careful as excessive nesting of ternary statements can become quite hard to read.
@@ -299,19 +294,27 @@ In addition to primitive predicates such as `<`, `==`, and `>`, there are logica
 
 /// Let's create some values and loop through them
 let values = [0, 4, 8, -1, 3, -16, 9]
+
 for value in values {
-    /// And - &&
-    /// This statement checks if a number is positive and even
-    if value > 0 && value % 2 == 0 { "value is positive and even" }  // 4, 8
+    // And - &&
+    // This statement checks if a number is positive and even
+    if value > 0 && value % 2 == 0 {
+        print("\(value): value is positive and even") // 4, 8
+    }
 
-    /// Or - ||
-    /// This statement checks if either the number is above zero or even
-    if value > 0 || value % 2 == 0 { "value is either positive or even" }  // 4, 8, -16
+    // Or - ||
+    // This statement checks if either the number is above zero or even
+    if value > 0 || value % 2 == 0 {
+        print("\(value): value is either positive or even") // 0, 4, 8, 3, -16, 9
+    }
 
-    /// Not - !
-    /// This statement checks if the value is below zero
-    if !(value > 0) { "value is under zero" }
+    // Not - !
+    // This statement checks if the value is below zero
+    if !(value > 0) {
+        print("\(value): value is under zero") // 0, -1, -16
+    }
 }
+
 
 /// **Exercise 1.1*
 /// Write the evaluations of the below expressions
@@ -369,15 +372,15 @@ Define a procedure that takes three numbers as arguments and returns the sum of 
 
 func sumOfLargestSquaresOriginal(x: Int, y: Int, z: Int) -> Int {
     if x > y && y > z {
-        (x * x) + (y * y)
+       return (x * x) + (y * y)
     }
     if x > y && y < z {
-        (x * x) + (z * z)
+ return       (x * x) + (z * z)
     }
     return (y * y) + (z * z)
 }
 
-sumOfLargestSquaresOriginal(x: 8, y: 4, z: 6)
+_ = sumOfLargestSquaresOriginal(x: 8, y: 4, z: 6)
 
 func sumOfLargestSquares(x: Int, y: Int, z: Int) -> Int {
     if x <= y && x <= z {
@@ -389,26 +392,28 @@ func sumOfLargestSquares(x: Int, y: Int, z: Int) -> Int {
     }
 }
 
-sumOfLargestSquares(x: 4, y: 8, z: 4)
+_ = sumOfLargestSquares(x: 4, y: 8, z: 4)
 
 func sumOfLargestSquaresStreamlined(x: Int, y: Int, z: Int) -> Int {
     if x > y && y > z {
-        (x * x) + (y * y)
+        return (x * x) + (y * y)
     }
     if x > y && y < z {
-        (x * x) + (z * z)
+        return (x * x) + (z * z)
     }
     return (y * y) + (z * z)
 }
 
-sumOfLargestSquaresStreamlined(x: 4, y: 8, z: 6)
+_ = sumOfLargestSquaresStreamlined(x: 4, y: 8, z: 6)
 
 /// **Exercise 1.4**
 /// Observe that our model of evaluation allows for combinations whose operators are compound expressions. Use this observation to describe the behavior of the following procedure:
 func aPlusAbsB(_ a: Int, _ b: Int) -> Int {
-    let operation: (Int, Int) -> Int = b > 0 ? (+) : (-)
+            let operation: (Int, Int) -> Int = b > 0 ? (+) : (-)
     return operation(a, b)
 }
 
+/// **Exercise 1.5**
+/// 
 
 //: [Next](@next)
