@@ -231,7 +231,7 @@ We'll explore some of its deeper consequences in Chapter 3 and Chapter 4.16.
 
  #### 1.1.6 Conditional Expressions and Predicates
 
-With the current tools we have at our disposal there are some more complex tests we cannot perform, such as checking if a numerical value is positive, negative or zero.
+With the current tools we have at our disposal there are some more complex tests we cannot perform, such as checking if a numerical value is positive, negative, or zero.
 
  ```
        ⎧ x   if x > 0
@@ -253,7 +253,7 @@ _ = switch true {
 /*:
 Within a case analysis we start by initialising the `switch` case and passing an expression whose value is interpreted, in the above example the switch case is evaluating the result of the stored variable `value`.
 
-Each `case` marks a possible result, in the example above we are checking to see if the numerical value stored in `value` is positive, negative or zero. It will step through each case and if the result is true it will end the switch case and return the value within the case section.
+Each `case` marks a possible result, in the example above we are checking to see if the numerical value stored in `value` is positive, negative, or zero. It will step through each case and if the result is true it will end the switch case and return the value within the case section.
 
 In most programming languages, the order of switch case statements does not affect performance because the compiler often optimises them internally, using techniques like jump tables or binary search trees.
 
@@ -338,7 +338,7 @@ print(a == b)  // false
 let result1 = (b > a && b < (a * b)) ? b : a
 print(result1)  // 3
 
-// Conditional expression (cond equivalent using switch or if-else)
+// Conditional expression
 let result2: Int
 switch true {
     case a == 4:
@@ -415,7 +415,7 @@ func aPlusAbsB(_ a: Int, _ b: Int) -> Int {
 
 /*:
 **Exercise 1.5**
-## Evaluation: Applicateive Order vs Normal Order 
+## Evaluation: Applicative Order vs Normal Order 
 
 **The Core Problem**
 Ben defines two functions:
@@ -426,14 +426,14 @@ The test expression is `test(x: 0, y: p())`
 
 ### Applicative Order Evaluation (Eager Evaluation)
 
-Swift uses applicative-order evalutaion, this means _"evaluate arguments first, then apply the function."_
+Swift uses applicative order evaluation, this means _"evaluate arguments first, then apply the function."_
 
 When Swift encounters `test(x: 0, y: p())`:
 
 1. **Evaluate arguments first:**
   - `x: 0` ✓ (evaluates to 0)
   - `y: p()` ✖️ (begins infinite recursion) 
-2. **Result**: Stack overflow! The program crashes before `test` ever gets called.
+2. **Result**: Stack Overflow! The program crashes before `test` ever gets called.
 
 **Implementation**
 */ 
@@ -446,7 +446,7 @@ func test(x: Int, y: Int) -> Int {
     x == 0 ? 0 : y
 }
 
-// This will crash with stack overflow:
+// This will crash with Stack Overflow:
 // let result = test(x: 0, y: p())
 
 /*:
@@ -456,7 +456,7 @@ Normal Order evaluation means _"substitute arguments into the function body with
 
 The evaluation would proceed as:
 
-1. **Substitue arguments into function body:**
+1. **Substitute arguments into function body:**
     - Replace `x` with `0` and `y` with `p()` in the function body.
     - This gives us `if 0 == 0 { return 0 } else { return p() }`
 2. **Evaluate this condition:**
@@ -466,7 +466,7 @@ The evaluation would proceed as:
     - **Never evaluate `p()` because it's in the false branch
 4. **Result:** `0` returns successfully.
 
-### Simlating Normal Order in Swift
+### Simulating Normal Order in Swift
 
 We can simulate lazy evaluation in Swift using closures:
 */
