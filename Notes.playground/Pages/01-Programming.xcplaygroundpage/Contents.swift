@@ -413,7 +413,89 @@ func aPlusAbsB(_ a: Int, _ b: Int) -> Int {
     return operation(a, b)
 }
 
-/// **Exercise 1.5**
-/// 
+/*:
+**Exercise 1.5**
+## Evaluation: Applicateive Order vs Normal Order 
+
+**The Core Problem**
+Ben defines two functions:
+ - `p()` - an infinitely recursive function
+ - `test(x:y:)` - returns 0 if x equals 0, otherwise returns y
+
+The test expression is `test(x: 0, y: p())`
+
+### Applicative Order Evaluation (Eager Evaluation)
+
+Swift uses applicative-order evalutaion, this means _"evaluate arguments first, then apply the function."_
+
+When Swift encounters `test(x: 0, y: p())`:
+
+1. **Evaluate arguments first:**
+  - `x: 0` ✓ (evaluates to 0)
+  - `y: p()` ✖️ (begins infinite recursion) 
+2. **Result**: Stack overflow! The program crashes before `test` ever gets called.
+
+**Implementation**
+*/ 
+
+func p() -> Never {
+    return p()  // Infinite recursion
+}
+
+func test(x: Int, y: Int) -> Int {
+    x == 0 ? 0 : y
+}
+
+// This will crash with stack overflow:
+// let result = test(x: 0, y: p())
+
+/*:
+### Normal Order Evaluation (Lazy Evaluation)
+
+Normal Order evaluation means _"substitute arguments into the function body without evaluating them first, then evaluate only when needed."_
+
+The evaluation would proceed as:
+
+1. **Substitue arguments into function body:**
+    - Replace `x` with `0` and `y` with `p()` in the function body.
+    - This gives us `if 0 == 0 { return 0 } else { return p() }`
+2. **Evaluate this condition:**
+    - `0 == 0` is `true`
+3. **Take the true branch:**
+    - Return `0` immediately
+    - **Never evaluate `p()` because it's in the false branch
+4. **Result:** `0` returns successfully.
+
+### Simlating Normal Order in Swift
+
+We can simulate lazy evaluation in Swift using closures:
+*/
+
+func testLazy(x: Int, y: @autoclosure () -> Int) -> Int {
+    x == 0 ? 0 : y() // Only evaluates y if needed
+}
+
+// This works fine - returns 0 without calling `p()`
+_ = testLazy(x: 0, y: p()) // Diagnostic because `p` isn't type Int, this is okay for demonstration purposes
+
+/*:
+**Applicative-Order (Swift's Approach)**
+
+Pros: Predictable performance, arguments evaluated once
+Cons: May do unnecessary work, can't handle infinite structures
+Behavior: Crashes on test(x: 0, y: p()) due to eager evaluation of p()
+
+**Normal-Order (Lazy Approach)**
+
+Pros: Only computes what's needed, can handle infinite structures
+Cons: May re-evaluate expressions multiple times, harder to predict performance
+Behavior: Returns 0 for test(x: 0, y: p()) because p() is never evaluated
+*/
+
+/*:
+## Example: Square Roots by Newton's Method
+
+
+*/
 
 //: [Next](@next)
