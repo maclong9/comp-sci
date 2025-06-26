@@ -1,0 +1,7 @@
+import Foundation
+
+func calculateCircumference(radius: Int) -> Double {
+    let pi = 3.14159
+    let circumference = 2.0 * pi * Double(radius)
+    return circumference
+}

@@ -1,0 +1,7 @@
+func sum<T: Numeric & Comparable>(_ term: (T) -> T, _ a: T, _ next: (T) -> T, _ b: T) -> T {
+    if a > b {
+        return T.zero
+    } else {
+        return term(a) + sum(term, next(a), next, b)
+    }
+}

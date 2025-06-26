@@ -155,8 +155,12 @@ func processPlaygroundPagesToArticles(
         if baseName == "00-Introduction" {
             toc += "<li><a href=\"/\">\(strippedName)</a></li>\n"
         } else {
-            let slugifiedName = strippedName.lowercased().replacingOccurrences(of: " ", with: "-")
-            toc += "<li><a href=\"/\(slugifiedName)\">\(strippedName)</a></li>\n"
+            let slugifiedName = strippedName.lowercased().replacingOccurrences(
+                of: " ",
+                with: "-"
+            )
+            toc +=
+                "<li><a href=\"/\(slugifiedName)\">\(strippedName)</a></li>\n"
         }
     }
     toc += "\n</ol></details>\n\n---\n"
@@ -176,7 +180,10 @@ func processPlaygroundPagesToArticles(
         if baseName == "00-Introduction" {
             outputFile = outputDir.appendingPathComponent("index.md")
         } else {
-            let slugifiedName = strippedName.lowercased().replacingOccurrences(of: " ", with: "-")
+            let slugifiedName = strippedName.lowercased().replacingOccurrences(
+                of: " ",
+                with: "-"
+            )
             outputFile = outputDir.appendingPathComponent("\(slugifiedName).md")
         }
         var fileContent = toc
