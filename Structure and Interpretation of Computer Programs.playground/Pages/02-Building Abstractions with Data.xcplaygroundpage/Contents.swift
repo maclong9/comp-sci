@@ -37,7 +37,17 @@ struct RationalNumber {
     }
 }
 
-// Helper function for GCD (from Chapter 1)
+/// Computes the greatest common divisor of two integers using Euclid's algorithm.
+///
+/// This implementation uses the recursive form of Euclid's algorithm:
+/// gcd(a, b) = gcd(b, a mod b) when b ≠ 0, and gcd(a, 0) = a.
+///
+/// - Parameters:
+///   - a: The first integer.
+///   - b: The second integer.
+/// - Returns: The greatest common divisor of `a` and `b`.
+///
+/// - Complexity: O(log min(a, b)) time and space.
 func gcd(_ a: Int, _ b: Int) -> Int {
     if b == 0 {
         return a
@@ -118,15 +128,38 @@ print("1/2 + 1/3 = \(sum)")
 // Alternative implementation using tuples (demonstrates abstraction)
 typealias RationalTuple = (Int, Int)
 
+/// Creates a rational number represented as a tuple with reduced form.
+///
+/// This constructor automatically reduces the rational number to its simplest form
+/// by dividing both numerator and denominator by their greatest common divisor.
+///
+/// - Parameters:
+///   - n: The numerator of the rational number.
+///   - d: The denominator of the rational number.
+/// - Returns: A tuple representing the rational number in reduced form.
 func makeRat(_ n: Int, _ d: Int) -> RationalTuple {
     let g = gcd(abs(n), abs(d))
     return (n / g, d / g)
 }
 
+/// Extracts the numerator from a rational number tuple.
+///
+/// This is a selector function that provides access to the numerator component
+/// of a rational number without exposing the underlying representation.
+///
+/// - Parameter r: The rational number tuple.
+/// - Returns: The numerator of the rational number.
 func numer(_ r: RationalTuple) -> Int {
     return r.0
 }
 
+/// Extracts the denominator from a rational number tuple.
+///
+/// This is a selector function that provides access to the denominator component
+/// of a rational number without exposing the underlying representation.
+///
+/// - Parameter r: The rational number tuple.
+/// - Returns: The denominator of the rational number.
 func denom(_ r: RationalTuple) -> Int {
     return r.1
 }
@@ -329,7 +362,15 @@ extension Array {
     }
 }
 
-// Example: Sum of odd squares
+/// Computes the sum of squares of odd numbers in a sequence.
+///
+/// This function demonstrates the power of sequence operations by chaining
+/// filter, map, and reduce operations to solve a complex problem elegantly.
+///
+/// - Parameter sequence: An array of integers to process.
+/// - Returns: The sum of squares of all odd numbers in the sequence.
+///
+/// - Example: `sumOddSquares([1, 2, 3, 4, 5])` returns `1² + 3² + 5² = 35`
 func sumOddSquares(_ sequence: [Int]) -> Int {
     return sequence
         .filterSICP { $0 % 2 == 1 }  // Filter odd numbers
@@ -340,7 +381,15 @@ func sumOddSquares(_ sequence: [Int]) -> Int {
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print("Sum of odd squares: \(sumOddSquares(numbers))")
 
-// Example: Even Fibonacci numbers less than N
+/// Generates all even Fibonacci numbers less than a given limit.
+///
+/// This function combines Fibonacci sequence generation with filtering
+/// to extract only the even values below the specified threshold.
+///
+/// - Parameter n: The upper limit (exclusive) for Fibonacci numbers.
+/// - Returns: An array containing all even Fibonacci numbers less than `n`.
+///
+/// - Example: `evenFibs(100)` returns `[0, 2, 8, 34]`
 func evenFibs(_ n: Int) -> [Int] {
     func fibSequence(_ max: Int) -> [Int] {
         var fibs = [0, 1]
@@ -364,7 +413,12 @@ print("Even Fibonacci numbers less than 100: \(evenFibs(100))")
  We can think of sequence processing as signal flow through a series of transformations:
  */
 
-// Nested mappings example
+/// Demonstrates nested mappings to find pairs where sum is prime.
+///
+/// This function generates all pairs (i, j) where 1 ≤ j < i ≤ 5
+/// and i + j is prime, illustrating the power of nested sequence operations.
+///
+/// - Returns: An array of pairs [i, j] where i + j is prime.
 func nestedMappings() -> [[Int]] {
     let n = 5
     return (1...n).flatMap { i in
@@ -377,6 +431,15 @@ func nestedMappings() -> [[Int]] {
     }
 }
 
+/// Determines whether a given integer is prime.
+///
+/// Uses trial division up to the square root of n for efficiency.
+/// Handles edge cases for numbers less than 2 and even numbers.
+///
+/// - Parameter n: The integer to test for primality.
+/// - Returns: `true` if `n` is prime, `false` otherwise.
+///
+/// - Complexity: O(√n) time.
 func isPrime(_ n: Int) -> Bool {
     if n < 2 { return false }
     if n == 2 { return true }
@@ -415,6 +478,15 @@ struct FrameTransform {
 }
 
 // Painter combinators
+/// Combines two painters side by side horizontally.
+///
+/// Creates a new painter that draws the first painter in the left half
+/// of the frame and the second painter in the right half.
+///
+/// - Parameters:
+///   - painter1: The painter to draw on the left side.
+///   - painter2: The painter to draw on the right side.
+/// - Returns: A new painter that combines both input painters horizontally.
 func beside(_ painter1: Painter, _ painter2: Painter) -> Painter {
     return CompositePainter { frame in
         let leftFrame = CGRect(x: frame.minX, y: frame.minY, 
@@ -426,6 +498,15 @@ func beside(_ painter1: Painter, _ painter2: Painter) -> Painter {
     }
 }
 
+/// Combines two painters vertically, one above the other.
+///
+/// Creates a new painter that draws the first painter in the top half
+/// of the frame and the second painter in the bottom half.
+///
+/// - Parameters:
+///   - painter1: The painter to draw on the top.
+///   - painter2: The painter to draw on the bottom.
+/// - Returns: A new painter that combines both input painters vertically.
 func above(_ painter1: Painter, _ painter2: Painter) -> Painter {
     return CompositePainter { frame in
         let topFrame = CGRect(x: frame.minX, y: frame.midY, 
@@ -756,10 +837,28 @@ extension RationalNumber: ArithmeticType {
 }
 
 // Generic operations that work with any arithmetic type
+/// Computes the square of a value using generic arithmetic operations.
+///
+/// This function works with any type that conforms to ArithmeticType,
+/// demonstrating the power of generic programming.
+///
+/// - Parameter x: The value to be squared.
+/// - Returns: The result of multiplying `x` by itself.
 func square<T: ArithmeticType>(_ x: T) -> T {
     return x * x
 }
 
+/// Computes base raised to the power of exp using fast exponentiation.
+///
+/// Uses the square-and-multiply algorithm for efficient computation,
+/// working with any arithmetic type.
+///
+/// - Parameters:
+///   - base: The base value.
+///   - exp: The exponent (must be non-negative).
+/// - Returns: The result of base^exp.
+///
+/// - Complexity: O(log exp) time.
 func power<T: ArithmeticType>(_ base: T, _ exp: Int) -> T {
     if exp == 0 {
         return T.one

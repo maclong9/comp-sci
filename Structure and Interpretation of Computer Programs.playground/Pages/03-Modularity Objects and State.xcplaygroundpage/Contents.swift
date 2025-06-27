@@ -15,7 +15,15 @@
 
 import Foundation
 
-// Functional approach (stateless)
+/// Performs a withdrawal operation using a functional (stateless) approach.
+///
+/// This function demonstrates stateless computation where the current balance
+/// is passed as a parameter and a new balance is returned.
+///
+/// - Parameters:
+///   - amount: The amount to withdraw.
+///   - balance: The current account balance.
+/// - Returns: A tuple containing the withdrawn amount (or nil if insufficient funds) and the new balance.
 func withdraw(amount: Double, from balance: Double) -> (Double?, Double) {
     if balance >= amount {
         return (amount, balance - amount)
@@ -100,6 +108,15 @@ for _ in 0..<5 {
  */
 
 // Demonstrating loss of referential transparency
+/// Creates a withdrawal function with encapsulated state.
+///
+/// This function demonstrates closure-based state management, where the balance
+/// is captured in the closure's environment and modified by the returned function.
+///
+/// - Parameter initialBalance: The starting balance for the account.
+/// - Returns: A function that performs withdrawals and maintains internal state.
+///
+/// - Note: This illustrates loss of referential transparency - the same call can produce different results.
 func makeWithdrawal(initialBalance: Double) -> (Double) -> String {
     var balance = initialBalance
     
@@ -163,6 +180,13 @@ print("Counter3: \(counter3.getValue())")  // 2 (same as counter1)
  */
 
 // Demonstrating scope and environment with closures
+/// Creates a generator function that produces bank accounts with sequential account numbers.
+///
+/// This function demonstrates how closures can maintain state across multiple invocations,
+/// creating a factory pattern for generating related objects.
+///
+/// - Parameter initialBalance: The initial balance for all generated accounts.
+/// - Returns: A function that creates new BankAccount instances with unique account numbers.
 func makeAccountGenerator(initialBalance: Double) -> () -> BankAccount {
     var accountNumber = 1000
     
@@ -182,6 +206,14 @@ let account2 = accountGenerator()
  When applying a procedure created by a lambda expression, we create a new environment frame.
  */
 
+/// Creates a monitoring function that tracks and responds to calls.
+///
+/// This function demonstrates stateful computation by maintaining a log of all calls
+/// and providing introspection capabilities through special message handling.
+///
+/// - Returns: A function that records messages and can report on call history.
+///
+/// - Note: Supports special commands like "how-many-calls?" and "reset".
 func makeMonitor() -> (String) -> String {
     var calls: [String] = []
     
@@ -210,6 +242,13 @@ print(monitor("how-many-calls?"))
  The environment model shows how local state is maintained in procedure frames.
  */
 
+/// Creates an accumulator function that maintains a running sum.
+///
+/// This function demonstrates how closures can encapsulate mutable state,
+/// creating a stateful computational object that accumulates values over time.
+///
+/// - Parameter initialValue: The starting value for the accumulator.
+/// - Returns: A function that adds values to the running total and returns the new sum.
 func makeAccumulator(initialValue: Double) -> (Double) -> Double {
     var sum = initialValue
     
@@ -552,7 +591,12 @@ class SharedCounter {
     }
 }
 
-// Safe concurrent operations using DispatchQueue
+/// Demonstrates safe concurrent operations using shared counter.
+///
+/// This function shows how to perform concurrent operations safely using
+/// locks and synchronization primitives to avoid race conditions.
+///
+/// - Note: Uses DispatchQueue for concurrent execution and SharedCounter for thread-safe operations.
 func safeConcurrentExample() {
     let counter = SharedCounter()
     let queue = DispatchQueue.global(qos: .userInitiated)
@@ -656,7 +700,13 @@ struct Stream<Element> {
     }
 }
 
-// Infinite stream of integers
+/// Creates an infinite stream of consecutive integers starting from a given value.
+///
+/// This function demonstrates lazy evaluation by creating an infinite sequence
+/// that generates integers on demand without pre-computing the entire sequence.
+///
+/// - Parameter n: The starting integer value.
+/// - Returns: A lazy stream of integers beginning with `n`.
 func integers(startingFrom n: Int) -> Stream<Int> {
     return Stream(
         head: { n },
@@ -664,7 +714,12 @@ func integers(startingFrom n: Int) -> Stream<Int> {
     )
 }
 
-// Stream of Fibonacci numbers
+/// Creates an infinite stream of Fibonacci numbers.
+///
+/// This function demonstrates how streams can elegantly represent infinite
+/// mathematical sequences using lazy evaluation and recursive definitions.
+///
+/// - Returns: A lazy stream of Fibonacci numbers starting with 0, 1, 1, 2, 3, 5, ...
 func fibonacciStream() -> Stream<Int> {
     func fibHelper(a: Int, b: Int) -> Stream<Int> {
         return Stream(
@@ -688,7 +743,15 @@ print("First 10 Fibonacci numbers: \(fibStream.take(10))")
  Streams allow us to work with infinite sequences naturally:
  */
 
-// Sieve of Eratosthenes using streams
+/// Implements the Sieve of Eratosthenes algorithm using infinite streams.
+///
+/// This function demonstrates the power of stream processing by implementing
+/// a classic algorithm for finding prime numbers using lazy evaluation.
+///
+/// - Parameter stream: An input stream of integers to be sieved.
+/// - Returns: A stream containing only the prime numbers from the input.
+///
+/// - Note: Uses recursive filtering to eliminate multiples of each prime.
 func sieve(_ stream: Stream<Int>) -> Stream<Int> {
     let first = stream.first
     return Stream(
@@ -700,6 +763,15 @@ func sieve(_ stream: Stream<Int>) -> Stream<Int> {
     )
 }
 
+/// Filters a stream to include only elements that satisfy a given predicate.
+///
+/// This function demonstrates stream processing by creating a new stream
+/// that lazily evaluates the predicate on each element.
+///
+/// - Parameters:
+///   - stream: The input stream to filter.
+///   - predicate: A function that tests each element for inclusion.
+/// - Returns: A new stream containing only elements that satisfy the predicate, or nil if no elements match.
 func filterStream<T>(_ stream: Stream<T>, _ predicate: @escaping (T) -> Bool) -> Stream<T>? {
     var current: Stream<T>? = stream
     
@@ -728,7 +800,13 @@ print("First 10 primes: \(primes.take(10))")
  Streams enable elegant solutions to complex problems:
  */
 
-// Stream of random numbers
+/// Creates an infinite stream of pseudo-random numbers.
+///
+/// This function demonstrates stateful stream generation using a linear
+/// congruential generator to produce a deterministic sequence of random values.
+///
+/// - Parameter seed: The initial seed value for the random number generator.
+/// - Returns: A lazy stream of pseudo-random Double values between 0 and 1.
 func randomStream(seed: UInt64) -> Stream<Double> {
     var currentSeed = seed
     return Stream(
@@ -740,7 +818,15 @@ func randomStream(seed: UInt64) -> Stream<Double> {
     )
 }
 
-// Monte Carlo estimation using streams
+/// Creates a stream of Monte Carlo probability estimates.
+///
+/// This function demonstrates how streams can be used for statistical computation
+/// by repeatedly running an experiment and tracking the success rate over time.
+///
+/// - Parameter experiment: A function that performs a random experiment returning true/false.
+/// - Returns: A stream of probability estimates converging to the true probability.
+///
+/// - Note: Each element represents the cumulative success rate up to that trial.
 func monteCarlo(_ experiment: @escaping () -> Bool) -> Stream<Double> {
     func helper(passed: Int, trials: Int) -> Stream<Double> {
         let result = experiment()

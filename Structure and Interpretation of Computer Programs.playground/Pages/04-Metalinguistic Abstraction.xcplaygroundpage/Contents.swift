@@ -51,7 +51,17 @@ class Environment {
     }
 }
 
-// Basic evaluator
+/// Evaluates an expression in a given environment using metacircular evaluation.
+///
+/// This is the core of the metacircular evaluator that handles all expression types
+/// including self-evaluating expressions, variables, special forms, and function applications.
+///
+/// - Parameters:
+///   - expression: The expression to evaluate.
+///   - environment: The environment containing variable bindings.
+/// - Returns: The result of evaluating the expression.
+///
+/// - Note: This implements the evaluation rules for a Lisp-like language.
 func evaluate(_ expression: Expression, in environment: Environment) -> Expression {
     switch expression {
     case .number, .boolean, .procedure:
@@ -115,6 +125,12 @@ func evaluate(_ expression: Expression, in environment: Environment) -> Expressi
 }
 
 // Set up global environment with primitive operations
+/// Creates and initializes the global environment with primitive operations.
+///
+/// This function sets up the base environment containing fundamental operations
+/// like arithmetic and comparison functions that form the foundation of the language.
+///
+/// - Returns: An environment populated with primitive procedures and constants.
 func setupGlobalEnvironment() -> Environment {
     let globalEnv = Environment()
     
@@ -132,7 +148,15 @@ func setupGlobalEnvironment() -> Environment {
  Our evaluator works with a tree representation of programs, showing the structure more clearly than text.
  */
 
-// Parser to convert simple s-expressions to our Expression type
+/// Parses a string representation into an Expression object.
+///
+/// This simplified parser handles basic literals like numbers, booleans, and symbols.
+/// In a complete implementation, this would handle complex s-expressions.
+///
+/// - Parameter input: The string to parse.
+/// - Returns: An Expression representing the parsed input.
+///
+/// - Note: This is a simplified parser for demonstration purposes.
 func parse(_ input: String) -> Expression {
     // Simplified parser for demonstration
     if let number = Double(input) {
@@ -188,7 +212,15 @@ struct Thunk {
     }
 }
 
-// Lazy evaluator
+/// Creates a thunk for lazy evaluation of an expression.
+///
+/// This function implements lazy evaluation by deferring computation until the value
+/// is actually needed, enabling efficient handling of infinite data structures.
+///
+/// - Parameters:
+///   - expression: The expression to evaluate lazily.
+///   - environment: The environment for variable lookup.
+/// - Returns: A thunk that can be forced to produce the expression's value.
 func lazyEvaluate(_ expression: Expression, in environment: Environment) -> Thunk {
     return Thunk(expression: expression, environment: environment)
 }
@@ -218,7 +250,15 @@ struct LazyStream<T> {
     }
 }
 
-// Infinite stream of natural numbers (lazy)
+/// Creates an infinite lazy stream of natural numbers starting from a given value.
+///
+/// This function demonstrates lazy evaluation by creating an infinite sequence
+/// that generates numbers on demand without computing the entire sequence.
+///
+/// - Parameter n: The starting natural number.
+/// - Returns: A lazy stream of consecutive natural numbers.
+///
+/// - Note: Uses lazy evaluation to handle infinite sequences efficiently.
 func naturals(from n: Int) -> LazyStream<Int> {
     return LazyStream(head: n) {
         naturals(from: n + 1)
@@ -274,7 +314,12 @@ class AmbEvaluator {
  Nondeterministic programming enables elegant solutions to constraint satisfaction problems.
  */
 
-// Logic puzzle solver using nondeterministic programming concepts
+/// Demonstrates solving a logic puzzle using nondeterministic programming.
+///
+/// This function shows how amb (ambiguous choice) and require (constraint)
+/// can be used to solve constraint satisfaction problems by automatic search.
+///
+/// - Note: Uses the AmbEvaluator to explore solution space automatically.
 func solvePuzzle() {
     let evaluator = AmbEvaluator()
     
@@ -369,7 +414,17 @@ familyDB.addRule(Rule(
  The logic programming system uses **unification** and **backtracking** to find solutions.
  */
 
-// Unification algorithm (simplified)
+/// Performs unification between a pattern and data, finding variable bindings.
+///
+/// This algorithm is fundamental to logic programming, matching patterns against
+/// data and determining consistent variable bindings.
+///
+/// - Parameters:
+///   - pattern: An array representing the pattern to match (may contain variables).
+///   - data: An array representing the concrete data to match against.
+/// - Returns: A dictionary of variable bindings if unification succeeds, nil otherwise.
+///
+/// - Note: Variables are identified by names starting with "?".
 func unify(_ pattern: [String], _ data: [String]) -> [String: String]? {
     guard pattern.count == data.count else { return nil }
     

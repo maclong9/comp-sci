@@ -108,6 +108,14 @@ class RegisterMachine {
  Let's implement a factorial machine to demonstrate register machine concepts:
  */
 
+/// Creates a register machine that computes factorial using iterative process.
+///
+/// This function demonstrates how high-level algorithms can be implemented
+/// as register machine programs with explicit state management.
+///
+/// - Returns: A configured register machine that computes 5! = 120.
+///
+/// - Note: Uses registers for n, product, and counter with iterative algorithm.
 func createFactorialMachine() -> RegisterMachine {
     let machine = RegisterMachine()
     
@@ -155,6 +163,14 @@ if let result = factorialMachine.getRegister("product") as? Int {
  Subroutines allow code reuse and modular design in register machines:
  */
 
+/// Creates a register machine that computes the greatest common divisor.
+///
+/// This function implements Euclid's algorithm as a register machine program,
+/// demonstrating how mathematical algorithms translate to low-level operations.
+///
+/// - Returns: A configured register machine that computes GCD of 48 and 18.
+///
+/// - Note: Uses the classic Euclidean algorithm with remainder operations.
 func createGCDMachine() -> RegisterMachine {
     let machine = RegisterMachine()
     
@@ -577,7 +593,12 @@ class ExplicitControlEvaluator {
  ### 5.5.1 Structure of the Compiler
  */
 
-// Simplified compiler for arithmetic expressions
+/// A simplified compiler that translates arithmetic expressions to machine instructions.
+///
+/// This class demonstrates the compilation process by converting high-level
+/// arithmetic expressions into a sequence of low-level machine operations.
+///
+/// - Note: Supports basic arithmetic operations and simple optimizations.
 class ArithmeticCompiler {
     enum Instruction {
         case loadConstant(Int)
@@ -587,6 +608,13 @@ class ArithmeticCompiler {
         case store(String)
     }
     
+    /// Compiles a string arithmetic expression into machine instructions.
+    ///
+    /// This method performs syntactic analysis and code generation,
+    /// translating high-level expressions into executable instruction sequences.
+    ///
+    /// - Parameter expression: The arithmetic expression to compile.
+    /// - Returns: An array of machine instructions representing the compiled expression.
     func compile(_ expression: String) -> [Instruction] {
         // Very simplified compiler
         if let number = Int(expression) {
@@ -613,6 +641,13 @@ class ArithmeticCompiler {
         return [.loadVariable(expression)]
     }
     
+    /// Optimizes a sequence of instructions using peephole optimization.
+    ///
+    /// This method performs simple optimizations like constant folding
+    /// to improve the efficiency of the generated code.
+    ///
+    /// - Parameter instructions: The original instruction sequence.
+    /// - Returns: An optimized instruction sequence with better performance characteristics.
     func optimize(_ instructions: [Instruction]) -> [Instruction] {
         // Simple peephole optimization
         var optimized: [Instruction] = []
