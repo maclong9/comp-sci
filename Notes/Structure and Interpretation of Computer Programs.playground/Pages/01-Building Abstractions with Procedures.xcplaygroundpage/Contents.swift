@@ -19,17 +19,17 @@
 import Foundation
 
 // Primitive expressions
-486
-137 + 349
-1000 - 111
-5 * 99
-10 / 4
-2.7 + 10
+_ = 486
+_ = 137 + 349
+_ = 1000 - 111
+_ = 5 * 99
+_ = 10 / 4
+_ = 2.7 + 10
 
 // Complex combinations (equivalent to Scheme's prefix notation)
 // Scheme: (+ (* 3 5) (- 10 6))
 // Swift:
-3 * 5 + (10 - 6)
+_ = 3 * 5 + (10 - 6)
 
 /*:
  ### 1.1.2 Naming and the Environment
@@ -62,12 +62,13 @@ let result = (3 * ((2 * 4) + (3 + 5))) + ((10 - 7) + 6)
 
  Procedure definitions are abstractions that give names to patterns of computation.
  */
+
 /// Returns the square of the given value.
 ///
 /// - Parameter x: The value to be squared.
 /// - Returns: The result of multiplying `x` by itself.
 func square(_ x: Double) -> Double {
-    return x * x
+  x * x
 }
 
 /// Returns the sum of the squares of the two given integers.
@@ -80,7 +81,7 @@ func square(_ x: Double) -> Double {
 ///   - y: The second integer value.
 /// - Returns: The sum of the squares of `x` and `y`.
 func sumOfSquares(_ x: Double, _ y: Double) -> Double {
-    return square(x) + square(y)
+  square(x) + square(y)
 }
 
 /// Returns the sum of the squares of two numbers derived from the input.
@@ -93,15 +94,15 @@ func sumOfSquares(_ x: Double, _ y: Double) -> Double {
 /// - Parameter a: An integer value used to compute `(a + 1)` and `(2 * a)`.
 /// - Returns: The sum of the squares of `(a + 1)` and `(2 * a)`.
 func sumOfSquaresOfAPlus1And2A(_ a: Double) -> Double {
-    return sumOfSquares(a + 1, a * 2)
+  sumOfSquares(a + 1, a * 2)
 }
 
 // Testing the procedures
-square(21)
-square(2 + 5)
-square(square(3))
-sumOfSquares(3, 4)
-sumOfSquaresOfAPlus1And2A(5)
+_ = square(21)
+_ = square(2 + 5)
+_ = square(square(3))
+_ = sumOfSquares(3, 4)
+_ = sumOfSquaresOfAPlus1And2A(5)
 
 /*:
  ### 1.1.5 The Substitution Model for Procedure Application
@@ -123,6 +124,7 @@ sumOfSquaresOfAPlus1And2A(5)
 
  Swift provides conditional expressions through `if-else` statements and the ternary operator.
  */
+
 /// Returns the absolute value of a given number.
 ///
 /// This function computes the absolute value of the input `x`.
@@ -131,44 +133,53 @@ sumOfSquaresOfAPlus1And2A(5)
 /// - Parameter x: The value whose absolute value is to be calculated.
 /// - Returns: The absolute value of `x`.
 func absoluteValue(_ x: Double) -> Double {
-    if x < 0 {
-        return -x
-    } else {
-        return x
-    }
+  if x < 0 {
+    return -x
+  } else {
+    return x
+  }
 }
 
 /// Returns the absolute value of the given number.
 ///
 /// The absolute value of a number is its distance from zero, disregarding its sign.
-/// If the input is negative, this function returns its negation; otherwise, it returns the input as is.
+/// If the input is negative, this function returns its negation;
+/// otherwise, it returns the input as is.
 ///
 /// - Parameter x: The number whose absolute value is to be determined.
 /// - Returns: The absolute value of `x`.
 /// - Note: This version is more concise using a ternary operator
 func abs(_ x: Double) -> Double {
-    return x >= 0 ? x : -x
+  x >= 0 ? x : -x
 }
 
 /// Returns the absolute value of the given number.
 ///
 /// The absolute value of a number is its distance from zero, disregarding its sign.
-/// If the input is negative, this function returns its negation; otherwise, it returns the input as is.
+/// If the input is negative, this function returns its negation; o therwise, it returns the input as is.
 ///
 /// - Parameter x: The number whose absolute value is to be determined.
 /// - Returns: The absolute value of `x`.
 func signTest(_ x: Double) -> String {
-    if x > 0 {
-        return "positive"
-    } else if x < 0 {
-        return "negative"
-    } else {
-        return "zero"
-    }
+  if x > 0 {
+    return "positive"
+  } else if x < 0 {
+    return "negative"
+  } else {
+    return "zero"
+  }
 }
 
 /*:
  **Logical Operations** in Swift:
+
+ - **AND**: both expressions must be true for true result
+ - **OR**: if either expression is true result is true
+ - **NOT**: is true if result of the expression is false
+
+ These logical operations are incredibly useful and the bread and butter of programming.
+ For example take the example of `isUserLoggedIn` you can have `!isUserLoggedIn` and display a log in form wheras if `isUserLoggedIn` is true AND `isMonday` show message `Happy, Monday`.
+
  */
 
 /// Demonstrates logical operations in Swift.
@@ -179,17 +190,17 @@ func signTest(_ x: Double) -> String {
 /// - Note: This function doesn't return a value but demonstrates various logical operations
 ///   that can be used in conditional statements and boolean expressions.
 func logicalOperations() {
-    let x = 5
-    let y = 10
+  let x = 5
+  let y = 10
 
-    // AND operation
-    let andResult = (x > 0) && (y > 0)
+  // AND operation
+  _ = (x > 0) && (y > 0)
 
-    // OR operation
-    let orResult = (x > 0) || (y < 0)
+  // OR operation
+  _ = (x > 0) || (y < 0)
 
-    // NOT operation
-    let notResult = !(x > y)
+  // NOT operation
+  _ = !(x > y)
 }
 
 /*:
@@ -197,6 +208,7 @@ func logicalOperations() {
 
  This example demonstrates iterative improvement - a powerful computational strategy.
  */
+
 /// Returns the arithmetic mean of two numeric values.
 ///
 /// - Parameters:
@@ -205,8 +217,10 @@ func logicalOperations() {
 /// - Returns: The average (arithmetic mean) of `x` and `y`. For numeric types that conform to `BinaryFloatingPoint` or `BinaryInteger`, this is calculated as `(x + y) / 2`.
 /// - Note: For integer inputs, the result will use integer division and may drop any fractional part. For floating-point inputs, the result will include the fractional part.
 func average(_ x: Double, _ y: Double) -> Double {
-    return (x + y) / 2
+  (x + y) / 2
 }
+let initialValue = 64.00
+let initialGuess = average(initialValue, 32)
 
 /// Repeatedly improves an initial guess using a specified improvement function.
 ///
@@ -217,8 +231,9 @@ func average(_ x: Double, _ y: Double) -> Double {
 ///
 /// Use this function to iteratively refine an approximation, such as in algorithms for computing square roots or other numerical methods.
 func improve(_ guess: Double, _ x: Double) -> Double {
-    return average(guess, x / guess)
+  average(guess, x / guess)
 }
+let improvedGuess = improve(initialGuess, initialValue)
 
 /// Determines whether the given guess is "good enough" as an approximation for the square root of a number.
 ///
@@ -232,8 +247,9 @@ func improve(_ guess: Double, _ x: Double) -> Double {
 /// It is commonly used as a stopping condition in iterative algorithms (such as Newton's method)
 /// for computing square roots.
 func isGoodEnough(_ guess: Double, _ x: Double) -> Bool {
-    return abs(square(guess) - x) < 0.001
+  abs(square(guess) - x) < 0.001
 }
+let goodGuess = isGoodEnough(improvedGuess, initialValue)
 
 /// Computes the square root of a given number using an iterative method.
 ///
@@ -248,11 +264,11 @@ func isGoodEnough(_ guess: Double, _ x: Double) -> Bool {
 ///
 /// - Note: If `x` is negative, the behavior is undefined unless otherwise specified in the implementation.
 func sqrtIterative(_ guess: Double, _ x: Double) -> Double {
-    if isGoodEnough(guess, x) {
-        return guess
-    } else {
-        return sqrtIterative(improve(guess, x), x)
-    }
+  if isGoodEnough(guess, x) {
+    return guess
+  } else {
+    return sqrtIterative(improve(guess, x), x)
+  }
 }
 
 /// Returns the square root of the given value.
@@ -261,14 +277,14 @@ func sqrtIterative(_ guess: Double, _ x: Double) -> Double {
 /// - Returns: The nonnegative square root of `x`. If `x` is negative, the result is NaN (not a number).
 /// - Note: `sqrt(_:)` is available for floating-point types such as `Double`, `Float`, and `CGFloat`.
 func sqrt(_ x: Double) -> Double {
-    return sqrtIterative(1.0, x)
+  sqrtIterative(1.0, x)
 }
 
 // Test the square root function
-sqrt(9.0)
-sqrt(100.0 + 44.0)
-sqrt(sqrt(2.0) + sqrt(3.0))
-square(sqrt(1000.0))
+_ = sqrt(9.0)
+_ = sqrt(100.0 + 44.0)
+_ = sqrt(sqrt(2.0) + sqrt(3.0))
+_ = square(sqrt(1000.0))
 
 /*:
  ### 1.1.8 Procedures as Black-Box Abstractions
@@ -287,8 +303,8 @@ square(sqrt(1000.0))
 ///
 /// - Note: Demonstrates local name binding and scope isolation.
 func squareLocalScope(_ x: Double) -> Double {
-    // x is bound within this scope
-    return x * x
+  // x is bound within this scope
+  x * x
 }
 
 /// Determines whether the given guess is sufficiently accurate for square root approximation.
@@ -304,8 +320,8 @@ func squareLocalScope(_ x: Double) -> Double {
 ///
 /// - Note: These parameters are completely independent of any other variables with the same names.
 func goodEnough(_ guess: Double, _ x: Double) -> Bool {
-    // These parameters are local to this procedure
-    return abs(square(guess) - x) < 0.001
+  // These parameters are local to this procedure
+  abs(square(guess) - x) < 0.001
 }
 
 /*:
@@ -325,23 +341,23 @@ func goodEnough(_ guess: Double, _ x: Double) -> Bool {
 /// - Note: Internal functions (`isGoodEnough`, `improve`, `sqrtIter`) are only accessible
 ///         within this function's scope and automatically capture `x` from outer scope.
 func sqrtWithInternalDefinitions(_ x: Double) -> Double {
-    func isGoodEnough(_ guess: Double) -> Bool {
-        return abs(square(guess) - x) < 0.001  // x is available from outer scope
-    }
+  func isGoodEnough(_ guess: Double) -> Bool {
+    abs(square(guess) - x) < 0.001  // x is available from outer scope
+  }
 
-    func improve(_ guess: Double) -> Double {
-        return average(guess, x / guess)  // x is available from outer scope
-    }
+  func improve(_ guess: Double) -> Double {
+    average(guess, x / guess)  // x is available from outer scope
+  }
 
-    func sqrtIter(_ guess: Double) -> Double {
-        if isGoodEnough(guess) {
-            return guess
-        } else {
-            return sqrtIter(improve(guess))
-        }
+  func sqrtIter(_ guess: Double) -> Double {
+    if isGoodEnough(guess) {
+      return guess
+    } else {
+      return sqrtIter(improve(guess))
     }
+  }
 
-    return sqrtIter(1.0)
+  return sqrtIter(1.0)
 }
 
 /*:
@@ -365,11 +381,11 @@ func sqrtWithInternalDefinitions(_ x: Double) -> Double {
 /// - Complexity: O(n) time, O(n) space due to recursive call stack.
 /// - Note: This creates a recursive process with deferred operations.
 func factorial(_ n: Int) -> Int {
-    if n == 1 {
-        return 1
-    } else {
-        return n * factorial(n - 1)
-    }
+  if n == 1 {
+    return 1
+  } else {
+    return n * factorial(n - 1)
+  }
 }
 
 /// Computes the factorial of a given integer using iterative process.
@@ -383,14 +399,14 @@ func factorial(_ n: Int) -> Int {
 /// - Complexity: O(n) time, O(1) space (tail-recursive optimization).
 /// - Note: This generates an iterative process despite using recursive syntax.
 func factorialIterative(_ n: Int) -> Int {
-    func factIter(_ product: Int, _ counter: Int, _ maxCount: Int) -> Int {
-        if counter > maxCount {
-            return product
-        } else {
-            return factIter(counter * product, counter + 1, maxCount)
-        }
+  func factIter(_ product: Int, _ counter: Int, _ maxCount: Int) -> Int {
+    if counter > maxCount {
+      return product
+    } else {
+      return factIter(counter * product, counter + 1, maxCount)
     }
-    return factIter(1, 1, n)
+  }
+  return factIter(1, 1, n)
 }
 
 /*:
@@ -413,19 +429,19 @@ func factorialIterative(_ n: Int) -> Int {
 /// - Complexity: O(2^n) time, O(n) space.
 /// - Warning: Extremely slow for large n due to exponential time complexity.
 func fibonacci(_ n: Int) -> Int {
-    if n == 0 {
-        return 0
-    } else if n == 1 {
-        return 1
-    } else {
-        return fibonacci(n - 1) + fibonacci(n - 2)
-    }
+  if n == 0 {
+    return 0
+  } else if n == 1 {
+    return 1
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2)
+  }
 }
 
 /// Computes the nth Fibonacci number using linear iteration (efficient).
 ///
-/// This implementation uses an iterative process that only requires tracking the last two values.
-/// No repeated computation occurs—each step simply advances the sequence.
+/// This implementation uses an iterative process that only requires tracking the last two
+/// values. No repeated computation occurs—each step simply advances the sequence.
 ///
 /// - Parameter n: The position in the Fibonacci sequence (0-based).
 /// - Returns: The nth Fibonacci number.
@@ -433,14 +449,14 @@ func fibonacci(_ n: Int) -> Int {
 /// - Complexity: O(n) time, O(1) space.
 /// - Note: Much more efficient than tree-recursive approach for large n.
 func fibonacciIterative(_ n: Int) -> Int {
-    func fibIter(_ a: Int, _ b: Int, _ count: Int) -> Int {
-        if count == 0 {
-            return b
-        } else {
-            return fibIter(a + b, a, count - 1)
-        }
+  func fibIter(_ a: Int, _ b: Int, _ count: Int) -> Int {
+    if count == 0 {
+      return b
+    } else {
+      return fibIter(a + b, a, count - 1)
     }
-    return fibIter(1, 0, n)
+  }
+  return fibIter(1, 0, n)
 }
 
 /*:
@@ -469,10 +485,10 @@ func fibonacciIterative(_ n: Int) -> Int {
 ///
 /// - Complexity: Θ(n) time, Θ(n) space.
 func expt(_ b: Double, _ n: Int) -> Double {
-    if n == 0 {
-        return 1
-    }
-    return b * expt(b, n - 1)
+  if n == 0 {
+    return 1
+  }
+  return b * expt(b, n - 1)
 }
 
 /// Computes b raised to the power of n using an iterative process.
@@ -486,15 +502,15 @@ func expt(_ b: Double, _ n: Int) -> Double {
 ///
 /// - Complexity: Θ(n) time, Θ(1) space.
 func exptIterative(_ b: Double, _ n: Int) -> Double {
-    var result = 1.0
-    var base = b
-    var exponent = n
+  var result = 1.0
+  let base = b
+  var exponent = n
 
-    while exponent > 0 {
-        result *= base
-        exponent -= 1
-    }
-    return result
+  while exponent > 0 {
+    result *= base
+    exponent -= 1
+  }
+  return result
 }
 
 /// Computes b raised to the power of n using fast exponentiation (exponentiation by squaring).
@@ -508,14 +524,14 @@ func exptIterative(_ b: Double, _ n: Int) -> Double {
 ///
 /// - Complexity: Θ(log n) time, Θ(log n) space.
 func fastExpt(_ b: Double, _ n: Int) -> Double {
-    if n == 0 {
-        return 1
-    } else if n % 2 == 0 {
-        let half = fastExpt(b, n / 2)
-        return half * half
-    } else {
-        return b * fastExpt(b, n - 1)
-    }
+  if n == 0 {
+    return 1
+  } else if n % 2 == 0 {
+    let half = fastExpt(b, n / 2)
+    return half * half
+  } else {
+    return b * fastExpt(b, n - 1)
+  }
 }
 
 /*:
@@ -536,15 +552,15 @@ func fastExpt(_ b: Double, _ n: Int) -> Double {
 ///
 /// - Complexity: O(log min(a, b)) time and space.
 func gcd(_ a: Int, _ b: Int) -> Int {
-    if b == 0 {
-        return a
-    } else {
-        return gcd(b, a % b)
-    }
+  if b == 0 {
+    return a
+  } else {
+    return gcd(b, a % b)
+  }
 }
 
 // Testing GCD
-gcd(206, 40)  // Should return 2
+_ = gcd(206, 40)  // Should return 2
 
 /*:
  ### 1.2.6 Example: Testing for Primality
@@ -562,16 +578,16 @@ gcd(206, 40)  // Should return 2
 ///
 /// - Complexity: O(√n) time.
 func smallestDivisor(_ n: Int) -> Int {
-    func findDivisor(_ n: Int, _ testDivisor: Int) -> Int {
-        if square(Double(testDivisor)) > Double(n) {
-            return n
-        } else if n % testDivisor == 0 {
-            return testDivisor
-        } else {
-            return findDivisor(n, testDivisor + 1)
-        }
+  func findDivisor(_ n: Int, _ testDivisor: Int) -> Int {
+    if square(Double(testDivisor)) > Double(n) {
+      return n
+    } else if n % testDivisor == 0 {
+      return testDivisor
+    } else {
+      return findDivisor(n, testDivisor + 1)
     }
-    return findDivisor(n, 2)
+  }
+  return findDivisor(n, 2)
 }
 
 /// Determines whether a given integer is prime.
@@ -583,7 +599,7 @@ func smallestDivisor(_ n: Int) -> Int {
 ///
 /// - Complexity: O(√n) time.
 func isPrime(_ n: Int) -> Bool {
-    return n == smallestDivisor(n)
+  n == smallestDivisor(n)
 }
 
 /// Computes (base^exp) mod m efficiently using fast exponentiation.
@@ -599,14 +615,14 @@ func isPrime(_ n: Int) -> Bool {
 ///
 /// - Complexity: O(log exp) time.
 func expmod(_ base: Int, _ exp: Int, _ m: Int) -> Int {
-    if exp == 0 {
-        return 1
-    } else if exp % 2 == 0 {
-        let half = expmod(base, exp / 2, m)
-        return (half * half) % m
-    } else {
-        return (base * expmod(base, exp - 1, m)) % m
-    }
+  if exp == 0 {
+    return 1
+  } else if exp % 2 == 0 {
+    let half = expmod(base, exp / 2, m)
+    return (half * half) % m
+  } else {
+    return (base * expmod(base, exp - 1, m)) % m
+  }
 }
 
 /// Performs Fermat's primality test on a given integer.
@@ -620,11 +636,11 @@ func expmod(_ base: Int, _ exp: Int, _ m: Int) -> Int {
 /// - Complexity: O(log n) time.
 /// - Note: This is a probabilistic test that can have false positives (Carmichael numbers).
 func fermatTest(_ n: Int) -> Bool {
-    func tryIt(_ a: Int) -> Bool {
-        return expmod(a, n, n) == a
-    }
-    let testValue = Int.random(in: 1..<n)
-    return tryIt(testValue)
+  func tryIt(_ a: Int) -> Bool {
+    expmod(a, n, n) == a
+  }
+  let testValue = Int.random(in: 1..<n)
+  return tryIt(testValue)
 }
 
 /// Tests primality using repeated Fermat tests.
@@ -639,13 +655,13 @@ func fermatTest(_ n: Int) -> Bool {
 ///
 /// - Complexity: O(times × log n) time.
 func fastPrime(_ n: Int, _ times: Int) -> Bool {
-    if times == 0 {
-        return true
-    } else if fermatTest(n) {
-        return fastPrime(n, times - 1)
-    } else {
-        return false
-    }
+  if times == 0 {
+    return true
+  } else if fermatTest(n) {
+    return fastPrime(n, times - 1)
+  } else {
+    return false
+  }
 }
 
 /*:
@@ -672,11 +688,11 @@ func fastPrime(_ n: Int, _ times: Int) -> Bool {
 ///
 /// - Complexity: O(n) time where n is the number of terms.
 func sum<T: Numeric & Comparable>(_ term: (T) -> T, _ a: T, _ next: (T) -> T, _ b: T) -> T {
-    if a > b {
-        return T.zero
-    } else {
-        return term(a) + sum(term, next(a), next, b)
-    }
+  if a > b {
+    return T.zero
+  } else {
+    return term(a) + sum(term, next(a), next, b)
+  }
 }
 
 /// Computes the sum of integers from a to b inclusive.
@@ -688,9 +704,9 @@ func sum<T: Numeric & Comparable>(_ term: (T) -> T, _ a: T, _ next: (T) -> T, _ 
 ///   - b: The ending integer.
 /// - Returns: The sum of integers from `a` to `b`.
 func sumIntegers(_ a: Int, _ b: Int) -> Int {
-    func identity(_ x: Int) -> Int { return x }
-    func inc(_ n: Int) -> Int { return n + 1 }
-    return sum(identity, a, inc, b)
+  func identity(_ x: Int) -> Int { x }
+  func inc(_ n: Int) -> Int { n + 1 }
+  return sum(identity, a, inc, b)
 }
 
 /// Computes the sum of cubes of integers from a to b inclusive.
@@ -702,9 +718,9 @@ func sumIntegers(_ a: Int, _ b: Int) -> Int {
 ///   - b: The ending integer.
 /// - Returns: The sum of cubes from `a³` to `b³`.
 func sumCubes(_ a: Int, _ b: Int) -> Int {
-    func cube(_ x: Int) -> Int { return x * x * x }
-    func inc(_ n: Int) -> Int { return n + 1 }
-    return sum(cube, a, inc, b)
+  func cube(_ x: Int) -> Int { x * x * x }
+  func inc(_ n: Int) -> Int { n + 1 }
+  return sum(cube, a, inc, b)
 }
 
 /// Computes an approximation of π/8 using a mathematical series.
@@ -717,13 +733,13 @@ func sumCubes(_ a: Int, _ b: Int) -> Int {
 ///   - b: The ending value for the series.
 /// - Returns: An approximation of π/8 based on the specified range.
 func piSum(_ a: Double, _ b: Double) -> Double {
-    func piTerm(_ x: Double) -> Double {
-        return 1.0 / (x * (x + 2))
-    }
-    func piNext(_ x: Double) -> Double {
-        return x + 4
-    }
-    return sum(piTerm, a, piNext, b)
+  func piTerm(_ x: Double) -> Double {
+    1.0 / (x * (x + 2))
+  }
+  func piNext(_ x: Double) -> Double {
+    x + 4
+  }
+  return sum(piTerm, a, piNext, b)
 }
 
 /*:
@@ -742,7 +758,7 @@ func piSum(_ a: Double, _ b: Double) -> Double {
 ///   - b: The ending value for the series.
 /// - Returns: An approximation of π/8 based on the specified range.
 func piSumWithClosures(_ a: Double, _ b: Double) -> Double {
-    return sum({ x in 1.0 / (x * (x + 2)) }, a, { x in x + 4 }, b)
+  sum({ x in 1.0 / (x * (x + 2)) }, a, { x in x + 4 }, b)
 }
 
 /// Computes a mathematical expression involving local variables.
@@ -754,9 +770,9 @@ func piSumWithClosures(_ a: Double, _ b: Double) -> Double {
 ///   - y: The second input value.
 /// - Returns: The computed result of the mathematical expression.
 func f2(_ x: Double, _ y: Double) -> Double {
-    let a = 1 + x * y
-    let b = 1 - y
-    return x * square(a) + y * b + a * b
+  let a = 1 + x * y
+  let b = 1 - y
+  return x * square(a) + y * b + a * b
 }
 
 /// Computes the same expression as f2 but using closure for local variable binding.
@@ -769,9 +785,9 @@ func f2(_ x: Double, _ y: Double) -> Double {
 ///   - y: The second input value.
 /// - Returns: The same result as `f2`, computed using closure-based local binding.
 func f2WithClosure(_ x: Double, _ y: Double) -> Double {
-    return { (a: Double, b: Double) in
-        x * square(a) + y * b + a * b
-    }(1 + x * y, 1 - y)
+  { (a: Double, b: Double) in
+    x * square(a) + y * b + a * b
+  }(1 + x * y, 1 - y)
 }
 
 /*:
@@ -793,18 +809,18 @@ func f2WithClosure(_ x: Double, _ y: Double) -> Double {
 ///
 /// - Complexity: O(log((b-a)/tolerance)) iterations.
 func search(_ f: (Double) -> Double, _ negPoint: Double, _ posPoint: Double) -> Double {
-    let midpoint = (negPoint + posPoint) / 2
-    if abs(negPoint - posPoint) < 0.001 {
-        return midpoint
-    }
-    let testValue = f(midpoint)
-    if testValue > 0 {
-        return search(f, negPoint, midpoint)
-    } else if testValue < 0 {
-        return search(f, midpoint, posPoint)
-    } else {
-        return midpoint
-    }
+  let midpoint = (negPoint + posPoint) / 2
+  if abs(negPoint - posPoint) < 0.001 {
+    return midpoint
+  }
+  let testValue = f(midpoint)
+  if testValue > 0 {
+    return search(f, negPoint, midpoint)
+  } else if testValue < 0 {
+    return search(f, midpoint, posPoint)
+  } else {
+    return midpoint
+  }
 }
 
 /// Finds a root of a continuous function using the half-interval method.
@@ -820,20 +836,20 @@ func search(_ f: (Double) -> Double, _ negPoint: Double, _ posPoint: Double) -> 
 ///
 /// - Precondition: f(a) and f(b) must have opposite signs for a root to be guaranteed.
 func halfIntervalMethod(_ f: (Double) -> Double, _ a: Double, _ b: Double) -> Double? {
-    let aValue = f(a)
-    let bValue = f(b)
-    if aValue < 0 && bValue > 0 {
-        return search(f, a, b)
-    } else if bValue < 0 && aValue > 0 {
-        return search(f, b, a)
-    } else {
-        return nil  // No root found
-    }
+  let aValue = f(a)
+  let bValue = f(b)
+  if aValue < 0 && bValue > 0 {
+    return search(f, a, b)
+  } else if bValue < 0 && aValue > 0 {
+    return search(f, b, a)
+  } else {
+    return nil  // No root found
+  }
 }
 
 // Finding roots of sin(x) = 0
 if let root = halfIntervalMethod(sin, 2.0, 4.0) {
-    print("Root of sin(x) between 2 and 4: \(root)")
+  print("Root of sin(x) between 2 and 4: \(root)")
 }
 
 /*:
@@ -855,20 +871,20 @@ let tolerance = 0.00001
 ///
 /// - Note: Convergence is not guaranteed for all functions and starting points.
 func fixedPoint(_ f: (Double) -> Double, _ firstGuess: Double) -> Double {
-    func closeEnough(_ v1: Double, _ v2: Double) -> Bool {
-        return abs(v1 - v2) < tolerance
-    }
+  func closeEnough(_ v1: Double, _ v2: Double) -> Bool {
+    abs(v1 - v2) < tolerance
+  }
 
-    func tryGuess(_ guess: Double) -> Double {
-        let next = f(guess)
-        if closeEnough(guess, next) {
-            return next
-        } else {
-            return tryGuess(next)
-        }
+  func tryGuess(_ guess: Double) -> Double {
+    let next = f(guess)
+    if closeEnough(guess, next) {
+      return next
+    } else {
+      return tryGuess(next)
     }
+  }
 
-    return tryGuess(firstGuess)
+  return tryGuess(firstGuess)
 }
 
 // Find the fixed point of cosine function (approximately 0.739)
@@ -885,7 +901,7 @@ let cosineFixedPoint = fixedPoint(cos, 1.0)
 ///
 /// - Warning: This implementation may not converge due to lack of damping.
 func sqrtAsFixedPoint(_ x: Double) -> Double {
-    return fixedPoint({ y in x / y }, 1.0)  // This won't converge without damping
+  fixedPoint({ y in x / y }, 1.0)  // This won't converge without damping
 }
 
 /*:
@@ -903,7 +919,7 @@ func sqrtAsFixedPoint(_ x: Double) -> Double {
 /// - Parameter f: The function to be damped.
 /// - Returns: A new function that computes (x + f(x))/2.
 func averageDamp(_ f: @escaping (Double) -> Double) -> (Double) -> Double {
-    return { x in average(x, f(x)) }
+  { x in average(x, f(x)) }
 }
 
 /// Computes the square root using fixed-point method with average damping.
@@ -914,7 +930,7 @@ func averageDamp(_ f: @escaping (Double) -> Double) -> (Double) -> Double {
 /// - Parameter x: The number whose square root is desired.
 /// - Returns: The square root of x.
 func sqrtWithAverageDamp(_ x: Double) -> Double {
-    return fixedPoint(averageDamp({ y in x / y }), 1.0)
+  fixedPoint(averageDamp({ y in x / y }), 1.0)
 }
 
 /// Computes the cube root using fixed-point method with average damping.
@@ -925,7 +941,7 @@ func sqrtWithAverageDamp(_ x: Double) -> Double {
 /// - Parameter x: The number whose cube root is desired.
 /// - Returns: The cube root of x.
 func cubeRoot(_ x: Double) -> Double {
-    return fixedPoint(averageDamp({ y in x / (y * y) }), 1.0)
+  fixedPoint(averageDamp({ y in x / (y * y) }), 1.0)
 }
 
 /*:
@@ -944,7 +960,7 @@ let dx = 0.00001
 ///
 /// - Note: Uses a small value dx for the difference quotient approximation.
 func derivative(_ g: @escaping (Double) -> Double) -> (Double) -> Double {
-    return { x in (g(x + dx) - g(x)) / dx }
+  { x in (g(x + dx) - g(x)) / dx }
 }
 
 /// Creates the Newton's method transformation for a function.
@@ -955,7 +971,7 @@ func derivative(_ g: @escaping (Double) -> Double) -> (Double) -> Double {
 /// - Parameter g: The function whose roots are being sought.
 /// - Returns: The Newton transformation function.
 func newtonTransform(_ g: @escaping (Double) -> Double) -> (Double) -> Double {
-    return { x in x - g(x) / derivative(g)(x) }
+  { x in x - g(x) / derivative(g)(x) }
 }
 
 /// Finds a root of a function using Newton's method.
@@ -970,7 +986,7 @@ func newtonTransform(_ g: @escaping (Double) -> Double) -> (Double) -> Double {
 ///
 /// - Note: Convergence depends on the initial guess and function properties.
 func newtonsMethod(_ g: @escaping (Double) -> Double, _ guess: Double) -> Double {
-    return fixedPoint(newtonTransform(g), guess)
+  fixedPoint(newtonTransform(g), guess)
 }
 
 /// Computes the square root using Newton's method.
@@ -981,7 +997,7 @@ func newtonsMethod(_ g: @escaping (Double) -> Double, _ guess: Double) -> Double
 /// - Parameter x: The number whose square root is desired.
 /// - Returns: The square root of x.
 func sqrtNewton(_ x: Double) -> Double {
-    return newtonsMethod({ y in square(y) - x }, 1.0)
+  newtonsMethod({ y in square(y) - x }, 1.0)
 }
 
 /*:
@@ -999,11 +1015,11 @@ func sqrtNewton(_ x: Double) -> Double {
 ///   - guess: The initial guess for the fixed point.
 /// - Returns: The fixed point of the transformed function.
 func fixedPointOfTransform(
-    _ g: @escaping (Double) -> Double,
-    _ transform: @escaping (@escaping (Double) -> Double) -> (Double) -> Double,
-    _ guess: Double
+  _ g: @escaping (Double) -> Double,
+  _ transform: @escaping (@escaping (Double) -> Double) -> (Double) -> Double,
+  _ guess: Double
 ) -> Double {
-    return fixedPoint(transform(g), guess)
+  fixedPoint(transform(g), guess)
 }
 
 /// Computes square root using fixed-point method with average damping transformation.
@@ -1013,7 +1029,7 @@ func fixedPointOfTransform(
 /// - Parameter x: The number whose square root is desired.
 /// - Returns: The square root of x.
 func sqrtUsingFixedPointTransform(_ x: Double) -> Double {
-    return fixedPointOfTransform({ y in x / y }, averageDamp, 1.0)
+  fixedPointOfTransform({ y in x / y }, averageDamp, 1.0)
 }
 
 /// Computes square root using fixed-point method with Newton transformation.
@@ -1023,7 +1039,7 @@ func sqrtUsingFixedPointTransform(_ x: Double) -> Double {
 /// - Parameter x: The number whose square root is desired.
 /// - Returns: The square root of x.
 func sqrtUsingNewtonTransform(_ x: Double) -> Double {
-    return fixedPointOfTransform({ y in square(y) - x }, newtonTransform, 1.0)
+  fixedPointOfTransform({ y in square(y) - x }, newtonTransform, 1.0)
 }
 
 /*:
@@ -1031,8 +1047,72 @@ func sqrtUsingNewtonTransform(_ x: Double) -> Double {
 
  ### 1.1 Exercises
  - **Exercise 1.3**: Define a procedure that takes three numbers as arguments and returns the sum of the squares of the two larger numbers.
- - **Exercise 1.8**: Implement cube root calculation using Newton's method.
+*/
 
+func sumOfLargest(_ x: Int, _ y: Int, _ z: Int) -> Int {
+  if x > y {
+    if y > z {
+      return x + y
+    } else {
+      return x + z
+    }
+  } else {
+    return y + z
+  }
+}
+
+func sumOfLargestOptimised(_ x: Int, _ y: Int, _ z: Int) -> Int {
+  let smallest = min(x, y, z)
+  return x + y + z - smallest
+}
+
+/*:
+ - **Exercise 1.8**: Implement cube root calculation using Newton's method.
+*/
+
+/// Elegant and iterative method for finding the integer cube root using Newton's Method.
+///
+/// - Parameter x: The integer to find the cube root of (must be non-negative).
+/// - Returns: The integer cube root of `x`, rounded down.
+func newtonsCubeMethod(_ x: Int) -> Int {
+  precondition(x >= 0, "Only non-negative inputs are supported")
+
+  // Edge cases: cube root of 0 or 1 is the number itself
+  if x == 0 || x == 1 {
+    return x
+  }
+
+  // Step 1: Start with guess x₀
+  var guess = x
+
+  while true {
+    // Step 2: Calculate f(x₀) = x₀³ - n
+    // Step 3: Calculate f'(x₀) = 3x₀²
+    // Step 4: Find where tangent line crosses zero:
+    //         x₁ = x₀ - f(x₀)/f'(x₀)
+    // In integer math, this simplifies to:
+    //         x₁ = (2 * x₀ + n / x₀²) / 3
+
+    let next = (2 * guess + x / (guess * guess)) / 3
+
+    // Step 5: Repeat until convergence (change is less than 1)
+    if abs(next - guess) < 1 {
+      break
+    }
+
+    guess = next
+  }
+
+  // Final adjustment: make sure we don't overshoot due to integer rounding
+  while guess * guess * guess > x {
+    guess -= 1
+  }
+
+  return guess
+}
+
+
+/*:
  ### 1.2 Exercises
  - **Exercise 1.9**: Determine whether recursive or iterative process for addition procedures.
  - **Exercise 1.11**: Implement function f(n) both recursively and iteratively.

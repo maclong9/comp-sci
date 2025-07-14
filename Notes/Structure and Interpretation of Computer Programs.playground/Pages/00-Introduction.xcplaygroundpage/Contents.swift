@@ -83,6 +83,8 @@
 
  Ready to begin your journey into computational thinking? Click **Next** to start with Chapter 1!
 
+ > Note: Some of the expressions start with `_ =` this is used to show that the result is unused and is required to supress warnings in your editor from the Swift language tools.
+
 */
 
 //: [Next](@next)
